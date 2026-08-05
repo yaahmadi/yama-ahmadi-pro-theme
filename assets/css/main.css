@@ -35,3 +35,432 @@
 @media(max-width:820px){.ya-shell{width:calc(100% - 30px)}.ya-topbar-left a:nth-child(2){display:none}.ya-top-quote{display:none}.ya-home-hero{min-height:auto}.ya-hero-layout{grid-template-columns:1fr;padding:62px 0 90px}.ya-network-visual{height:330px;margin-top:0}.ya-hero-bottom .ya-shell{grid-template-columns:1fr 1fr;height:auto;padding:10px 0}.ya-hero-bottom span{padding:7px 12px}.ya-hero-bottom span:nth-child(2){border-right:0}.ya-inner-hero-in{grid-template-columns:1fr;min-height:auto;padding:62px 0}.ya-inner-visual{height:220px}.ya-split,.ya-about-grid,.ya-contact-layout{grid-template-columns:1fr}.ya-contact-panel{position:relative;top:auto}.ya-tech-grid{grid-template-columns:repeat(3,1fr)}.ya-app-strip{align-items:flex-start;flex-direction:column}.ya-footer-main{grid-template-columns:1fr 1fr}.ya-footer-brand-col{grid-column:1/-1}.ya-cta-in{align-items:flex-start;flex-direction:column}.ya-solution-row{grid-template-columns:64px 1fr 42px}.ya-process-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.ya-topbar-in{min-height:31px}.ya-topbar-left a span{font-size:9px}.ya-topbar-right{gap:10px}.ya-top-action span{display:none}.ya-header-in{height:62px}.ya-brand-mark{width:31px;height:36px;flex-basis:31px}.ya-brand-mark span{height:30px;width:9px}.ya-brand-mark span:nth-child(2){left:11px}.ya-brand-mark span:nth-child(3){left:20px}.ya-brand-copy strong{font-size:15px}.ya-brand-copy small{font-size:5.7px;margin-top:5px}.ya-hero-layout{padding-top:52px}.ya-hero h1{font-size:clamp(38px,12vw,52px)}.ya-hero-copy>p{font-size:13px}.ya-actions{display:grid;grid-template-columns:1fr}.ya-actions .ya-btn{width:100%}.ya-trust-row{display:grid;gap:10px}.ya-network-visual{height:280px}.ya-network-ring.r3{display:none}.ya-network-core{width:108px;height:108px;border-radius:26px;font-size:34px}.ya-network-node{width:58px;height:58px;border-radius:15px;font-size:18px}.ya-network-node span{display:none}.ya-section{padding:64px 0}.ya-section-head{margin-bottom:28px}.ya-section-head h2{font-size:31px}.ya-services-grid,.ya-project-grid,.ya-tech-grid,.ya-value-grid,.ya-stat-grid,.ya-process-grid,.ya-post-grid{grid-template-columns:1fr}.ya-tech-grid{grid-template-columns:1fr 1fr}.ya-tech-chip{height:90px}.ya-dark-feature{padding:65px 0}.ya-split{gap:35px}.ya-inner-hero h1{font-size:37px}.ya-inner-visual{height:180px}.ya-inner-icon{width:115px;height:115px;font-size:40px}.ya-inner-orbit{width:185px;height:185px}.ya-solution-row{grid-template-columns:52px 1fr;padding:20px}.ya-solution-icon{width:50px;height:50px}.ya-solution-row .ya-circle-link{display:none}.ya-solution-row h2{font-size:23px}.ya-form-card,.ya-contact-panel{padding:24px 19px}.ya-app-strip{padding:25px 20px}.ya-store-row{width:100%;display:grid}.ya-store{width:100%}.ya-footer-main{grid-template-columns:1fr}.ya-footer-brand-col{grid-column:auto}.ya-footer-bottom{align-items:flex-start;flex-direction:column;justify-content:center;padding:15px 0}.ya-install-toast{left:10px;right:10px;bottom:10px;min-width:0}.ya-partner-logo{min-width:145px}.ya-hero-bottom{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.ya-network-node,.ya-network-ring,.ya-inner-orbit,.ya-marquee-track{animation:none!important}.ya-network-visual{transform:none!important}*{transition-duration:.001ms!important}}
+/* =========================================================
+   YAMA AHMADI — PHASE 1 HEADER + HERO
+========================================================= */
+
+:root{
+    --ya-phase1-dark:#04171c;
+    --ya-phase1-dark2:#08252b;
+    --ya-phase1-accent:#59e0ad;
+    --ya-phase1-cyan:#45d9dd;
+}
+
+/* ---------- HEADER ---------- */
+
+.ya-topbar{
+    position:relative !important;
+    z-index:10020 !important;
+    background:#020d11 !important;
+}
+
+#ya-header.ya-header{
+    position:sticky !important;
+    top:0 !important;
+    z-index:10010 !important;
+    display:block !important;
+    width:100% !important;
+    min-height:72px !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:
+        linear-gradient(
+            90deg,
+            var(--ya-phase1-dark),
+            var(--ya-phase1-dark2)
+        ) !important;
+    color:#fff !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+    box-shadow:0 8px 30px rgba(0,0,0,.10) !important;
+    backdrop-filter:blur(18px) !important;
+}
+
+#ya-header.scrolled{
+    background:rgba(3,17,21,.985) !important;
+    box-shadow:0 18px 55px rgba(0,0,0,.22) !important;
+}
+
+#ya-header .ya-header-in{
+    width:min(1320px,calc(100% - 48px)) !important;
+    height:72px !important;
+    min-height:72px !important;
+    margin:0 auto !important;
+    padding:0 !important;
+
+    display:grid !important;
+    grid-template-columns:250px minmax(0,1fr) auto !important;
+
+    align-items:center !important;
+    gap:24px !important;
+}
+
+#ya-header .ya-brand{
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:11px !important;
+    color:#fff !important;
+}
+
+#ya-header .ya-brand-copy strong{
+    color:#fff !important;
+    font-size:17px !important;
+    letter-spacing:.025em !important;
+}
+
+#ya-header .ya-brand-copy small{
+    color:#7de7c2 !important;
+    letter-spacing:.18em !important;
+}
+
+#ya-header .ya-nav{
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+}
+
+#ya-header .ya-navlist{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:clamp(14px,1.45vw,26px) !important;
+    margin:0 !important;
+    padding:0 !important;
+    list-style:none !important;
+}
+
+#ya-header .ya-navlist > li > a{
+    display:flex !important;
+    align-items:center !important;
+    height:72px !important;
+
+    padding:0 !important;
+
+    color:#d8e9e6 !important;
+
+    font-size:12px !important;
+    font-weight:650 !important;
+}
+
+#ya-header .ya-navlist > li > a:hover{
+    color:#fff !important;
+}
+
+#ya-header .ya-navlist > li > a:after{
+    bottom:14px !important;
+}
+
+#ya-header .ya-header-actions{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+}
+
+#ya-header .ya-btn-sm{
+    min-height:40px !important;
+    padding:0 15px !important;
+    white-space:nowrap !important;
+}
+
+/* ---------- HOME HERO ---------- */
+
+.ya-home-hero{
+    min-height:620px !important;
+    margin:0 !important;
+    padding:0 !important;
+
+    background:
+        radial-gradient(
+            circle at 74% 34%,
+            rgba(47,211,190,.17),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 18% 8%,
+            rgba(89,224,173,.08),
+            transparent 24%
+        ),
+        linear-gradient(
+            135deg,
+            #031116,
+            #06292f 68%,
+            #08343a
+        ) !important;
+}
+
+.ya-home-hero .ya-hero-layout{
+    min-height:620px !important;
+
+    padding-top:64px !important;
+    padding-bottom:86px !important;
+
+    grid-template-columns:
+        minmax(0,1.08fr)
+        minmax(430px,.92fr) !important;
+
+    gap:64px !important;
+}
+
+.ya-home-hero .ya-hero-copy{
+    max-width:760px !important;
+}
+
+.ya-home-hero .ya-hero-copy h1{
+    font-size:clamp(46px,5vw,72px) !important;
+    line-height:1.02 !important;
+    letter-spacing:-.048em !important;
+
+    margin:14px 0 20px !important;
+
+    text-wrap:balance !important;
+}
+
+.ya-home-hero .ya-hero-copy > p{
+    max-width:660px !important;
+
+    font-size:16px !important;
+    line-height:1.78 !important;
+
+    color:#bdd6d2 !important;
+}
+
+.ya-home-hero .ya-network-visual{
+    height:440px !important;
+    max-width:560px !important;
+    width:100% !important;
+
+    justify-self:end !important;
+}
+
+.ya-home-hero .ya-network-core{
+    width:132px !important;
+    height:132px !important;
+
+    border-radius:28px !important;
+
+    font-size:42px !important;
+}
+
+.ya-home-hero .ya-network-node{
+    width:78px !important;
+    height:78px !important;
+
+    border-radius:18px !important;
+
+    font-size:21px !important;
+}
+
+/* ---------- INNER PAGE HERO ---------- */
+
+.ya-inner-hero{
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    margin:0 !important;
+    padding:0 !important;
+
+    background:
+        radial-gradient(
+            circle at 78% 25%,
+            rgba(63,217,203,.14),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #031116,
+            #082c32
+        ) !important;
+
+    color:#fff !important;
+
+    border-bottom:1px solid rgba(255,255,255,.06) !important;
+}
+
+.ya-inner-hero .ya-inner-hero-in{
+    min-height:430px !important;
+
+    padding:70px 0 !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        minmax(0,1.05fr)
+        minmax(340px,.75fr) !important;
+
+    align-items:center !important;
+
+    gap:70px !important;
+
+    position:relative !important;
+    z-index:2 !important;
+}
+
+.ya-inner-hero h1{
+    max-width:780px !important;
+
+    margin:13px 0 18px !important;
+
+    font-size:clamp(42px,4.5vw,64px) !important;
+    line-height:1.04 !important;
+    letter-spacing:-.045em !important;
+
+    color:#fff !important;
+
+    text-wrap:balance !important;
+}
+
+.ya-inner-hero p{
+    max-width:680px !important;
+
+    margin:0 !important;
+
+    color:#b9d3cf !important;
+
+    font-size:15px !important;
+    line-height:1.75 !important;
+}
+
+.ya-inner-badges{
+    display:flex !important;
+    flex-wrap:wrap !important;
+
+    gap:10px !important;
+
+    margin-top:28px !important;
+}
+
+.ya-inner-badges span{
+    display:inline-flex !important;
+    align-items:center !important;
+
+    gap:7px !important;
+
+    padding:8px 11px !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+    border-radius:999px !important;
+
+    background:rgba(255,255,255,.035) !important;
+
+    color:#d7e8e5 !important;
+
+    font-size:10px !important;
+    font-weight:650 !important;
+}
+
+/* ---------- TABLET ---------- */
+
+@media(max-width:1100px){
+
+    #ya-header .ya-header-in{
+        width:min(100% - 34px,1320px) !important;
+
+        height:66px !important;
+        min-height:66px !important;
+
+        grid-template-columns:minmax(190px,1fr) auto !important;
+    }
+
+    #ya-header .ya-nav,
+    #ya-header .ya-header-actions > .ya-btn{
+        display:none !important;
+    }
+
+    #ya-header .ya-menu{
+        display:block !important;
+    }
+
+    .ya-home-hero .ya-hero-layout{
+        grid-template-columns:1fr .82fr !important;
+
+        gap:30px !important;
+
+        min-height:570px !important;
+    }
+
+    .ya-inner-hero .ya-inner-hero-in{
+        grid-template-columns:1fr .7fr !important;
+
+        gap:34px !important;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:760px){
+
+    #ya-header .ya-header-in{
+        width:calc(100% - 28px) !important;
+
+        height:60px !important;
+        min-height:60px !important;
+
+        grid-template-columns:minmax(0,1fr) auto !important;
+    }
+
+    #ya-header .ya-brand-copy strong{
+        font-size:14px !important;
+    }
+
+    #ya-header .ya-brand-copy small{
+        font-size:5.8px !important;
+    }
+
+    .ya-home-hero{
+        min-height:auto !important;
+    }
+
+    .ya-home-hero .ya-hero-layout{
+        display:block !important;
+
+        min-height:0 !important;
+
+        padding:52px 0 72px !important;
+    }
+
+    .ya-home-hero .ya-hero-copy h1{
+        font-size:clamp(38px,11vw,54px) !important;
+    }
+
+    .ya-home-hero .ya-hero-copy > p{
+        font-size:14px !important;
+    }
+
+    .ya-home-hero .ya-actions{
+        display:grid !important;
+
+        grid-template-columns:1fr !important;
+
+        max-width:330px !important;
+    }
+
+    .ya-home-hero .ya-actions .ya-btn{
+        width:100% !important;
+    }
+
+    .ya-home-hero .ya-network-visual{
+        height:300px !important;
+
+        margin:30px auto 0 !important;
+
+        max-width:420px !important;
+    }
+
+    .ya-inner-hero .ya-inner-hero-in{
+        display:block !important;
+
+        min-height:0 !important;
+
+        padding:55px 0 !important;
+    }
+
+    .ya-inner-hero h1{
+        font-size:clamp(36px,10.5vw,50px) !important;
+    }
+
+    .ya-inner-visual{
+        height:220px !important;
+
+        margin-top:34px !important;
+    }
+}
