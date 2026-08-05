@@ -47,14 +47,14 @@ while (have_posts()) :
         'solutions' => [
             'SOLUTIONS',
             'Des solutions IT conçues pour vos opérations quotidiennes.',
-            'Modern Workplace, réseaux sécurisés, infrastructure et field services adaptés aux besoins des entreprises modernes.',
+            'Environnement de travail moderne, réseaux sécurisés, infrastructure et services terrain adaptés aux besoins des entreprises modernes.',
             'fa-diagram-project'
         ],
 
         'projets' => [
             'EXPÉRIENCES',
             'Une expérience terrain dans des environnements IT exigeants.',
-            'Support, infrastructure, réseau et déploiement réalisés dans différents contextes professionnels et industriels.',
+            'Support, infrastructure, réseau et déploiement réalisés dans différents environnements professionnels et industriels.',
             'fa-briefcase'
         ],
 
@@ -205,7 +205,7 @@ while (have_posts()) :
                     'shield-halved',
                     'Cybersécurité',
                     'Protection des utilisateurs, postes, comptes, accès et infrastructures.',
-                    ['Sécurisation comptes', 'Protection endpoints', 'Bonnes pratiques']
+                    ['Sécurisation comptes', 'Protection des postes', 'Bonnes pratiques']
                 ],
 
                 [
@@ -273,7 +273,7 @@ while (have_posts()) :
 
                     </ul>
 
-                    <a href="<?php echo esc_url(ya_page('contact')); ?>">
+                    <a class="ya-service-readmore" href="<?php echo esc_url(ya_page('contact')); ?>">
 
                         Parler de ce service
 
@@ -392,7 +392,7 @@ while (have_posts()) :
 
                 [
                     '01',
-                    'Modern Workplace',
+                    'Environnement de travail moderne',
                     'Microsoft 365, Teams, OneDrive, identités et collaboration pour un environnement utilisateur moderne.',
                     'fa-cloud',
                     'Microsoft 365 • Teams • OneDrive • Exchange'
@@ -400,7 +400,7 @@ while (have_posts()) :
 
                 [
                     '02',
-                    'Secure Network',
+                    'Réseau sécurisé',
                     'Wi-Fi professionnel, segmentation réseau, firewall, VPN et optimisation de la connectivité.',
                     'fa-shield-halved',
                     'Wi-Fi • VLAN • Firewall • VPN'
@@ -408,18 +408,18 @@ while (have_posts()) :
 
                 [
                     '03',
-                    'IT Operations',
+                    'Opérations IT',
                     'Support utilisateurs, maintenance des postes, déploiement et documentation technique.',
                     'fa-gears',
-                    'L1/L2 • Devices • Deployment • Support'
+                    'L1/L2 • Équipements • Déploiement • Support'
                 ],
 
                 [
                     '04',
-                    'Field Services',
+                    'Services terrain',
                     'Interventions terrain, remote hands, rack, remplacement matériel et support multi-sites.',
                     'fa-location-crosshairs',
-                    'On-site • Remote hands • Infrastructure'
+                    'Sur site • Remote hands • Infrastructure'
                 ]
 
             ];
@@ -551,7 +551,7 @@ while (have_posts()) :
                 [
                     'fa-language',
                     'Communication',
-                    'Français et anglais pour faciliter les interventions internationales.'
+                    'Français, anglais et allemand pour faciliter les échanges avec des équipes internationales.'
                 ]
 
             ];
@@ -626,7 +626,7 @@ while (have_posts()) :
                 </strong>
 
                 <span>
-                    English support
+                    Support en anglais
                 </span>
 
             </div>
@@ -638,7 +638,7 @@ while (have_posts()) :
                 </strong>
 
                 <span>
-                    User support
+                    Support utilisateurs
                 </span>
 
             </div>
@@ -646,11 +646,11 @@ while (have_posts()) :
             <div class="reveal">
 
                 <strong>
-                    On-site
+                    Sur site
                 </strong>
 
                 <span>
-                    Field services
+                    Services terrain
                 </span>
 
             </div>
@@ -683,7 +683,7 @@ while (have_posts()) :
 
             <p>
                 Support utilisateurs, déploiement, réseau et infrastructure
-                dans des environnements industriels, logistiques et enterprise.
+                dans des environnements industriels, logistiques et d’entreprise.
             </p>
 
         </div>
@@ -698,42 +698,42 @@ while (have_posts()) :
                     'Marelli',
                     'Châtellerault, France',
                     'Support informatique L1/L2, Microsoft 365, postes et environnement industriel.',
-                    'INDUSTRIAL IT'
+                    'IT INDUSTRIEL'
                 ],
 
                 [
                     'Action Logistics',
                     'Angers / Moissy',
                     'Support terrain, réseau, préparation de postes et opérations logistiques.',
-                    'LOGISTICS'
+                    'LOGISTIQUE'
                 ],
 
                 [
                     'HCL Technologies',
-                    'Enterprise IT',
+                    'IT entreprise',
                     'Résolution d’incidents et assistance utilisateurs.',
-                    'ENTERPRISE IT'
+                    'IT ENTREPRISE'
                 ],
 
                 [
                     'TECEZE',
-                    'Field Services',
+                    'Services terrain',
                     'Diagnostic, remplacement matériel et support infrastructure.',
                     'FIELD SERVICES'
                 ],
 
                 [
                     'Cognizant',
-                    'Enterprise IT',
+                    'IT entreprise',
                     'Maintenance des postes, utilisateurs et assistance technique.',
-                    'ENTERPRISE IT'
+                    'IT ENTREPRISE'
                 ],
 
                 [
                     'Wipro',
-                    'Professional IT',
+                    'IT professionnel',
                     'Support utilisateurs, incidents et assistance terrain.',
-                    'PROFESSIONAL IT'
+                    'IT PROFESSIONNEL'
                 ]
 
             ];
@@ -981,7 +981,7 @@ while (have_posts()) :
         <div>
 
             <span class="ya-kicker">
-                NEXT STEP
+                PROCHAINE ÉTAPE
             </span>
 
             <h2>
@@ -1022,7 +1022,7 @@ while (have_posts()) :
     <div class="ya-shell">
 
         <span class="ya-kicker">
-            YAMA AHMADI IT SERVICES
+            YAMA AHMADI • SERVICES INFORMATIQUES
         </span>
 
         <h1>
