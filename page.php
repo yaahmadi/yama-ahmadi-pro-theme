@@ -235,6 +235,10 @@ while (have_posts()) :
             ];
 
             foreach ($services as $i => $service) :
+
+                $service_url = function_exists('ya_service_article_url')
+                    ? ya_service_article_url($service[0])
+                    : ya_page('services') . '#' . $service[0];
             ?>
 
                 <article
@@ -254,7 +258,9 @@ while (have_posts()) :
                     </div>
 
                     <h3>
-                        <?php echo esc_html($service[2]); ?>
+                        <a href="<?php echo esc_url($service_url); ?>">
+                            <?php echo esc_html($service[2]); ?>
+                        </a>
                     </h3>
 
                     <p>
@@ -273,9 +279,12 @@ while (have_posts()) :
 
                     </ul>
 
-                    <a class="ya-service-readmore" href="<?php echo esc_url(ya_page('contact')); ?>">
+                    <a
+                        class="ya-service-readmore"
+                        href="<?php echo esc_url($service_url); ?>"
+                    >
 
-                        Parler de ce service
+                        Lire l’article
 
                         <i class="fa-solid fa-arrow-right"></i>
 

@@ -410,6 +410,253 @@ add_filter('post_link', 'ya_language_permalink');
 add_filter('page_link', 'ya_language_permalink');
 
 
+
+/* =========================================================
+   SERVICE ARTICLE HELPERS
+========================================================= */
+
+function ya_service_article_map() {
+    return [
+        'support' => [
+            'slugs' => [
+                'support-informatique',
+                'support-it',
+                'assistance-informatique',
+            ],
+            'titles' => [
+                'Support informatique',
+                'Support IT',
+            ],
+        ],
+
+        'network' => [
+            'slugs' => [
+                'reseaux-wi-fi',
+                'reseaux-wifi',
+                'reseau-wifi',
+                'network-wifi',
+            ],
+            'titles' => [
+                'Réseaux & Wi-Fi',
+                'Réseaux Wi-Fi',
+                'Réseau Wi-Fi',
+            ],
+        ],
+
+        'security' => [
+            'slugs' => [
+                'cybersecurite',
+                'securite-informatique',
+                'cybersecurity',
+            ],
+            'titles' => [
+                'Cybersécurité',
+                'Sécurité informatique',
+            ],
+        ],
+
+        'cloud' => [
+            'slugs' => [
+                'microsoft-365-cloud',
+                'microsoft-365',
+                'cloud-microsoft-365',
+            ],
+            'titles' => [
+                'Microsoft 365 & Cloud',
+                'Microsoft 365',
+            ],
+        ],
+
+        'infra' => [
+            'slugs' => [
+                'infrastructure-it',
+                'infrastructure-informatique',
+                'infrastructure',
+            ],
+            'titles' => [
+                'Infrastructure IT',
+                'Infrastructure informatique',
+            ],
+        ],
+
+        'consult' => [
+            'slugs' => [
+                'conseil-accompagnement',
+                'conseil-it',
+                'audit-conseil-it',
+            ],
+            'titles' => [
+                'Conseil & accompagnement',
+                'Conseil IT',
+            ],
+        ],
+    ];
+}
+
+
+function ya_find_service_article($service_key) {
+
+    static $cache = [];
+
+    $service_key = sanitize_key($service_key);
+
+    if (isset($cache[$service_key])) {
+        return $cache[$service_key];
+    }
+
+    $map = ya_service_article_map();
+
+    if (!isset($map[$service_key])) {
+        $cache[$service_key] = null;
+        return null;
+    }
+
+    /*
+     * 1. Prefer an exact published post slug.
+     */
+    foreach ($map[$service_key]['slugs'] as $slug) {
+
+        $post = get_page_by_path(
+            $slug,
+            OBJECT,
+            'post'
+        );
+
+        if (
+            $post instanceof WP_Post &&
+            'publish' === $post->post_status
+        ) {
+            $cache[$service_key] = $post;
+            return $post;
+        }
+    }
+
+    /*
+     * 2. Try an exact published post title.
+     */
+    foreach ($map[$service_key]['titles'] as $title) {
+
+        $query = new WP_Query([
+            'post_type'              => 'post',
+            'post_status'            => 'publish',
+            'posts_per_page'         => 1,
+            'title'                  => $title,
+            'ignore_sticky_posts'    => true,
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+        ]);
+
+        if ($query->have_posts()) {
+            $post = $query->posts[0];
+            $cache[$service_key] = $post;
+            return $post;
+        }
+    }
+
+    /*
+     * 3. Fall back to a targeted WordPress search.
+     */
+    $search = $map[$service_key]['titles'][0];
+
+    $query = new WP_Query([
+        'post_type'              => 'post',
+        'post_status'            => 'publish',
+        'posts_per_page'         => 1,
+        's'                      => $search,
+        'ignore_sticky_posts'    => true,
+        'no_found_rows'          => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+    ]);
+
+    if ($query->have_posts()) {
+        $post = $query->posts[0];
+        $cache[$service_key] = $post;
+        return $post;
+    }
+
+    $cache[$service_key] = null;
+
+    return null;
+}
+
+
+function ya_service_article_url($service_key) {
+
+    $post = ya_find_service_article($service_key);
+
+    if ($post instanceof WP_Post) {
+
+        $url = get_permalink($post);
+
+        if (
+            in_array(
+                ya_lang(),
+                ['en', 'de'],
+                true
+            )
+        ) {
+            $url = add_query_arg(
+                'lang',
+                ya_lang(),
+                $url
+            );
+        }
+
+        return $url;
+    }
+
+    /*
+     * Safe fallback to the matching section on the Services page.
+     */
+    return ya_page('services') . '#' . sanitize_key($service_key);
+}
+
+
+function ya_service_article_image(
+    $service_key,
+    $fallback = ''
+) {
+
+    $post = ya_find_service_article($service_key);
+
+    if ($post instanceof WP_Post) {
+
+        /*
+         * Featured image is preferred.
+         */
+        if (has_post_thumbnail($post)) {
+
+            $image = get_the_post_thumbnail_url(
+                $post,
+                'large'
+            );
+
+            if ($image) {
+                return $image;
+            }
+        }
+
+        /*
+         * If there is no featured image, use the first image
+         * found in the article content.
+         */
+        if (
+            !empty($post->post_content) &&
+            preg_match(
+                '/<img[^>]+src=["\']([^"\']+)["\']/i',
+                $post->post_content,
+                $match
+            )
+        ) {
+            return esc_url_raw($match[1]);
+        }
+    }
+
+    return $fallback;
+}
+
 /* =========================================================
    CUSTOMIZER
 ========================================================= */

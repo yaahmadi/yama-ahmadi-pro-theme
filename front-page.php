@@ -357,6 +357,14 @@ $projects_url = ya_page('projets');
             ];
 
             foreach ($services as $i => $service):
+
+                $service_url = function_exists('ya_service_article_url')
+                    ? ya_service_article_url($service[3])
+                    : $services_url . '#' . $service[3];
+
+                $service_image = function_exists('ya_service_article_image')
+                    ? ya_service_article_image($service[3], $service[5])
+                    : $service[5];
             ?>
 
                 <article
@@ -364,15 +372,19 @@ $projects_url = ya_page('projets');
                     style="--delay:<?php echo esc_attr($i * 55); ?>ms"
                 >
 
-                    <div class="ya-service-media">
+                    <a
+                        class="ya-service-media"
+                        href="<?php echo esc_url($service_url); ?>"
+                        aria-label="<?php echo esc_attr($service[1]); ?>"
+                    >
                         <img
-                            src="<?php echo esc_url($service[5]); ?>"
+                            src="<?php echo esc_url($service_image); ?>"
                             alt="<?php echo esc_attr($service[1]); ?>"
                             loading="lazy"
                             decoding="async"
                         >
                         <span class="ya-service-media-overlay"></span>
-                    </div>
+                    </a>
 
                     <span class="ya-card-number">
                         <?php echo esc_html($service[4]); ?>
@@ -385,7 +397,9 @@ $projects_url = ya_page('projets');
                     </div>
 
                     <h3>
-                        <?php echo esc_html($service[1]); ?>
+                        <a href="<?php echo esc_url($service_url); ?>">
+                            <?php echo esc_html($service[1]); ?>
+                        </a>
                     </h3>
 
                     <p>
@@ -394,9 +408,7 @@ $projects_url = ya_page('projets');
 
                     <a
                         class="ya-service-readmore"
-                        href="<?php echo esc_url(
-                            $services_url . '#' . $service[3]
-                        ); ?>"
+                        href="<?php echo esc_url($service_url); ?>"
                     >
 
                         <?php echo esc_html(ya_t('readmore')); ?>
