@@ -4432,3 +4432,298 @@
 
 }
 
+/* =========================================================
+   YAMA AHMADI — FINAL ABOUT PAGE
+========================================================= */
+
+.ya-about-premium{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(89,224,173,.08),transparent 26%),
+        linear-gradient(180deg,#f8fcfb,#f1f8f6);
+}
+
+.ya-about-premium:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(8,62,58,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(8,62,58,.025) 1px,transparent 1px);
+    background-size:54px 54px;
+    pointer-events:none;
+}
+
+.ya-about-premium .ya-about-grid{
+    position:relative;
+    z-index:1;
+    grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
+    gap:74px;
+}
+
+.ya-about-copy h2{
+    max-width:760px;
+    font-size:clamp(36px,4vw,54px);
+    line-height:1.06;
+    margin:12px 0 20px;
+}
+
+.ya-about-copy p{
+    max-width:720px;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.ya-about-points{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 18px;
+    margin:26px 0 10px;
+}
+
+.ya-about-points span{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    color:#315854;
+    font-size:12px;
+    line-height:1.55;
+}
+
+.ya-about-points i{
+    color:#159274;
+    margin-top:3px;
+}
+
+.ya-about-profile{
+    position:relative;
+}
+
+.ya-about-profile-visual{
+    position:relative;
+    overflow:hidden;
+    min-height:470px;
+    border:1px solid #cfe3df;
+    border-radius:26px;
+    background:
+        linear-gradient(145deg,#0a3037,#04171c);
+    box-shadow:
+        0 30px 80px rgba(7,64,60,.15);
+}
+
+.ya-about-photo{
+    width:100%;
+    height:100%;
+    min-height:470px;
+    object-fit:cover;
+    display:block;
+}
+
+.ya-about-photo-placeholder{
+    min-height:470px;
+    display:grid;
+    place-items:center;
+    align-content:center;
+    gap:12px;
+    text-align:center;
+    color:#fff;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(89,224,173,.18),transparent 30%),
+        linear-gradient(145deg,#082f35,#04171c);
+}
+
+.ya-about-photo-placeholder i{
+    width:110px;
+    height:110px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(89,224,173,.30);
+    border-radius:28px;
+    background:rgba(89,224,173,.07);
+    color:var(--ya-mint);
+    font-size:42px;
+}
+
+.ya-about-photo-placeholder span{
+    font:800 25px/1.1 Manrope,Inter,sans-serif;
+}
+
+.ya-about-photo-placeholder small{
+    color:#9fc2bd;
+    font-size:11px;
+}
+
+.ya-about-status{
+    position:absolute;
+    left:18px;
+    bottom:18px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 12px;
+    border:1px solid rgba(255,255,255,.17);
+    border-radius:999px;
+    background:rgba(4,24,29,.82);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+.ya-about-status i{
+    color:var(--ya-mint);
+    font-size:8px;
+}
+
+.ya-about-profile-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    align-items:center;
+    margin-top:14px;
+    padding:15px 18px;
+    border:1px solid #d9e9e6;
+    border-radius:14px;
+    background:#fff;
+}
+
+.ya-about-profile-meta strong{
+    color:#15383d;
+    font-size:12px;
+}
+
+.ya-about-profile-meta span{
+    color:#748e8a;
+    font-size:10px;
+    text-align:right;
+}
+
+.ya-about-values-section{
+    background:#fff;
+}
+
+.ya-about-values-section .ya-value-grid{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.ya-about-values-section .ya-value-card{
+    min-height:220px;
+    padding:28px;
+}
+
+.ya-about-values-section .ya-value-card .ya-card-icon{
+    margin-bottom:18px;
+}
+
+.ya-about-values-section .ya-value-card h3{
+    margin:0 0 10px;
+    font-size:18px;
+}
+
+.ya-about-values-section .ya-value-card p{
+    margin:0;
+    line-height:1.7;
+}
+
+.ya-about-capabilities{
+    position:relative;
+}
+
+.ya-about-skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:24px;
+}
+
+.ya-about-skill-tags span{
+    padding:8px 11px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:999px;
+    background:rgba(255,255,255,.035);
+    color:#c9dfdc;
+    font-size:10px;
+    transition:.25s var(--ya-ease);
+}
+
+.ya-about-skill-tags span:hover{
+    transform:translateY(-2px);
+    border-color:rgba(89,224,173,.35);
+    background:rgba(89,224,173,.08);
+    color:#fff;
+}
+
+.ya-about-process{
+    background:
+        linear-gradient(180deg,#f4faf8,#eef7f5);
+}
+
+.ya-about-process .ya-process-card{
+    background:#fff;
+    color:#17383d;
+    border-color:#d9e8e5;
+    box-shadow:0 12px 35px rgba(12,73,66,.04);
+}
+
+.ya-about-process .ya-process-card h3{
+    color:#12383d;
+}
+
+.ya-about-process .ya-process-card p{
+    color:#647f7c;
+}
+
+.ya-about-process .ya-process-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 50px rgba(10,75,68,.09);
+    border-color:#acd9cc;
+}
+
+@media(max-width:980px){
+
+    .ya-about-premium .ya-about-grid{
+        grid-template-columns:1fr;
+        gap:44px;
+    }
+
+    .ya-about-profile{
+        max-width:620px;
+        width:100%;
+        margin:auto;
+    }
+
+    .ya-about-values-section .ya-value-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:620px){
+
+    .ya-about-points{
+        grid-template-columns:1fr;
+    }
+
+    .ya-about-profile-visual,
+    .ya-about-photo,
+    .ya-about-photo-placeholder{
+        min-height:390px;
+    }
+
+    .ya-about-profile-meta{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .ya-about-profile-meta span{
+        text-align:left;
+    }
+
+    .ya-about-values-section .ya-value-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+

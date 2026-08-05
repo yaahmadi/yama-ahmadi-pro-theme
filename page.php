@@ -483,182 +483,125 @@ while (have_posts()) :
 <?php elseif ($slug === 'a-propos') : ?>
 
 <!-- =========================================================
-     ABOUT
+     ABOUT — PREMIUM PROFILE / EXPERIENCE
 ========================================================= -->
-<section class="ya-section ya-about-section">
-
+<section class="ya-section ya-about-section ya-about-premium">
     <div class="ya-shell ya-about-grid">
-
         <div class="ya-about-copy reveal">
+            <span class="ya-kicker">EXPERTISE & TERRAIN</span>
+            <h2>Un support informatique professionnel, construit sur l’expérience terrain.</h2>
+            <p>Basé à Poitiers, Yama Ahmadi accompagne les entreprises pour le support utilisateurs, les réseaux, Microsoft 365, la cybersécurité, l’infrastructure et les interventions techniques sur site.</p>
+            <p>Chaque mission repose sur une méthode simple : comprendre le besoin, préparer l’intervention, agir avec précision, tester le résultat et communiquer clairement avec le client ou l’équipe IT distante.</p>
 
-            <span class="ya-kicker">
-                NOTRE APPROCHE
-            </span>
-
-            <h2>
-                Une prestation IT basée sur la clarté, la préparation et le résultat.
-            </h2>
-
-            <p>
-                Yama Ahmadi Services Informatiques accompagne les entreprises
-                avec des services de support, réseau, cybersécurité,
-                Microsoft 365, infrastructure et interventions terrain.
-            </p>
-
-            <p>
-                L’objectif est de comprendre rapidement le contexte,
-                intervenir avec méthode, communiquer clairement et valider
-                le résultat avant clôture.
-            </p>
+            <div class="ya-about-points">
+                <span><i class="fa-solid fa-circle-check"></i> Support L1/L2 sur site et à distance</span>
+                <span><i class="fa-solid fa-circle-check"></i> Réseaux, Wi-Fi, postes et infrastructure</span>
+                <span><i class="fa-solid fa-circle-check"></i> Microsoft 365 et environnements professionnels</span>
+                <span><i class="fa-solid fa-circle-check"></i> Interventions terrain dans toute la France</span>
+            </div>
 
             <div class="ya-actions">
-
-                <a
-                    class="ya-btn"
-                    href="<?php echo esc_url(ya_page('contact')); ?>"
-                >
-                    Parler de votre besoin
-                </a>
-
+                <a class="ya-btn" href="<?php echo esc_url(ya_page('contact')); ?>">Me contacter <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('projets')); ?>">Voir les expériences</a>
             </div>
-
         </div>
 
-
-        <div class="ya-value-grid">
-
-            <?php
-            $values = [
-
-                [
-                    'fa-bolt',
-                    'Réactivité',
-                    'Une communication rapide selon la disponibilité et le niveau d’urgence.'
-                ],
-
-                [
-                    'fa-list-check',
-                    'Méthode',
-                    'Préparation, exécution, tests et validation avant clôture.'
-                ],
-
-                [
-                    'fa-shield-halved',
-                    'Fiabilité',
-                    'Des actions orientées stabilité et réduction du risque.'
-                ],
-
-                [
-                    'fa-language',
-                    'Communication',
-                    'Français, anglais et allemand pour faciliter les échanges avec des équipes internationales.'
-                ]
-
-            ];
-
-            foreach ($values as $value) :
-            ?>
-
-                <article class="ya-value-card reveal">
-
-                    <i class="fa-solid <?php echo esc_attr($value[0]); ?>"></i>
-
-                    <h3>
-                        <?php echo esc_html($value[1]); ?>
-                    </h3>
-
-                    <p>
-                        <?php echo esc_html($value[2]); ?>
-                    </p>
-
-                </article>
-
-            <?php endforeach; ?>
-
+        <div class="ya-about-profile reveal">
+            <div class="ya-about-profile-visual">
+                <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('large', ['class' => 'ya-about-photo', 'alt' => 'Yama Ahmadi - Services informatiques']); ?>
+                <?php else : ?>
+                    <div class="ya-about-photo-placeholder">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Yama Ahmadi</span>
+                        <small>Services informatiques</small>
+                    </div>
+                <?php endif; ?>
+                <span class="ya-about-status"><i class="fa-solid fa-circle"></i> Disponible pour interventions</span>
+            </div>
+            <div class="ya-about-profile-meta">
+                <strong>Poitiers, France</strong>
+                <span>Support IT • Réseau • Infrastructure</span>
+            </div>
         </div>
-
     </div>
-
 </section>
 
-
-<section class="ya-dark-feature">
-
-    <div class="ya-shell ya-split">
-
-        <div class="reveal">
-
-            <span class="ya-kicker">
-                CAPACITÉS
-            </span>
-
-            <h2>
-                Support terrain et assistance à distance
-            </h2>
-
-            <p>
-                Une combinaison de support utilisateur, réseau,
-                infrastructure et coordination à distance pour répondre
-                aux besoins des environnements multi-sites.
-            </p>
-
+<section class="ya-section ya-about-values-section">
+    <div class="ya-shell">
+        <div class="ya-section-head reveal">
+            <span class="ya-kicker">NOTRE ENGAGEMENT</span>
+            <h2>Une prestation claire, fiable et orientée résultat</h2>
+            <p>Des principes simples appliqués à chaque intervention, du premier échange jusqu’à la validation technique.</p>
         </div>
 
+        <div class="ya-value-grid">
+            <?php
+            $values = [
+                ['fa-bolt', 'Réactivité', 'Une prise en charge rapide selon la disponibilité, le contexte et le niveau de priorité.'],
+                ['fa-list-check', 'Méthode', 'Qualification, préparation, intervention, tests et compte rendu pour garder une mission structurée.'],
+                ['fa-shield-halved', 'Fiabilité', 'Des actions orientées stabilité, sécurité et continuité des opérations informatiques.'],
+                ['fa-comments', 'Communication', 'Des échanges clairs en français et en anglais avec les utilisateurs, clients et équipes techniques.']
+            ];
+            foreach ($values as $value) :
+            ?>
+                <article class="ya-value-card reveal">
+                    <div class="ya-card-icon"><i class="fa-solid <?php echo esc_attr($value[0]); ?>"></i></div>
+                    <h3><?php echo esc_html($value[1]); ?></h3>
+                    <p><?php echo esc_html($value[2]); ?></p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="ya-dark-feature ya-about-capabilities">
+    <div class="ya-shell ya-split">
+        <div class="reveal">
+            <span class="ya-kicker">CAPACITÉS TECHNIQUES</span>
+            <h2>Du poste utilisateur jusqu’à l’infrastructure réseau.</h2>
+            <p>Une couverture technique adaptée aux PME, sites industriels, commerces, environnements logistiques et missions de field services.</p>
+            <div class="ya-about-skill-tags">
+                <span>Windows</span><span>Microsoft 365</span><span>Intune</span>
+                <span>Wi-Fi</span><span>Switching</span><span>VLAN</span>
+                <span>DNS</span><span>VPN</span><span>Cybersécurité</span>
+                <span>Remote Hands</span><span>Déploiement</span><span>Support L1/L2</span>
+            </div>
+        </div>
 
         <div class="ya-stat-grid">
-
-            <div class="reveal">
-
-                <strong>
-                    FR
-                </strong>
-
-                <span>
-                    France
-                </span>
-
-            </div>
-
-            <div class="reveal">
-
-                <strong>
-                    EN
-                </strong>
-
-                <span>
-                    Support en anglais
-                </span>
-
-            </div>
-
-            <div class="reveal">
-
-                <strong>
-                    L1/L2
-                </strong>
-
-                <span>
-                    Support utilisateurs
-                </span>
-
-            </div>
-
-            <div class="reveal">
-
-                <strong>
-                    Sur site
-                </strong>
-
-                <span>
-                    Services terrain
-                </span>
-
-            </div>
-
+            <div class="reveal"><strong>L1/L2</strong><span>Support utilisateurs</span></div>
+            <div class="reveal"><strong>FR</strong><span>Interventions en France</span></div>
+            <div class="reveal"><strong>Sur site</strong><span>Field services</span></div>
+            <div class="reveal"><strong>Remote</strong><span>Assistance à distance</span></div>
         </div>
-
     </div>
+</section>
 
+<section class="ya-section ya-about-process">
+    <div class="ya-shell">
+        <div class="ya-section-head reveal">
+            <span class="ya-kicker">MÉTHODE D’INTERVENTION</span>
+            <h2>Une mission maîtrisée de bout en bout</h2>
+        </div>
+        <div class="ya-process-grid">
+            <?php
+            $about_steps = [
+                ['01','Comprendre','Identifier le besoin, l’environnement, les contraintes et le niveau d’urgence.'],
+                ['02','Préparer','Valider les accès, équipements, prérequis et informations nécessaires.'],
+                ['03','Intervenir','Exécuter les actions prévues avec méthode et coordination technique.'],
+                ['04','Valider','Tester, documenter le résultat et confirmer la remise en service.']
+            ];
+            foreach ($about_steps as $step) :
+            ?>
+                <article class="ya-process-card reveal">
+                    <b><?php echo esc_html($step[0]); ?></b>
+                    <h3><?php echo esc_html($step[1]); ?></h3>
+                    <p><?php echo esc_html($step[2]); ?></p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </section>
 
 
