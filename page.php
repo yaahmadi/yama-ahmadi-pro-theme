@@ -11,7 +11,7 @@ get_header();
 while (have_posts()) :
     the_post();
 
-    $slug  = get_post_field('post_name');
+    $slug  = sanitize_title(get_post_field('post_name'));
     $title = get_the_title();
 
     $phone = get_theme_mod('ya_phone', '+33 7 84 20 31 50');
@@ -19,23 +19,64 @@ while (have_posts()) :
     $hours = get_theme_mod('ya_hours', 'Lun – Ven : 08:00 – 18:00');
     $area  = get_theme_mod('ya_location', 'France');
 
-    $premium_pages = [
-        'a-propos',
-        'about',
-        'services',
-        'solutions',
-        'projets',
-        'projects',
-        'contact',
-        'demander-un-devis',
-        'request-a-quote'
+    /*
+     * Robust premium-page detection by both slug and visible page title.
+     * This also catches WordPress duplicates such as about-2/services-2.
+     */
+    $title_key = sanitize_title($title);
+
+    $canonical_pages = [
+        'a-propos' => [
+            'a-propos',
+            'about',
+            'about-us',
+        ],
+        'services' => [
+            'services',
+            'service',
+            'it-services',
+        ],
+        'solutions' => [
+            'solutions',
+            'solution',
+            'it-solutions',
+        ],
+        'projets' => [
+            'projets',
+            'projects',
+            'experiences',
+            'experience',
+        ],
+        'contact' => [
+            'contact',
+            'contact-us',
+        ],
+        'demander-un-devis' => [
+            'demander-un-devis',
+            'demande-de-devis',
+            'request-a-quote',
+            'request-quote',
+            'quote',
+        ],
     ];
 
-    $template_slug = [
-        'about'           => 'a-propos',
-        'projects'        => 'projets',
-        'request-a-quote' => 'demander-un-devis',
-    ][$slug] ?? $slug;
+    $template_slug = '';
+
+    foreach ($canonical_pages as $canonical => $aliases) {
+        foreach ($aliases as $alias) {
+            if (
+                $slug === $alias ||
+                $title_key === $alias ||
+                str_starts_with($slug, $alias . '-') ||
+                str_starts_with($title_key, $alias . '-')
+            ) {
+                $template_slug = $canonical;
+                break 2;
+            }
+        }
+    }
+
+    $premium_pages = array_keys($canonical_pages);
 
     $hero_map = [
 
@@ -83,7 +124,7 @@ while (have_posts()) :
 
     ];
 
-    if (in_array($slug, $premium_pages, true)) :
+    if ($template_slug && in_array($template_slug, $premium_pages, true)) :
 
         $hero = $hero_map[$template_slug];
 ?>
@@ -91,7 +132,7 @@ while (have_posts()) :
 <!-- =========================================================
      PREMIUM INNER HERO
 ========================================================= -->
-<section class="ya-inner-hero ya-premium-inner-hero ya-inner-hero-<?php echo esc_attr($template_slug); ?>">
+<section class="ya-inner-hero ya-premium-inner-hero ya-universal-inner-hero ya-inner-hero-<?php echo esc_attr($template_slug); ?>">
 
     <div class="ya-inner-grid" aria-hidden="true"></div>
 
@@ -926,7 +967,7 @@ while (have_posts()) :
 
             <div class="ya-actions">
                 <a class="ya-btn" href="<?php echo esc_url(ya_page('contact')); ?>">Me contacter <i class="fa-solid fa-arrow-right"></i></a>
-                <a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('projets')); ?>">Voir les expériences</a>
+                <a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('services')); ?>">Voir les services</a>
             </div>
         </div>
 

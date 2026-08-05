@@ -5707,177 +5707,360 @@ body.admin-bar .ya-site-header-shell{
 }
 
 /* =========================================================
-   YAMA AHMADI PRO v2.6.3 — ABOUT + SERVICES HERO FIX
+   YAMA AHMADI PRO v2.6.4 — UNIVERSAL INNER HERO SYSTEM
+   One hero design for About, Services, Solutions, Contact,
+   Projects and Request a Quote.
 ========================================================= */
 
-.ya-inner-hero-a-propos,
-.ya-inner-hero-services{
-    min-height:460px !important;
+.ya-universal-inner-hero{
+    position:relative !important;
+    overflow:hidden !important;
+    min-height:470px !important;
+    margin:0 !important;
+    padding:0 !important;
+
     background:
-        radial-gradient(circle at 78% 28%,rgba(69,217,221,.16),transparent 27%),
-        radial-gradient(circle at 68% 56%,rgba(89,224,173,.10),transparent 24%),
-        linear-gradient(135deg,#031116 0%,#06272d 62%,#08353a 100%) !important;
+        radial-gradient(
+            circle at 78% 28%,
+            rgba(69,217,221,.17),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 68% 58%,
+            rgba(89,224,173,.10),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #031116 0%,
+            #06272d 62%,
+            #08353a 100%
+        ) !important;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07) !important;
+
+    color:#fff !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-hero-in,
-.ya-inner-hero-services .ya-inner-hero-in{
-    min-height:460px !important;
-    grid-template-columns:minmax(0,1.08fr) minmax(360px,.78fr) !important;
+.ya-universal-inner-hero .ya-inner-grid{
+    opacity:.82 !important;
+
+    background-image:
+        linear-gradient(
+            rgba(90,225,185,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(90,225,185,.035) 1px,
+            transparent 1px
+        ) !important;
+
+    background-size:56px 56px !important;
+}
+
+.ya-universal-inner-hero .ya-inner-hero-in{
+    position:relative !important;
+    z-index:2 !important;
+
+    min-height:470px !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        minmax(0,1.08fr)
+        minmax(350px,.78fr) !important;
+
+    align-items:center !important;
+
     gap:72px !important;
+
     padding-top:72px !important;
     padding-bottom:72px !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-copy,
-.ya-inner-hero-services .ya-inner-copy{
-    max-width:800px;
+.ya-universal-inner-hero .ya-inner-copy{
+    max-width:810px !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-copy h1,
-.ya-inner-hero-services .ya-inner-copy h1{
-    max-width:800px !important;
-    font-size:clamp(46px,5vw,68px) !important;
-    line-height:1.02 !important;
-    letter-spacing:-.048em !important;
+.ya-universal-inner-hero .ya-inner-copy h1{
+    max-width:810px !important;
+
     margin:14px 0 18px !important;
+
+    color:#fff !important;
+
+    font-size:
+        clamp(
+            46px,
+            5vw,
+            68px
+        ) !important;
+
+    line-height:1.02 !important;
+
+    letter-spacing:-.048em !important;
+
     text-wrap:balance;
 }
 
-.ya-inner-hero-a-propos .ya-inner-copy > p,
-.ya-inner-hero-services .ya-inner-copy > p{
+.ya-universal-inner-hero .ya-inner-copy > p{
     max-width:720px !important;
-    font-size:15px !important;
-    line-height:1.78 !important;
+
+    margin:0 !important;
+
     color:#bdd5d1 !important;
+
+    font-size:15px !important;
+
+    line-height:1.78 !important;
 }
 
-.ya-inner-hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:11px;
-    margin:28px 0 22px;
-}
+.ya-universal-inner-hero .ya-inner-visual{
+    position:relative !important;
 
-.ya-inner-hero-actions .ya-btn{
-    min-width:160px;
-}
-
-.ya-inner-hero-a-propos .ya-inner-badges,
-.ya-inner-hero-services .ya-inner-badges{
-    margin-top:18px !important;
-}
-
-.ya-inner-hero-a-propos .ya-inner-visual,
-.ya-inner-hero-services .ya-inner-visual{
     min-height:300px !important;
     height:300px !important;
+
+    display:grid !important;
+    place-items:center !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-icon,
-.ya-inner-hero-services .ya-inner-icon{
+.ya-universal-inner-hero .ya-inner-icon{
     width:158px !important;
     height:158px !important;
+
+    display:grid !important;
+    place-items:center !important;
+
+    border:
+        1px solid
+        rgba(83,225,198,.32) !important;
+
     border-radius:34px !important;
+
     background:
-        linear-gradient(145deg,rgba(14,67,74,.92),rgba(4,31,36,.94)) !important;
+        linear-gradient(
+            145deg,
+            rgba(14,67,74,.94),
+            rgba(4,31,36,.96)
+        ) !important;
+
+    color:var(--ya-mint) !important;
+
+    font-size:54px !important;
+
     box-shadow:
-        0 30px 90px rgba(11,214,187,.16),
-        inset 0 0 40px rgba(72,224,190,.07) !important;
+        0 30px 90px
+            rgba(11,214,187,.16),
+        inset 0 0 40px
+            rgba(72,224,190,.07) !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-orbit,
-.ya-inner-hero-services .ya-inner-orbit{
+.ya-universal-inner-hero .ya-inner-orbit{
     width:270px !important;
     height:270px !important;
+
+    border:
+        1px solid
+        rgba(83,225,198,.15) !important;
 }
 
-.ya-inner-hero-a-propos .ya-inner-grid,
-.ya-inner-hero-services .ya-inner-grid{
-    opacity:.8;
+.ya-universal-inner-hero .ya-inner-orbit i{
+    border:
+        1px solid
+        rgba(83,225,198,.24) !important;
+
+    background:#082f35 !important;
+
+    color:#6fe2c2 !important;
 }
 
-/* Remove any accidental generic title spacing before premium heroes. */
-.page-template-default #content > .ya-inner-hero-a-propos:first-child,
-.page-template-default #content > .ya-inner-hero-services:first-child{
+.ya-universal-inner-hero .ya-inner-badges{
+    display:flex !important;
+    flex-wrap:wrap !important;
+
+    gap:10px !important;
+
+    margin-top:22px !important;
+}
+
+.ya-universal-inner-hero .ya-inner-badges span{
+    display:inline-flex !important;
+    align-items:center !important;
+
+    gap:7px !important;
+
+    padding:8px 11px !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12) !important;
+
+    border-radius:999px !important;
+
+    background:
+        rgba(255,255,255,.035) !important;
+
+    color:#d7e8e5 !important;
+
+    font-size:10px !important;
+    font-weight:650 !important;
+}
+
+.ya-universal-inner-hero .ya-inner-badges i{
+    color:var(--ya-mint) !important;
+}
+
+/* ---------- ABOUT + SERVICES HERO CTA ---------- */
+
+.ya-universal-inner-hero .ya-inner-hero-actions{
+    display:flex !important;
+    flex-wrap:wrap !important;
+
+    gap:11px !important;
+
+    margin:28px 0 4px !important;
+}
+
+.ya-universal-inner-hero .ya-inner-hero-actions .ya-btn{
+    min-width:160px !important;
+}
+
+/* ---------- PAGE TRANSITION ---------- */
+
+.ya-inner-hero-a-propos + .ya-about-premium,
+.ya-inner-hero-services + .ya-services-premium,
+.ya-inner-hero-solutions + .ya-solutions-premium,
+.ya-inner-hero-contact + .ya-contact-section,
+.ya-inner-hero-demander-un-devis + .ya-contact-section{
     margin-top:0 !important;
 }
 
-/* About page first section rhythm */
+/* ---------- ABOUT ---------- */
+
 .ya-inner-hero-a-propos + .ya-about-premium{
     padding-top:92px !important;
 }
 
-/* Services page first section rhythm */
-.ya-inner-hero-services + .ya-services-premium{
-    padding-top:92px !important;
-}
-
-/* Make About first section visually stronger and less crowded. */
 .ya-about-premium .ya-about-grid{
     gap:82px !important;
 }
 
-.ya-about-premium .ya-about-copy h2{
-    max-width:720px;
-}
-
 .ya-about-premium .ya-about-profile{
-    max-width:520px;
-    justify-self:end;
+    max-width:520px !important;
+    justify-self:end !important;
 }
 
-/* Make Services cards feel like a professional continuation of the hero. */
+/* ---------- SERVICES ---------- */
+
+.ya-inner-hero-services + .ya-services-premium{
+    padding-top:92px !important;
+}
+
 .ya-services-premium{
     background:
-        radial-gradient(circle at 88% 8%,rgba(89,224,173,.08),transparent 22%),
-        linear-gradient(180deg,#f8fcfb,#eef7f5) !important;
+        radial-gradient(
+            circle at 88% 8%,
+            rgba(89,224,173,.08),
+            transparent 22%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fcfb,
+            #eef7f5
+        ) !important;
 }
 
 .ya-services-premium .ya-section-head{
-    max-width:820px;
+    max-width:820px !important;
 }
 
 .ya-services-premium .ya-section-head h2{
-    max-width:780px;
-    margin-left:auto;
-    margin-right:auto;
+    max-width:780px !important;
+
+    margin-left:auto !important;
+    margin-right:auto !important;
 }
 
-/* Mobile */
+/* ---------- SOLUTIONS ---------- */
+
+.ya-inner-hero-solutions + .ya-solutions-premium{
+    padding-top:92px !important;
+}
+
+/* ---------- CONTACT ---------- */
+
+.ya-inner-hero-contact + .ya-contact-section,
+.ya-inner-hero-demander-un-devis + .ya-contact-section{
+    padding-top:88px !important;
+}
+
+/* ---------- REMOVE LEGACY GENERIC TITLE BEHAVIOR ---------- */
+
+#content > .ya-inner-hero-compact:first-child{
+    margin-top:0 !important;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:980px){
+
+    .ya-universal-inner-hero .ya-inner-hero-in{
+        grid-template-columns:
+            minmax(0,1fr)
+            minmax(280px,.65fr) !important;
+
+        gap:40px !important;
+    }
+
+}
+
 @media(max-width:820px){
 
-    .ya-inner-hero-a-propos,
-    .ya-inner-hero-services{
+    .ya-universal-inner-hero{
         min-height:auto !important;
     }
 
-    .ya-inner-hero-a-propos .ya-inner-hero-in,
-    .ya-inner-hero-services .ya-inner-hero-in{
+    .ya-universal-inner-hero .ya-inner-hero-in{
         display:block !important;
+
         min-height:0 !important;
-        padding:58px 0 64px !important;
+
+        padding-top:58px !important;
+        padding-bottom:64px !important;
     }
 
-    .ya-inner-hero-a-propos .ya-inner-copy h1,
-    .ya-inner-hero-services .ya-inner-copy h1{
-        font-size:clamp(38px,10.5vw,54px) !important;
+    .ya-universal-inner-hero .ya-inner-copy h1{
+        font-size:
+            clamp(
+                38px,
+                10.5vw,
+                54px
+            ) !important;
     }
 
-    .ya-inner-hero-actions{
-        display:grid;
-        grid-template-columns:1fr;
-        max-width:340px;
+    .ya-universal-inner-hero .ya-inner-hero-actions{
+        display:grid !important;
+
+        grid-template-columns:1fr !important;
+
+        max-width:340px !important;
     }
 
-    .ya-inner-hero-actions .ya-btn{
-        width:100%;
+    .ya-universal-inner-hero
+    .ya-inner-hero-actions
+    .ya-btn{
+        width:100% !important;
     }
 
-    .ya-inner-hero-a-propos .ya-inner-visual,
-    .ya-inner-hero-services .ya-inner-visual{
-        height:240px !important;
+    .ya-universal-inner-hero .ya-inner-visual{
         min-height:240px !important;
-        margin-top:36px;
+        height:240px !important;
+
+        margin-top:36px !important;
     }
 
     .ya-about-premium .ya-about-grid{
@@ -5885,35 +6068,78 @@ body.admin-bar .ya-site-header-shell{
     }
 
     .ya-about-premium .ya-about-profile{
-        max-width:620px;
-        justify-self:center;
+        max-width:620px !important;
+        justify-self:center !important;
     }
+
 }
 
 @media(max-width:560px){
 
-    .ya-inner-hero-a-propos .ya-inner-visual,
-    .ya-inner-hero-services .ya-inner-visual{
-        height:205px !important;
-        min-height:205px !important;
+    .ya-universal-inner-hero .ya-inner-hero-in{
+        padding-top:46px !important;
+        padding-bottom:52px !important;
     }
 
-    .ya-inner-hero-a-propos .ya-inner-icon,
-    .ya-inner-hero-services .ya-inner-icon{
+    .ya-universal-inner-hero .ya-inner-copy h1{
+        font-size:
+            clamp(
+                35px,
+                10.5vw,
+                47px
+            ) !important;
+    }
+
+    .ya-universal-inner-hero .ya-inner-copy > p{
+        font-size:13px !important;
+    }
+
+    .ya-universal-inner-hero .ya-inner-visual{
+        min-height:205px !important;
+        height:205px !important;
+    }
+
+    .ya-universal-inner-hero .ya-inner-icon{
         width:118px !important;
         height:118px !important;
+
+        border-radius:28px !important;
+
         font-size:39px !important;
     }
 
-    .ya-inner-hero-a-propos .ya-inner-orbit,
-    .ya-inner-hero-services .ya-inner-orbit{
+    .ya-universal-inner-hero .ya-inner-orbit{
         width:195px !important;
         height:195px !important;
     }
 
+    .ya-universal-inner-hero .ya-inner-badges{
+        gap:7px !important;
+    }
+
+    .ya-universal-inner-hero .ya-inner-badges span{
+        padding:7px 9px !important;
+
+        font-size:9px !important;
+    }
+
     .ya-inner-hero-a-propos + .ya-about-premium,
-    .ya-inner-hero-services + .ya-services-premium{
+    .ya-inner-hero-services + .ya-services-premium,
+    .ya-inner-hero-solutions + .ya-solutions-premium,
+    .ya-inner-hero-contact + .ya-contact-section,
+    .ya-inner-hero-demander-un-devis + .ya-contact-section{
         padding-top:68px !important;
     }
+
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+    .ya-universal-inner-hero .ya-inner-orbit{
+        animation:none !important;
+    }
+
 }
 
