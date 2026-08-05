@@ -19,6 +19,8 @@ $projects_url = ya_page('projets');
 ========================================================= -->
 <section class="ya-hero ya-home-hero">
 
+    <div class="ya-hero-photo" aria-hidden="true"></div>
+    <div class="ya-hero-overlay" aria-hidden="true"></div>
     <div class="ya-hero-mesh" aria-hidden="true"></div>
 
     <div class="ya-hero-orb ya-hero-orb-one" aria-hidden="true"></div>
@@ -93,7 +95,7 @@ $projects_url = ya_page('projets');
                 <i class="fa-solid fa-cloud"></i>
 
                 <small>
-                    SECURE CLOUD
+                    CLOUD SÉCURISÉ
                 </small>
 
             </div>
@@ -113,7 +115,7 @@ $projects_url = ya_page('projets');
                 <i class="fa-solid fa-shield-halved"></i>
 
                 <span>
-                    Security
+                    Sécurité
                 </span>
 
             </div>
@@ -123,7 +125,7 @@ $projects_url = ya_page('projets');
                 <i class="fa-solid fa-wifi"></i>
 
                 <span>
-                    Networks
+                    Réseaux
                 </span>
 
             </div>
@@ -162,25 +164,25 @@ $projects_url = ya_page('projets');
             <span>
                 <i class="fa-brands fa-microsoft"></i>
                 <strong>Microsoft 365</strong>
-                Workplace
+                Espace de travail
             </span>
 
             <span>
                 <i class="fa-solid fa-wifi"></i>
-                <strong>Networks</strong>
+                <strong>Réseaux</strong>
                 & Wi-Fi
             </span>
 
             <span>
                 <i class="fa-solid fa-shield-halved"></i>
-                <strong>Cybersecurity</strong>
+                <strong>Cybersécurité</strong>
                 Protection
             </span>
 
             <span>
                 <i class="fa-solid fa-location-dot"></i>
-                <strong>Field IT</strong>
-                Across France
+                <strong>Interventions IT</strong>
+                Partout en France
             </span>
 
         </div>
@@ -220,7 +222,7 @@ $projects_url = ya_page('projets');
 
             <div>
                 <strong>
-                    Network Engineering
+                    Ingénierie réseau
                 </strong>
 
                 <span>
@@ -254,7 +256,7 @@ $projects_url = ya_page('projets');
 
             <div>
                 <strong>
-                    Field Services
+                    Services terrain
                 </strong>
 
                 <span>
@@ -303,7 +305,8 @@ $projects_url = ya_page('projets');
                     'Support informatique',
                     'Assistance L1/L2 sur site et à distance, postes, logiciels, imprimantes et incidents utilisateurs.',
                     'support',
-                    '01'
+                    '01',
+                    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=82'
                 ],
 
                 [
@@ -311,7 +314,8 @@ $projects_url = ya_page('projets');
                     'Réseaux & Wi-Fi',
                     'Installation et optimisation Wi-Fi, switches, routeurs, VLAN, pare-feu et connectivité.',
                     'network',
-                    '02'
+                    '02',
+                    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=82'
                 ],
 
                 [
@@ -319,7 +323,8 @@ $projects_url = ya_page('projets');
                     'Cybersécurité',
                     'Protection des postes, comptes, accès, sauvegardes et réseaux professionnels.',
                     'security',
-                    '03'
+                    '03',
+                    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=82'
                 ],
 
                 [
@@ -327,7 +332,8 @@ $projects_url = ya_page('projets');
                     'Microsoft 365 & Cloud',
                     'Exchange, Teams, OneDrive, SharePoint, comptes, migrations et accompagnement cloud.',
                     'cloud',
-                    '04'
+                    '04',
+                    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=82'
                 ],
 
                 [
@@ -335,7 +341,8 @@ $projects_url = ya_page('projets');
                     'Infrastructure IT',
                     'Déploiement, maintenance, périphériques, postes, serveurs et environnements professionnels.',
                     'infra',
-                    '05'
+                    '05',
+                    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=82'
                 ],
 
                 [
@@ -343,7 +350,8 @@ $projects_url = ya_page('projets');
                     'Conseil & accompagnement',
                     'Audit, recommandations, choix de solutions et amélioration des performances IT.',
                     'consult',
-                    '06'
+                    '06',
+                    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=82'
                 ]
 
             ];
@@ -355,6 +363,16 @@ $projects_url = ya_page('projets');
                     class="ya-premium-card ya-home-service-card reveal"
                     style="--delay:<?php echo esc_attr($i * 55); ?>ms"
                 >
+
+                    <div class="ya-service-media">
+                        <img
+                            src="<?php echo esc_url($service[5]); ?>"
+                            alt="<?php echo esc_attr($service[1]); ?>"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                        <span class="ya-service-media-overlay"></span>
+                    </div>
 
                     <span class="ya-card-number">
                         <?php echo esc_html($service[4]); ?>
@@ -374,9 +392,12 @@ $projects_url = ya_page('projets');
                         <?php echo esc_html($service[2]); ?>
                     </p>
 
-                    <a href="<?php echo esc_url(
-                        $services_url . '#' . $service[3]
-                    ); ?>">
+                    <a
+                        class="ya-service-readmore"
+                        href="<?php echo esc_url(
+                            $services_url . '#' . $service[3]
+                        ); ?>"
+                    >
 
                         <?php echo esc_html(ya_t('readmore')); ?>
 
@@ -532,7 +553,7 @@ $projects_url = ya_page('projets');
         <div class="ya-section-head reveal">
 
             <span class="ya-kicker">
-                TECHNOLOGIES & EXPERTISE
+                TECHNOLOGIES & EXPERTISES
             </span>
 
             <h2>
@@ -629,42 +650,42 @@ $projects_url = ya_page('projets');
                     'Marelli',
                     'Châtellerault, France',
                     'Support informatique L1/L2, Microsoft 365, postes de travail et environnement industriel.',
-                    'INDUSTRIAL IT'
+                    'IT INDUSTRIEL'
                 ],
 
                 [
                     'Action Logistics',
                     'Angers, France',
                     'Assistance technique, support réseau, préparation de postes et accompagnement sur site.',
-                    'LOGISTICS IT'
+                    'IT LOGISTIQUE'
                 ],
 
                 [
                     'HCL Technologies',
-                    'Enterprise IT',
+                    'IT entreprise',
                     'Support technique, résolution d’incidents et assistance utilisateurs.',
-                    'ENTERPRISE'
+                    'ENTREPRISE'
                 ],
 
                 [
                     'TECEZE',
-                    'Field IT Services',
+                    'Services IT terrain',
                     'Interventions terrain, diagnostic, remplacement matériel et support infrastructure.',
-                    'FIELD SERVICES'
+                    'SERVICES TERRAIN'
                 ],
 
                 [
                     'Cognizant',
-                    'Enterprise IT',
+                    'IT entreprise',
                     'Assistance utilisateurs, maintenance des postes et accompagnement technique.',
-                    'ENTERPRISE'
+                    'ENTREPRISE'
                 ],
 
                 [
                     'Wipro',
-                    'Professional IT',
+                    'IT professionnel',
                     'Support utilisateurs, gestion d’incidents et assistance technique.',
-                    'PROFESSIONAL IT'
+                    'IT PROFESSIONNEL'
                 ]
 
             ];
@@ -747,7 +768,7 @@ $projects_url = ya_page('projets');
 
     <div
         class="ya-marquee"
-        aria-label="Professional environments"
+        aria-label="Environnements professionnels"
     >
 
         <div class="ya-marquee-fade ya-marquee-fade-left"></div>
@@ -758,16 +779,16 @@ $projects_url = ya_page('projets');
             <?php
             $brands = [
 
-                ['MARELLI', 'fa-solid fa-industry'],
-                ['ACTION', 'fa-solid fa-boxes-stacked'],
-                ['HCLTECH', 'fa-solid fa-microchip'],
-                ['TECEZE', 'fa-solid fa-screwdriver-wrench'],
-                ['COGNIZANT', 'fa-solid fa-building'],
-                ['WIPRO', 'fa-solid fa-code'],
-                ['MICROSOFT', 'fa-brands fa-microsoft'],
-                ['CISCO', 'fa-solid fa-network-wired'],
-                ['FORTINET', 'fa-solid fa-shield-halved'],
-                ['UBIQUITI', 'fa-solid fa-wifi']
+                ['MARELLI', '', 'MA'],
+                ['ACTION', '', 'AC'],
+                ['HCLTECH', 'https://cdn.simpleicons.org/hcl', 'HC'],
+                ['TECEZE', '', 'TZ'],
+                ['COGNIZANT', 'https://cdn.simpleicons.org/cognizant', 'CG'],
+                ['WIPRO', 'https://cdn.simpleicons.org/wipro', 'WP'],
+                ['MICROSOFT', 'https://cdn.simpleicons.org/microsoft', 'MS'],
+                ['CISCO', 'https://cdn.simpleicons.org/cisco', 'CS'],
+                ['FORTINET', 'https://cdn.simpleicons.org/fortinet', 'FT'],
+                ['UBIQUITI', 'https://cdn.simpleicons.org/ubiquiti', 'UB']
 
             ];
 
@@ -778,7 +799,18 @@ $projects_url = ya_page('projets');
 
                     <span class="ya-partner-logo">
 
-                        <i class="<?php echo esc_attr($brand[1]); ?>"></i>
+                        <?php if (!empty($brand[1])): ?>
+                            <img
+                                src="<?php echo esc_url($brand[1]); ?>"
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        <?php else: ?>
+                            <span class="ya-partner-monogram">
+                                <?php echo esc_html($brand[2]); ?>
+                            </span>
+                        <?php endif; ?>
 
                         <strong>
                             <?php echo esc_html($brand[0]); ?>
@@ -822,7 +854,7 @@ if ($posts_query->have_posts()):
         <div class="ya-section-head reveal">
 
             <span class="ya-kicker">
-                BLOG & INSIGHTS
+                BLOG & CONSEILS
             </span>
 
             <h2>
