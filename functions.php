@@ -1168,6 +1168,310 @@ function ya_theme_activation() {
 add_action('after_switch_theme', 'ya_theme_activation');
 
 
+
+
+/* =========================================================
+   GITHUB THEME UPDATER
+   Repository: yaahmadi/yama-ahmadi-pro-theme
+========================================================= */
+
+function ya_github_repo() {
+    return [
+        'owner' => 'yaahmadi',
+        'repo'  => 'yama-ahmadi-pro-theme',
+    ];
+}
+
+
+function ya_github_api_headers() {
+
+    $headers = [
+        'Accept'     => 'application/vnd.github+json',
+        'User-Agent' => 'Yama-Ahmadi-Pro-WordPress-Theme',
+    ];
+
+    /*
+     * Optional support for a private repository.
+     * If the repository is private, define this in wp-config.php:
+     *
+     * define('YA_GITHUB_TOKEN', 'github_pat_xxx');
+     *
+     * Never place a private token directly inside the theme files.
+     */
+    if (
+        defined('YA_GITHUB_TOKEN') &&
+        YA_GITHUB_TOKEN
+    ) {
+        $headers['Authorization'] =
+            'Bearer ' . trim(YA_GITHUB_TOKEN);
+    }
+
+    return $headers;
+}
+
+
+function ya_github_latest_release($force = false) {
+
+    $cache_key = 'ya_github_theme_release_v1';
+
+    if (!$force) {
+        $cached = get_transient($cache_key);
+
+        if (is_array($cached)) {
+            return $cached;
+        }
+    }
+
+    $repo = ya_github_repo();
+
+    $endpoint = sprintf(
+        'https://api.github.com/repos/%s/%s/releases/latest',
+        rawurlencode($repo['owner']),
+        rawurlencode($repo['repo'])
+    );
+
+    $response = wp_remote_get(
+        $endpoint,
+        [
+            'timeout' => 15,
+            'headers' => ya_github_api_headers(),
+        ]
+    );
+
+    if (is_wp_error($response)) {
+        return null;
+    }
+
+    $status = wp_remote_retrieve_response_code($response);
+
+    if (200 !== (int) $status) {
+        return null;
+    }
+
+    $data = json_decode(
+        wp_remote_retrieve_body($response),
+        true
+    );
+
+    if (
+        !is_array($data) ||
+        empty($data['tag_name']) ||
+        empty($data['zipball_url'])
+    ) {
+        return null;
+    }
+
+    $release = [
+        'version'     => ltrim((string) $data['tag_name'], "vV"),
+        'tag'         => (string) $data['tag_name'],
+        'name'        => !empty($data['name'])
+            ? (string) $data['name']
+            : (string) $data['tag_name'],
+        'body'        => !empty($data['body'])
+            ? (string) $data['body']
+            : '',
+        'published'   => !empty($data['published_at'])
+            ? (string) $data['published_at']
+            : '',
+        'html_url'    => !empty($data['html_url'])
+            ? (string) $data['html_url']
+            : '',
+        'package_url' => (string) $data['zipball_url'],
+    ];
+
+    set_transient(
+        $cache_key,
+        $release,
+        6 * HOUR_IN_SECONDS
+    );
+
+    return $release;
+}
+
+
+function ya_github_theme_update_transient($transient) {
+
+    if (
+        !is_object($transient) ||
+        empty($transient->checked)
+    ) {
+        return $transient;
+    }
+
+    $theme = wp_get_theme();
+
+    if (!$theme->exists()) {
+        return $transient;
+    }
+
+    $stylesheet      = get_stylesheet();
+    $current_version = $theme->get('Version');
+    $release         = ya_github_latest_release();
+
+    if (
+        !$release ||
+        empty($release['version']) ||
+        empty($release['package_url'])
+    ) {
+        return $transient;
+    }
+
+    if (
+        version_compare(
+            $release['version'],
+            $current_version,
+            '>'
+        )
+    ) {
+        $transient->response[$stylesheet] = [
+            'theme'       => $stylesheet,
+            'new_version' => $release['version'],
+            'url'         => $release['html_url'],
+            'package'     => $release['package_url'],
+        ];
+    } else {
+        $transient->no_update[$stylesheet] = [
+            'theme'       => $stylesheet,
+            'new_version' => $current_version,
+            'url'         => $release['html_url'],
+            'package'     => '',
+        ];
+    }
+
+    return $transient;
+}
+add_filter(
+    'pre_set_site_transient_update_themes',
+    'ya_github_theme_update_transient'
+);
+
+
+function ya_github_theme_api($result, $action, $args) {
+
+    if (
+        'theme_information' !== $action ||
+        empty($args->slug) ||
+        $args->slug !== get_stylesheet()
+    ) {
+        return $result;
+    }
+
+    $release = ya_github_latest_release();
+
+    if (!$release) {
+        return $result;
+    }
+
+    $theme = wp_get_theme();
+
+    return (object) [
+        'name'          => $theme->get('Name'),
+        'slug'          => get_stylesheet(),
+        'version'       => $release['version'],
+        'author'        => $theme->get('Author'),
+        'homepage'      => $theme->get('ThemeURI'),
+        'requires'      => $theme->get('RequiresWP'),
+        'requires_php'  => $theme->get('RequiresPHP'),
+        'download_link' => $release['package_url'],
+        'sections'      => [
+            'description' => wpautop(
+                esc_html(
+                    $theme->get('Description')
+                )
+            ),
+            'changelog'   => wpautop(
+                esc_html(
+                    $release['body'] ?: 'Mise à jour du thème Yama Ahmadi Pro.'
+                )
+            ),
+        ],
+    ];
+}
+add_filter(
+    'themes_api',
+    'ya_github_theme_api',
+    10,
+    3
+);
+
+
+/*
+ * GitHub zipballs unpack to a generated folder name.
+ * WordPress normally handles this correctly during an update.
+ * This safety filter ensures the source actually contains style.css.
+ */
+function ya_github_upgrader_source_check(
+    $source,
+    $remote_source,
+    $upgrader,
+    $hook_extra
+) {
+
+    if (
+        empty($hook_extra['theme']) ||
+        $hook_extra['theme'] !== get_stylesheet()
+    ) {
+        return $source;
+    }
+
+    if (
+        file_exists(
+            trailingslashit($source) . 'style.css'
+        )
+    ) {
+        return $source;
+    }
+
+    $folders = glob(
+        trailingslashit($source) . '*',
+        GLOB_ONLYDIR
+    );
+
+    if (
+        is_array($folders) &&
+        1 === count($folders) &&
+        file_exists(
+            trailingslashit($folders[0]) . 'style.css'
+        )
+    ) {
+        return trailingslashit($folders[0]);
+    }
+
+    return $source;
+}
+add_filter(
+    'upgrader_source_selection',
+    'ya_github_upgrader_source_check',
+    10,
+    4
+);
+
+
+/*
+ * Clear cached release information after any theme update.
+ */
+function ya_clear_github_release_cache(
+    $upgrader,
+    $hook_extra
+) {
+
+    if (
+        !empty($hook_extra['type']) &&
+        'theme' === $hook_extra['type']
+    ) {
+        delete_transient(
+            'ya_github_theme_release_v1'
+        );
+    }
+}
+add_action(
+    'upgrader_process_complete',
+    'ya_clear_github_release_cache',
+    10,
+    2
+);
+
+
 /* =========================================================
    BODY CLASSES
 ========================================================= */
