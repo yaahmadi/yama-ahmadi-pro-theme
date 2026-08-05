@@ -114,7 +114,7 @@ function ya_languages() {
         'en' => [
             'label' => 'English',
             'short' => 'EN',
-            'flag'  => '🇬🇧',
+            'flag'  => '🇺🇸',
         ],
         'de' => [
             'label' => 'Deutsch',
@@ -367,6 +367,16 @@ function ya_contact_info_customize($wp_customize) {
         ],
         'ya_facebook' => [
             'Facebook URL',
+            '',
+            'esc_url_raw',
+        ],
+        'ya_instagram' => [
+            'Instagram URL',
+            '',
+            'esc_url_raw',
+        ],
+        'ya_youtube' => [
+            'YouTube URL',
             '',
             'esc_url_raw',
         ],
