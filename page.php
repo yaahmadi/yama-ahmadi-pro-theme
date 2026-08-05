@@ -31,10 +31,6 @@ while (have_posts()) :
         'request-a-quote'
     ];
 
-    /*
-     * Normalize legacy English WordPress slugs to the French
-     * page templates used by the theme.
-     */
     $template_slug = [
         'about'           => 'a-propos',
         'projects'        => 'projets',
@@ -45,15 +41,15 @@ while (have_posts()) :
 
         'a-propos' => [
             'À PROPOS',
-            'Une expertise IT construite autour de la fiabilité.',
-            'Support, réseau, cybersécurité, cloud et interventions terrain avec une approche claire, structurée et orientée résultat.',
+            'Une expertise informatique fiable, construite sur le terrain.',
+            'Support utilisateurs, réseaux, Microsoft 365, cybersécurité et interventions techniques avec une approche professionnelle, claire et orientée résultat.',
             'fa-user-gear'
         ],
 
         'services' => [
             'SERVICES',
-            'Des services IT complets pour maintenir votre entreprise opérationnelle.',
-            'Du support utilisateur à l’infrastructure réseau, chaque intervention est préparée, exécutée et validée avec méthode.',
+            'Des services informatiques professionnels pour votre entreprise.',
+            'Support L1/L2, réseaux, Microsoft 365, cybersécurité, infrastructure et interventions terrain pour maintenir vos opérations fiables et disponibles.',
             'fa-layer-group'
         ],
 
@@ -95,7 +91,7 @@ while (have_posts()) :
 <!-- =========================================================
      PREMIUM INNER HERO
 ========================================================= -->
-<section class="ya-inner-hero ya-premium-inner-hero">
+<section class="ya-inner-hero ya-premium-inner-hero ya-inner-hero-<?php echo esc_attr($template_slug); ?>">
 
     <div class="ya-inner-grid" aria-hidden="true"></div>
 
@@ -117,6 +113,38 @@ while (have_posts()) :
             <p>
                 <?php echo esc_html($hero[2]); ?>
             </p>
+
+            <?php if ($template_slug === 'a-propos' || $template_slug === 'services') : ?>
+
+                <div class="ya-inner-hero-actions">
+
+                    <?php if ($template_slug === 'a-propos') : ?>
+
+                        <a class="ya-btn" href="<?php echo esc_url(ya_page('contact')); ?>">
+                            Me contacter
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('services')); ?>">
+                            Voir les services
+                        </a>
+
+                    <?php else : ?>
+
+                        <a class="ya-btn" href="<?php echo esc_url(ya_page('demander-un-devis')); ?>">
+                            Demander un devis
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('contact')); ?>">
+                            Nous contacter
+                        </a>
+
+                    <?php endif; ?>
+
+                </div>
+
+            <?php endif; ?>
 
             <div class="ya-inner-badges">
 
