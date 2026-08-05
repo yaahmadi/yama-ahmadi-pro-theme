@@ -28,6 +28,8 @@ $area = get_theme_mod(
 
 $linkedin = get_theme_mod('ya_linkedin');
 $facebook = get_theme_mod('ya_facebook');
+$instagram = get_theme_mod('ya_instagram');
+$youtube = get_theme_mod('ya_youtube');
 ?>
 
 </main>
@@ -71,7 +73,7 @@ $facebook = get_theme_mod('ya_facebook');
                     type="button"
                 >
 
-                    <i class="fa-brands fa-google-play"></i>
+                    <i class="fa-brands fa-android"></i>
 
                     <span>
 
@@ -180,44 +182,69 @@ $facebook = get_theme_mod('ya_facebook');
                 </div>
 
 
-                <?php if ($linkedin || $facebook): ?>
+                <div class="ya-social" aria-label="Réseaux sociaux">
 
-                    <div class="ya-social">
+                    <?php if ($linkedin): ?>
+                        <a
+                            href="<?php echo esc_url($linkedin); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                        >
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    <?php else: ?>
+                        <span class="ya-social-placeholder" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </span>
+                    <?php endif; ?>
 
-                        <?php if ($linkedin): ?>
+                    <?php if ($facebook): ?>
+                        <a
+                            href="<?php echo esc_url($facebook); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook"
+                        >
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    <?php else: ?>
+                        <span class="ya-social-placeholder" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </span>
+                    <?php endif; ?>
 
-                            <a
-                                href="<?php echo esc_url($linkedin); ?>"
-                                target="_blank"
-                                rel="noopener"
-                                aria-label="LinkedIn"
-                            >
+                    <?php if ($instagram): ?>
+                        <a
+                            href="<?php echo esc_url($instagram); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                        >
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    <?php else: ?>
+                        <span class="ya-social-placeholder" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </span>
+                    <?php endif; ?>
 
-                                <i class="fa-brands fa-linkedin-in"></i>
+                    <?php if ($youtube): ?>
+                        <a
+                            href="<?php echo esc_url($youtube); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="YouTube"
+                        >
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    <?php else: ?>
+                        <span class="ya-social-placeholder" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                    <?php endif; ?>
 
-                            </a>
-
-                        <?php endif; ?>
-
-
-                        <?php if ($facebook): ?>
-
-                            <a
-                                href="<?php echo esc_url($facebook); ?>"
-                                target="_blank"
-                                rel="noopener"
-                                aria-label="Facebook"
-                            >
-
-                                <i class="fa-brands fa-facebook-f"></i>
-
-                            </a>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                <?php endif; ?>
+                </div>
 
             </div>
 
@@ -361,7 +388,7 @@ $facebook = get_theme_mod('ya_facebook');
             <div class="ya-footer-col">
 
                 <h3>
-                    Legal
+                    Informations légales
                 </h3>
 
                 <a href="<?php echo esc_url(
@@ -404,7 +431,7 @@ $facebook = get_theme_mod('ya_facebook');
             </span>
 
             <span>
-                France • IT Support • Networks • Cybersecurity • Cloud
+                France • Support IT • Réseaux • Cybersécurité • Cloud
             </span>
 
         </div>
@@ -412,45 +439,6 @@ $facebook = get_theme_mod('ya_facebook');
     </div>
 
 </footer>
-
-
-<!-- =========================================================
-     PWA INSTALL TOAST
-========================================================= -->
-<div
-    class="ya-install-toast"
-    data-ya-install-toast
-    hidden
->
-
-    <div>
-
-        <strong>
-            <?php echo esc_html(ya_t('app')); ?>
-        </strong>
-
-        <small>
-            Accès rapide depuis votre écran d’accueil
-        </small>
-
-    </div>
-
-    <button
-        data-ya-install
-        type="button"
-    >
-        Installer
-    </button>
-
-    <button
-        data-ya-install-close
-        type="button"
-        aria-label="Close"
-    >
-        ×
-    </button>
-
-</div>
 
 
 <!-- =========================================================
@@ -518,6 +506,20 @@ $facebook = get_theme_mod('ya_facebook');
     </div>
 
 </div>
+
+
+
+<!-- =========================================================
+     BACK TO TOP — LEFT SIDE
+========================================================= -->
+<button
+    class="ya-back-top"
+    data-ya-back-top
+    type="button"
+    aria-label="Retour en haut"
+>
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
 
 
 <?php wp_footer(); ?>
