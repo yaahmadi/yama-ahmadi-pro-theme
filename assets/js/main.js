@@ -1,349 +1,261 @@
+/* =========================================================
+   PWA APP SHELL v3.0.0
+========================================================= */
+
 (() => {
     'use strict';
 
-    const d = document;
+    const body = document.body;
 
-    const $ = (
-        selector,
-        context = d
-    ) => context.querySelector(selector);
+    const searchPanel =
+        document.querySelector(
+            '[data-ya-app-search]'
+        );
 
-    const $$ = (
-        selector,
-        context = d
-    ) => [
-        ...context.querySelectorAll(selector)
-    ];
+    const morePanel =
+        document.querySelector(
+            '[data-ya-app-more]'
+        );
 
-    const reducedMotion =
-        window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
-
-    let deferredPrompt = null;
+    const searchInput =
+        document.querySelector(
+            '#ya-app-search-input'
+        );
 
 
     /* =========================================================
-       PWA INSTALL
+       PANEL HELPERS
     ========================================================= */
 
-    window.addEventListener(
-        'beforeinstallprompt',
-        (event) => {
-            event.preventDefault();
-            deferredPrompt = event;
+    function hasOpenOverlay() {
+
+        return Boolean(
+            document.querySelector(
+                '.ya-mobile.open,' +
+                '.ya-location-modal.open,' +
+                '.ya-app-search.open,' +
+                '.ya-app-more.open'
+            )
+        );
+    }
+
+
+    function updateBodyLock() {
+
+        body.classList.toggle(
+            'ya-lock',
+            hasOpenOverlay()
+        );
+    }
+
+
+    function openPanel(
+        panel,
+        focusTarget = null
+    ) {
+
+        if (!panel) {
+            return;
         }
-    );
+
+        closePanel(
+            panel === searchPanel
+                ? morePanel
+                : searchPanel,
+            false
+        );
+
+        panel.classList.add(
+            'open'
+        );
+
+        panel.setAttribute(
+            'aria-hidden',
+            'false'
+        );
+
+        updateBodyLock();
+
+        window.setTimeout(
+            () => {
+
+                const target =
+                    focusTarget ||
+                    panel.querySelector(
+                        'button, input, a'
+                    );
+
+                target?.focus();
+
+            },
+            220
+        );
+    }
 
 
-    window.addEventListener(
-        'appinstalled',
-        () => {
-            deferredPrompt = null;
+    function closePanel(
+        panel,
+        restoreLock = true
+    ) {
 
-            localStorage.setItem(
-                'ya_app_installed',
-                '1'
-            );
+        if (!panel) {
+            return;
         }
-    );
+
+        panel.classList.remove(
+            'open'
+        );
+
+        panel.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
+        if (restoreLock) {
+            updateBodyLock();
+        }
+    }
 
 
-    async function installPWA() {
+    function closeAppPanels() {
 
-        if (deferredPrompt) {
+        closePanel(
+            searchPanel,
+            false
+        );
 
-            try {
+        closePanel(
+            morePanel,
+            false
+        );
 
-                deferredPrompt.prompt();
+        updateBodyLock();
+    }
 
-                await deferredPrompt.userChoice;
 
-                deferredPrompt = null;
+    /* =========================================================
+       SEARCH PANEL
+    ========================================================= */
 
-            } catch (error) {
+    document
+        .querySelectorAll(
+            '[data-ya-app-search-open]'
+        )
+        .forEach(
+            (button) => {
 
-                console.warn(
-                    'PWA install prompt failed:',
-                    error
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        openPanel(
+                            searchPanel,
+                            searchInput
+                        );
+
+                    }
                 );
 
             }
-
-            return;
-        }
-
-
-        const ua =
-            navigator.userAgent || '';
-
-        const isiOS =
-            /iphone|ipad|ipod/i.test(ua);
-
-
-        if (isiOS) {
-
-            alert(
-                'Sur iPhone/iPad : ouvrez le site dans Safari, touchez Partager puis « Sur l’écran d’accueil ».'
-            );
-
-            return;
-        }
-
-
-        alert(
-            'Ouvrez le menu de votre navigateur puis choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».'
         );
-    }
 
 
-    $$('[data-ya-install]').forEach(
-        (button) => {
+    document
+        .querySelectorAll(
+            '[data-ya-app-search-close]'
+        )
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                'click',
-                installPWA
-            );
+                button.addEventListener(
+                    'click',
+                    () => {
 
-        }
-    );
-
-
-    /* =========================================================
-       SERVICE WORKER
-    ========================================================= */
-
-    if ('serviceWorker' in navigator) {
-
-        window.addEventListener(
-            'load',
-            async () => {
-
-                try {
-
-                    await navigator
-                        .serviceWorker
-                        .register(
-                            '/service-worker.js',
-                            {
-                                scope: '/'
-                            }
+                        closePanel(
+                            searchPanel
                         );
 
-                } catch (error) {
-
-                    console.warn(
-                        'Service worker registration failed:',
-                        error
-                    );
-
-                }
+                    }
+                );
 
             }
         );
 
-    }
+
+    /* =========================================================
+       MORE PANEL
+    ========================================================= */
+
+    document
+        .querySelectorAll(
+            '[data-ya-app-more-open]'
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        openPanel(
+                            morePanel
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            '[data-ya-app-more-close]'
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        closePanel(
+                            morePanel
+                        );
+
+                    }
+                );
+
+            }
+        );
 
 
     /* =========================================================
-       MOBILE MENU
+       CLOSE AFTER NAVIGATION
     ========================================================= */
 
-    const menuButton =
-        $('.ya-menu');
+    document
+        .querySelectorAll(
+            '.ya-app-search a,' +
+            '.ya-app-more a'
+        )
+        .forEach(
+            (link) => {
 
-    const mobileMenu =
-        $('.ya-mobile');
+                link.addEventListener(
+                    'click',
+                    closeAppPanels
+                );
 
-    const mobileOverlay =
-        $('.ya-mobile-overlay');
-
-    const mobileClose =
-        $('.ya-mobile-close');
-
-
-    function openMenu() {
-
-        if (!mobileMenu) {
-            return;
-        }
-
-        mobileMenu.classList.add(
-            'open'
+            }
         );
-
-        mobileMenu.setAttribute(
-            'aria-hidden',
-            'false'
-        );
-
-        menuButton?.setAttribute(
-            'aria-expanded',
-            'true'
-        );
-
-        d.body.classList.add(
-            'ya-lock'
-        );
-
-
-        setTimeout(
-            () => {
-                mobileClose?.focus();
-            },
-            200
-        );
-    }
-
-
-    function closeMenu() {
-
-        if (!mobileMenu) {
-            return;
-        }
-
-        mobileMenu.classList.remove(
-            'open'
-        );
-
-        mobileMenu.setAttribute(
-            'aria-hidden',
-            'true'
-        );
-
-        menuButton?.setAttribute(
-            'aria-expanded',
-            'false'
-        );
-
-        d.body.classList.remove(
-            'ya-lock'
-        );
-    }
-
-
-    menuButton?.addEventListener(
-        'click',
-        openMenu
-    );
-
-
-    mobileClose?.addEventListener(
-        'click',
-        closeMenu
-    );
-
-
-    mobileOverlay?.addEventListener(
-        'click',
-        closeMenu
-    );
-
-
-    $$('.ya-mobile-nav a').forEach(
-        (link) => {
-
-            link.addEventListener(
-                'click',
-                closeMenu
-            );
-
-        }
-    );
 
 
     /* =========================================================
-       LOCATION MODAL
+       KEYBOARD CONTROL
     ========================================================= */
 
-    function locationModal() {
-
-        return $(
-            '[data-ya-location-modal]'
-        );
-
-    }
-
-
-    function openLocationModal() {
-
-        const modal =
-            locationModal();
-
-        if (!modal) {
-            return;
-        }
-
-        modal.classList.add(
-            'open'
-        );
-
-        modal.setAttribute(
-            'aria-hidden',
-            'false'
-        );
-
-        d.body.classList.add(
-            'ya-lock'
-        );
-    }
-
-
-    function closeLocationModal() {
-
-        const modal =
-            locationModal();
-
-        if (!modal) {
-            return;
-        }
-
-        modal.classList.remove(
-            'open'
-        );
-
-        modal.setAttribute(
-            'aria-hidden',
-            'true'
-        );
-
-        d.body.classList.remove(
-            'ya-lock'
-        );
-    }
-
-
-    $$('[data-ya-location]').forEach(
-        (button) => {
-
-            button.addEventListener(
-                'click',
-                openLocationModal
-            );
-
-        }
-    );
-
-
-    $$(
-        '[data-ya-location-close]'
-    ).forEach(
-        (button) => {
-
-            button.addEventListener(
-                'click',
-                closeLocationModal
-            );
-
-        }
-    );
-
-
-    /* =========================================================
-       ESC KEY
-    ========================================================= */
-
-    d.addEventListener(
+    document.addEventListener(
         'keydown',
         (event) => {
 
@@ -353,470 +265,172 @@
                 return;
             }
 
-            closeMenu();
-            closeLocationModal();
+            closeAppPanels();
 
         }
     );
 
 
     /* =========================================================
-       HEADER + SCROLL PROGRESS
+       STANDALONE PWA DETECTION
     ========================================================= */
 
-    const header =
-        $('#ya-header');
-
-    const progress =
-        $('.ya-progress');
-
-    let ticking = false;
-
-
-    function updateScrollUI() {
-
-        const scrollTop =
-            window.scrollY ||
-            d.documentElement.scrollTop;
-
-
-        header?.classList.toggle(
-            'scrolled',
-            scrollTop > 16
+    const standaloneQuery =
+        window.matchMedia(
+            '(display-mode: standalone)'
         );
 
 
-        const maxScroll =
-            d.documentElement.scrollHeight -
-            window.innerHeight;
+    function updateDisplayMode() {
 
+        const isStandalone =
+            standaloneQuery.matches ||
+            window.navigator
+                .standalone === true;
 
-        if (progress) {
-
-            const percent =
-                maxScroll > 0
-                    ? Math.min(
-                        100,
-                        (
-                            scrollTop /
-                            maxScroll
-                        ) * 100
-                    )
-                    : 0;
-
-
-            progress.style.width =
-                `${percent}%`;
-        }
-
-
-        ticking = false;
-    }
-
-
-    window.addEventListener(
-        'scroll',
-        () => {
-
-            if (!ticking) {
-
-                window.requestAnimationFrame(
-                    updateScrollUI
-                );
-
-                ticking = true;
-            }
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    updateScrollUI();
-
-
-    /* =========================================================
-       REVEAL ANIMATIONS
-    ========================================================= */
-
-    if (
-        !reducedMotion &&
-        'IntersectionObserver' in window
-    ) {
-
-        const observer =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                !entry.isIntersecting
-                            ) {
-                                return;
-                            }
-
-
-                            entry.target
-                                .classList
-                                .add('in');
-
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.1,
-
-                    rootMargin:
-                        '0px 0px -35px 0px'
-                }
+        document.documentElement
+            .classList
+            .toggle(
+                'ya-standalone',
+                isStandalone
             );
 
-
-        $$('.reveal').forEach(
-            (
-                element,
-                index
-            ) => {
-
-                if (
-                    !element.style
-                        .getPropertyValue(
-                            '--delay'
-                        )
-                ) {
-
-                    element.style
-                        .setProperty(
-                            '--delay',
-                            `${
-                                (index % 6) * 45
-                            }ms`
-                        );
-
-                }
-
-
-                observer.observe(
-                    element
-                );
-
-            }
+        body.classList.toggle(
+            'ya-pwa-installed',
+            isStandalone
         );
-
-    } else {
-
-        $$('.reveal').forEach(
-            (element) => {
-
-                element.classList.add(
-                    'in'
-                );
-
-            }
-        );
-
     }
 
 
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================= */
-
-    if (!reducedMotion) {
-
-        $$(
-            '[data-ya-parallax]'
-        ).forEach(
-            (visual) => {
-
-                visual.addEventListener(
-                    'pointermove',
-                    (event) => {
-
-                        if (
-                            window.innerWidth <
-                            900
-                        ) {
-                            return;
-                        }
+    updateDisplayMode();
 
 
-                        const rect =
-                            visual
-                                .getBoundingClientRect();
-
-
-                        const x =
-                            (
-                                event.clientX -
-                                rect.left
-                            ) /
-                                rect.width -
-                            0.5;
-
-
-                        const y =
-                            (
-                                event.clientY -
-                                rect.top
-                            ) /
-                                rect.height -
-                            0.5;
-
-
-                        visual.style.transform =
-                            `perspective(1000px)
-                             rotateY(${x * 4}deg)
-                             rotateX(${-y * 3}deg)
-                             translate3d(
-                                ${x * 5}px,
-                                ${y * 4}px,
-                                0
-                             )`;
-
-                    }
-                );
-
-
-                visual.addEventListener(
-                    'pointerleave',
-                    () => {
-
-                        visual.style.transform =
-                            '';
-
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
-       LOCATION LABEL
-    ========================================================= */
-
-    function setLocationLabel(
-        value
+    if (
+        typeof standaloneQuery
+            .addEventListener ===
+        'function'
     ) {
 
-        $$(
-            '[data-ya-location-label]'
-        ).forEach(
-            (element) => {
+        standaloneQuery
+            .addEventListener(
+                'change',
+                updateDisplayMode
+            );
 
-                element.textContent =
-                    value;
+    } else if (
+        typeof standaloneQuery
+            .addListener ===
+        'function'
+    ) {
 
-            }
-        );
-
-
-        localStorage.setItem(
-            'ya_location_label',
-            value
-        );
-    }
-
-
-    const savedLocation =
-        localStorage.getItem(
-            'ya_location_label'
-        );
-
-
-    if (savedLocation) {
-
-        setLocationLabel(
-            savedLocation
-        );
-
-    } else {
-
-        const locale =
-            navigator.language ||
-            navigator.userLanguage ||
-            'fr-FR';
-
-
-        const region =
-            locale.includes('-')
-                ? locale.split('-')[1]
-                : '';
-
-
-        const regionMap = {
-
-            FR: 'France',
-            DE: 'Allemagne',
-            AT: 'Autriche',
-            CH: 'Suisse',
-            BE: 'Belgique',
-            LU: 'Luxembourg',
-            GB: 'Royaume-Uni',
-            IE: 'Irlande',
-            NL: 'Pays-Bas',
-            ES: 'Espagne',
-            IT: 'Italie',
-            PT: 'Portugal',
-            US: 'International',
-            CA: 'International'
-
-        };
-
-
-        setLocationLabel(
-            regionMap[region] ||
-            'France'
-        );
-
+        standaloneQuery
+            .addListener(
+                updateDisplayMode
+            );
     }
 
 
     /* =========================================================
-       GEOLOCATION
+       VIDEO HERO PERFORMANCE
     ========================================================= */
 
-    $('[data-ya-geolocate]')
-        ?.addEventListener(
-            'click',
-            () => {
-
-                if (
-                    !navigator.geolocation
-                ) {
-
-                    alert(
-                        'La géolocalisation n’est pas disponible dans ce navigateur.'
-                    );
-
-                    return;
-                }
-
-
-                const button =
-                    $(
-                        '[data-ya-geolocate]'
-                    );
-
-
-                const originalText =
-                    button?.textContent;
-
-
-                if (button) {
-
-                    button.disabled =
-                        true;
-
-                    button.textContent =
-                        'Détection…';
-
-                }
-
-
-                navigator
-                    .geolocation
-                    .getCurrentPosition(
-
-                        () => {
-
-                            setLocationLabel(
-                                'Position détectée'
-                            );
-
-                            closeLocationModal();
-
-
-                            if (button) {
-
-                                button.disabled =
-                                    false;
-
-                                button.textContent =
-                                    originalText;
-
-                            }
-
-                        },
-
-
-                        () => {
-
-                            alert(
-                                'La localisation n’a pas été autorisée.'
-                            );
-
-
-                            if (button) {
-
-                                button.disabled =
-                                    false;
-
-                                button.textContent =
-                                    originalText;
-
-                            }
-
-                        },
-
-
-                        {
-                            enableHighAccuracy:
-                                false,
-
-                            timeout:
-                                8000,
-
-                            maximumAge:
-                                600000
-                        }
-
-                    );
-
-            }
+    const heroVideo =
+        document.querySelector(
+            '.ya-hero-video'
         );
 
 
+    if (heroVideo) {
+
+        const saveData =
+            navigator.connection
+                ?.saveData === true;
+
+        const reducedMotion =
+            window.matchMedia(
+                '(prefers-reduced-motion: reduce)'
+            ).matches;
+
+        const smallScreen =
+            window.innerWidth <= 820;
+
+
+        if (
+            saveData ||
+            reducedMotion ||
+            smallScreen
+        ) {
+
+            heroVideo.pause();
+
+            heroVideo.removeAttribute(
+                'autoplay'
+            );
+
+            heroVideo.style.display =
+                'none';
+
+        } else {
+
+            const playPromise =
+                heroVideo.play();
+
+            if (
+                playPromise &&
+                typeof playPromise
+                    .catch ===
+                'function'
+            ) {
+
+                playPromise.catch(
+                    () => {
+
+                        heroVideo.style
+                            .display =
+                            'none';
+
+                    }
+                );
+            }
+        }
+    }
+
+
     /* =========================================================
-       EXTERNAL LINKS
+       SEARCH INPUT SHORTCUT
     ========================================================= */
 
-    $$(
-        'a[target="_blank"]'
-    ).forEach(
-        (link) => {
+    document.addEventListener(
+        'keydown',
+        (event) => {
 
-            const rel =
-                link.getAttribute(
-                    'rel'
-                ) || '';
+            const target =
+                event.target;
+
+            const typing =
+                target instanceof
+                    HTMLInputElement ||
+                target instanceof
+                    HTMLTextAreaElement ||
+                target?.isContentEditable;
+
+
+            if (typing) {
+                return;
+            }
 
 
             if (
-                !rel.includes(
-                    'noopener'
-                )
+                event.key === '/' &&
+                searchPanel
             ) {
 
-                link.setAttribute(
-                    'rel',
-                    `${rel} noopener noreferrer`
-                        .trim()
-                );
+                event.preventDefault();
 
+                openPanel(
+                    searchPanel,
+                    searchInput
+                );
             }
 
         }
@@ -824,199 +438,80 @@
 
 
     /* =========================================================
-       FORM UX
+       ACTIVE APP NAVIGATION
     ========================================================= */
 
-    d.addEventListener(
-        'focusin',
-        (event) => {
+    const currentUrl =
+        new URL(
+            window.location.href
+        );
 
-            const group =
-                event.target.closest(
-                    '.ff-el-group'
-                );
-
-
-            group?.classList.add(
-                'ya-field-active'
-            );
-
-        }
-    );
+    const currentPath =
+        currentUrl.pathname
+            .replace(
+                /\/+$/,
+                ''
+            ) || '/';
 
 
-    d.addEventListener(
-        'focusout',
-        (event) => {
+    document
+        .querySelectorAll(
+            '.ya-app-bottom-nav a'
+        )
+        .forEach(
+            (link) => {
 
-            const group =
-                event.target.closest(
-                    '.ff-el-group'
-                );
+                try {
 
-
-            group?.classList.remove(
-                'ya-field-active'
-            );
-
-        }
-    );
-
-
-    /* =========================================================
-       ANCHOR SCROLL
-    ========================================================= */
-
-    $$(
-        'a[href^="#"]'
-    ).forEach(
-        (link) => {
-
-            link.addEventListener(
-                'click',
-                (event) => {
-
-                    const href =
-                        link.getAttribute(
-                            'href'
+                    const linkUrl =
+                        new URL(
+                            link.href,
+                            window.location.origin
                         );
+
+                    const linkPath =
+                        linkUrl.pathname
+                            .replace(
+                                /\/+$/,
+                                ''
+                            ) || '/';
 
 
                     if (
-                        !href ||
-                        href === '#'
+                        currentPath ===
+                        linkPath
                     ) {
-                        return;
+
+                        link.classList.add(
+                            'active'
+                        );
+
+                        link.setAttribute(
+                            'aria-current',
+                            'page'
+                        );
                     }
 
+                } catch (error) {
 
-                    const target =
-                        $(href);
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    const headerOffset =
-                        header?.offsetHeight ||
-                        70;
-
-
-                    const top =
-                        target
-                            .getBoundingClientRect()
-                            .top +
-                        window.scrollY -
-                        headerOffset -
-                        18;
-
-
-                    window.scrollTo(
-                        {
-                            top,
-
-                            behavior:
-                                reducedMotion
-                                    ? 'auto'
-                                    : 'smooth'
-                        }
+                    console.warn(
+                        'Unable to compare app navigation URL:',
+                        error
                     );
-
                 }
-            );
-
-        }
-    );
-
-
-    /* =========================================================
-       BACK TO TOP
-    ========================================================= */
-
-    const backTop =
-        $('[data-ya-back-top]');
-
-
-    function updateBackTop() {
-
-        if (!backTop) {
-            return;
-        }
-
-
-        backTop.classList.toggle(
-            'show',
-            window.scrollY > 500
-        );
-
-    }
-
-
-    window.addEventListener(
-        'scroll',
-        updateBackTop,
-        {
-            passive: true
-        }
-    );
-
-
-    backTop?.addEventListener(
-        'click',
-        () => {
-
-            window.scrollTo(
-                {
-                    top: 0,
-
-                    behavior:
-                        reducedMotion
-                            ? 'auto'
-                            : 'smooth'
-                }
-            );
-
-        }
-    );
-
-
-    updateBackTop();
-
-
-    /* =========================================================
-       RESIZE SAFETY
-    ========================================================= */
-
-    window.addEventListener(
-        'resize',
-        () => {
-
-            if (
-                window.innerWidth >
-                1120
-            ) {
-
-                closeMenu();
 
             }
-
-        }
-    );
+        );
 
 
     /* =========================================================
        INITIALIZE
     ========================================================= */
 
-    d.documentElement
+    document.documentElement
         .classList
         .add(
-            'ya-js-ready'
+            'ya-app-shell-ready'
         );
 
 })();

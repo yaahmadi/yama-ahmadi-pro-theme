@@ -1,6 +1,6 @@
 <?php
 /**
- * Yama Ahmadi Pro — Final Header
+ * Yama Ahmadi Pro v3.0.0 — Premium App Header
  * WordPress menu is the single source of truth.
  */
 
@@ -177,12 +177,37 @@ $brand_subtitle = [
 
             <div class="ya-header-actions">
 
+                <button
+                    class="ya-header-icon-action ya-header-search"
+                    type="button"
+                    data-ya-app-search-open
+                    aria-label="<?php echo esc_attr(
+                        $lang === 'fr'
+                            ? 'Rechercher'
+                            : ($lang === 'de' ? 'Suchen' : 'Search')
+                    ); ?>"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
                 <a
-                    class="ya-header-contact"
+                    class="ya-header-icon-action ya-header-contact"
                     href="<?php echo esc_url(ya_page('contact')); ?>"
                     aria-label="<?php echo esc_attr(ya_t('contact')); ?>"
                 >
                     <i class="fa-regular fa-message"></i>
+                </a>
+
+                <a
+                    class="ya-header-icon-action ya-header-call"
+                    href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone)); ?>"
+                    aria-label="<?php echo esc_attr(
+                        $lang === 'fr'
+                            ? 'Appeler'
+                            : ($lang === 'de' ? 'Anrufen' : 'Call')
+                    ); ?>"
+                >
+                    <i class="fa-solid fa-phone"></i>
                 </a>
 
                 <a
@@ -267,6 +292,40 @@ $brand_subtitle = [
 
         </div>
 
+        <div class="ya-mobile-quick-actions">
+
+            <button
+                type="button"
+                data-ya-app-search-open
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>
+                    <?php echo esc_html(
+                        $lang === 'fr'
+                            ? 'Rechercher'
+                            : ($lang === 'de' ? 'Suchen' : 'Search')
+                    ); ?>
+                </span>
+            </button>
+
+            <a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone)); ?>">
+                <i class="fa-solid fa-phone"></i>
+                <span>
+                    <?php echo esc_html(
+                        $lang === 'fr'
+                            ? 'Appeler'
+                            : ($lang === 'de' ? 'Anrufen' : 'Call')
+                    ); ?>
+                </span>
+            </a>
+
+            <a href="<?php echo esc_url(ya_page('contact')); ?>">
+                <i class="fa-regular fa-message"></i>
+                <span><?php echo esc_html(ya_t('contact')); ?></span>
+            </a>
+
+        </div>
+
         <nav
             class="ya-mobile-nav"
             aria-label="<?php echo esc_attr(
@@ -342,6 +401,31 @@ $brand_subtitle = [
         </div>
 
     </aside>
+</div>
+
+<div class="ya-app-status-strip">
+    <div class="ya-shell">
+        <span>
+            <i class="fa-solid fa-circle"></i>
+            <?php echo esc_html(
+                $lang === 'fr'
+                    ? 'Support disponible'
+                    : ($lang === 'de' ? 'Support verfügbar' : 'Support available')
+            ); ?>
+        </span>
+
+        <button
+            type="button"
+            data-ya-app-search-open
+        >
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <?php echo esc_html(
+                $lang === 'fr'
+                    ? 'Recherche rapide'
+                    : ($lang === 'de' ? 'Schnellsuche' : 'Quick search')
+            ); ?>
+        </button>
+    </div>
 </div>
 
 <main id="content">

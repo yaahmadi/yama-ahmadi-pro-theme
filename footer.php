@@ -1,6 +1,6 @@
 <?php
 /**
- * Yama Ahmadi Pro — Premium Footer
+ * Yama Ahmadi Pro v3.0.0 — Premium Footer & PWA App Shell
  * Phase 4
  */
 
@@ -437,6 +437,402 @@ $youtube = get_theme_mod('ya_youtube');
     </div>
 
 </footer>
+
+
+<!-- =========================================================
+     PWA APP BOTTOM NAVIGATION
+========================================================= -->
+<nav
+    class="ya-app-bottom-nav"
+    data-ya-app-bottom-nav
+    aria-label="<?php
+        echo esc_attr(
+            ya_lang() === 'en'
+                ? 'App navigation'
+                : (
+                    ya_lang() === 'de'
+                        ? 'App-Navigation'
+                        : 'Navigation de l’application'
+                )
+        );
+    ?>"
+>
+    <a
+        href="<?php echo esc_url(function_exists('ya_home_url') ? ya_home_url() : home_url('/')); ?>"
+        class="<?php echo is_front_page() ? 'active' : ''; ?>"
+    >
+        <i class="fa-solid fa-house"></i>
+        <span><?php echo esc_html(ya_t('home')); ?></span>
+    </a>
+
+    <a
+        href="<?php echo esc_url(ya_page('services')); ?>"
+        class="<?php echo is_page(['services','service','it-services']) ? 'active' : ''; ?>"
+    >
+        <i class="fa-solid fa-layer-group"></i>
+        <span><?php echo esc_html(ya_t('services')); ?></span>
+    </a>
+
+    <button
+        type="button"
+        class="ya-app-nav-primary"
+        data-ya-app-search-open
+        aria-label="<?php
+            echo esc_attr(
+                ya_lang() === 'en'
+                    ? 'Open search'
+                    : (
+                        ya_lang() === 'de'
+                            ? 'Suche öffnen'
+                            : 'Ouvrir la recherche'
+                    )
+            );
+        ?>"
+    >
+        <span class="ya-app-nav-primary-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <span>
+            <?php
+            echo esc_html(
+                ya_lang() === 'en'
+                    ? 'Search'
+                    : (
+                        ya_lang() === 'de'
+                            ? 'Suchen'
+                            : 'Recherche'
+                    )
+            );
+            ?>
+        </span>
+    </button>
+
+    <a
+        href="<?php echo esc_url(ya_page('contact')); ?>"
+        class="<?php echo is_page(['contact','contact-us']) ? 'active' : ''; ?>"
+    >
+        <i class="fa-regular fa-message"></i>
+        <span><?php echo esc_html(ya_t('contact')); ?></span>
+    </a>
+
+    <button
+        type="button"
+        data-ya-app-more-open
+        aria-label="<?php
+            echo esc_attr(
+                ya_lang() === 'en'
+                    ? 'Open more menu'
+                    : (
+                        ya_lang() === 'de'
+                            ? 'Mehr-Menü öffnen'
+                            : 'Ouvrir le menu Plus'
+                    )
+            );
+        ?>"
+    >
+        <i class="fa-solid fa-ellipsis"></i>
+        <span>
+            <?php
+            echo esc_html(
+                ya_lang() === 'en'
+                    ? 'More'
+                    : (
+                        ya_lang() === 'de'
+                            ? 'Mehr'
+                            : 'Plus'
+                    )
+            );
+            ?>
+        </span>
+    </button>
+</nav>
+
+
+<!-- =========================================================
+     PWA SEARCH PANEL
+========================================================= -->
+<div
+    class="ya-app-search"
+    data-ya-app-search
+    aria-hidden="true"
+>
+    <div
+        class="ya-app-sheet-backdrop"
+        data-ya-app-search-close
+    ></div>
+
+    <section
+        class="ya-app-sheet ya-app-search-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ya-app-search-title"
+    >
+        <div class="ya-app-sheet-handle" aria-hidden="true"></div>
+
+        <header class="ya-app-sheet-head">
+            <div>
+                <span class="ya-kicker">
+                    <?php
+                    echo esc_html(
+                        ya_lang() === 'en'
+                            ? 'QUICK SEARCH'
+                            : (
+                                ya_lang() === 'de'
+                                    ? 'SCHNELLSUCHE'
+                                    : 'RECHERCHE RAPIDE'
+                            )
+                    );
+                    ?>
+                </span>
+
+                <h2 id="ya-app-search-title">
+                    <?php
+                    echo esc_html(
+                        ya_lang() === 'en'
+                            ? 'Find a service or article'
+                            : (
+                                ya_lang() === 'de'
+                                    ? 'Service oder Artikel finden'
+                                    : 'Trouver un service ou un article'
+                            )
+                    );
+                    ?>
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="ya-app-sheet-close"
+                data-ya-app-search-close
+                aria-label="<?php echo esc_attr(ya_t('close')); ?>"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </header>
+
+        <form
+            class="ya-app-search-form"
+            role="search"
+            method="get"
+            action="<?php echo esc_url(home_url('/')); ?>"
+        >
+            <label class="screen-reader-text" for="ya-app-search-input">
+                <?php
+                echo esc_html(
+                    ya_lang() === 'en'
+                        ? 'Search'
+                        : (
+                            ya_lang() === 'de'
+                                ? 'Suchen'
+                                : 'Rechercher'
+                        )
+                );
+                ?>
+            </label>
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="ya-app-search-input"
+                name="s"
+                type="search"
+                autocomplete="off"
+                placeholder="<?php
+                    echo esc_attr(
+                        ya_lang() === 'en'
+                            ? 'Search IT support, network, cloud…'
+                            : (
+                                ya_lang() === 'de'
+                                    ? 'IT-Support, Netzwerk, Cloud suchen…'
+                                    : 'Rechercher support, réseau, cloud…'
+                            )
+                    );
+                ?>"
+            >
+
+            <?php if (ya_lang() !== 'fr') : ?>
+                <input type="hidden" name="lang" value="<?php echo esc_attr(ya_lang()); ?>">
+            <?php endif; ?>
+        </form>
+
+        <div class="ya-app-search-suggestions">
+            <h3>
+                <?php
+                echo esc_html(
+                    ya_lang() === 'en'
+                        ? 'Popular'
+                        : (
+                            ya_lang() === 'de'
+                                ? 'Beliebt'
+                                : 'Populaire'
+                        )
+                );
+                ?>
+            </h3>
+
+            <?php
+            $app_search_links = [
+                [
+                    'icon' => 'fa-headset',
+                    'label' => ya_lang() === 'en' ? 'IT Support' : (ya_lang() === 'de' ? 'IT-Support' : 'Support informatique'),
+                    'url' => function_exists('ya_service_article_url') ? ya_service_article_url('support') : ya_page('services'),
+                ],
+                [
+                    'icon' => 'fa-network-wired',
+                    'label' => ya_lang() === 'en' ? 'Networks & Wi-Fi' : (ya_lang() === 'de' ? 'Netzwerke & Wi-Fi' : 'Réseaux & Wi-Fi'),
+                    'url' => function_exists('ya_service_article_url') ? ya_service_article_url('network') : ya_page('services'),
+                ],
+                [
+                    'icon' => 'fa-shield-halved',
+                    'label' => ya_lang() === 'en' ? 'Cybersecurity' : (ya_lang() === 'de' ? 'Cybersicherheit' : 'Cybersécurité'),
+                    'url' => function_exists('ya_service_article_url') ? ya_service_article_url('security') : ya_page('services'),
+                ],
+                [
+                    'icon' => 'fa-cloud',
+                    'label' => 'Microsoft 365 & Cloud',
+                    'url' => function_exists('ya_service_article_url') ? ya_service_article_url('cloud') : ya_page('services'),
+                ],
+                [
+                    'icon' => 'fa-server',
+                    'label' => ya_lang() === 'en' ? 'IT Infrastructure' : (ya_lang() === 'de' ? 'IT-Infrastruktur' : 'Infrastructure IT'),
+                    'url' => function_exists('ya_service_article_url') ? ya_service_article_url('infra') : ya_page('services'),
+                ],
+                [
+                    'icon' => 'fa-briefcase',
+                    'label' => ya_t('projects'),
+                    'url' => ya_page('projets'),
+                ],
+            ];
+
+            foreach ($app_search_links as $app_link) :
+            ?>
+                <a href="<?php echo esc_url($app_link['url']); ?>">
+                    <i class="fa-solid <?php echo esc_attr($app_link['icon']); ?>"></i>
+                    <span><?php echo esc_html($app_link['label']); ?></span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </section>
+</div>
+
+
+<!-- =========================================================
+     PWA MORE PANEL
+========================================================= -->
+<div
+    class="ya-app-more"
+    data-ya-app-more
+    aria-hidden="true"
+>
+    <div
+        class="ya-app-sheet-backdrop"
+        data-ya-app-more-close
+    ></div>
+
+    <section
+        class="ya-app-sheet ya-app-more-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ya-app-more-title"
+    >
+        <div class="ya-app-sheet-handle" aria-hidden="true"></div>
+
+        <header class="ya-app-sheet-head">
+            <div>
+                <span class="ya-kicker">
+                    YAMA AHMADI
+                </span>
+
+                <h2 id="ya-app-more-title">
+                    <?php
+                    echo esc_html(
+                        ya_lang() === 'en'
+                            ? 'More options'
+                            : (
+                                ya_lang() === 'de'
+                                    ? 'Weitere Optionen'
+                                    : 'Plus d’options'
+                            )
+                    );
+                    ?>
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="ya-app-sheet-close"
+                data-ya-app-more-close
+                aria-label="<?php echo esc_attr(ya_t('close')); ?>"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </header>
+
+        <div class="ya-app-more-grid">
+            <a href="<?php echo esc_url(ya_page('a-propos')); ?>">
+                <i class="fa-solid fa-user-gear"></i>
+                <span><?php echo esc_html(ya_t('about')); ?></span>
+            </a>
+
+            <a href="<?php echo esc_url(ya_page('solutions')); ?>">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span><?php echo esc_html(ya_t('solutions')); ?></span>
+            </a>
+
+            <a href="<?php echo esc_url(ya_page('projets')); ?>">
+                <i class="fa-solid fa-briefcase"></i>
+                <span><?php echo esc_html(ya_t('projects')); ?></span>
+            </a>
+
+            <a href="<?php echo esc_url(ya_page('demander-un-devis')); ?>">
+                <i class="fa-solid fa-file-signature"></i>
+                <span><?php echo esc_html(ya_t('quote')); ?></span>
+            </a>
+
+            <a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone)); ?>">
+                <i class="fa-solid fa-phone"></i>
+                <span>
+                    <?php
+                    echo esc_html(
+                        ya_lang() === 'en'
+                            ? 'Call'
+                            : (
+                                ya_lang() === 'de'
+                                    ? 'Anrufen'
+                                    : 'Appeler'
+                            )
+                    );
+                    ?>
+                </span>
+            </a>
+
+            <a href="mailto:<?php echo esc_attr($email); ?>">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+
+        <div class="ya-app-language-card">
+            <div>
+                <i class="fa-solid fa-language"></i>
+                <span><?php echo esc_html(ya_t('language')); ?></span>
+            </div>
+
+            <div class="ya-app-language-options">
+                <?php foreach (ya_languages() as $code => $language_item) : ?>
+                    <a
+                        class="<?php echo $code === ya_lang() ? 'active' : ''; ?>"
+                        href="<?php echo esc_url(ya_url_lang($code)); ?>"
+                    >
+                        <span><?php echo esc_html($language_item['flag']); ?></span>
+                        <strong><?php echo esc_html($language_item['short']); ?></strong>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+</div>
 
 
 <!-- =========================================================

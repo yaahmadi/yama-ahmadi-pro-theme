@@ -1,6 +1,6 @@
 <?php
 /**
- * Yama Ahmadi Pro — Fully Multilingual Homepage
+ * Yama Ahmadi Pro v3.0.0 — Premium App Homepage
  * French / English / German
  */
 
@@ -232,6 +232,22 @@ $projects_url = ya_page('projets');
 ?>
 
 <section class="ya-hero ya-home-hero">
+
+    <video
+        class="ya-hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif"
+        aria-hidden="true"
+    >
+        <source
+            src="https://yamaahmadi.fr/wp-content/uploads/2024/11/Header-yama-Ahmadi-IT.mp4"
+            type="video/mp4"
+        >
+    </video>
     <div class="ya-hero-photo" aria-hidden="true"></div>
     <div class="ya-hero-overlay" aria-hidden="true"></div>
     <div class="ya-hero-mesh" aria-hidden="true"></div>
@@ -295,6 +311,25 @@ $projects_url = ya_page('projets');
             <span><i class="fa-solid fa-location-dot"></i><strong><?php echo esc_html($H['strip_field']); ?></strong> <?php echo esc_html($H['strip_france']); ?></span>
         </div>
     </div>
+
+    <a
+        class="ya-home-scroll-cue"
+        href="#ya-home-services"
+        aria-label="<?php
+            echo esc_attr(
+                $lang === 'en'
+                    ? 'Scroll to services'
+                    : (
+                        $lang === 'de'
+                            ? 'Zu den Services scrollen'
+                            : 'Faire défiler vers les services'
+                    )
+            );
+        ?>"
+    >
+        <span></span>
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
 </section>
 
 <section class="ya-home-trust">
@@ -316,7 +351,94 @@ $projects_url = ya_page('projets');
     </div>
 </section>
 
-<section class="ya-section ya-services-section">
+<section class="ya-home-app-actions" aria-label="<?php
+    echo esc_attr(
+        $lang === 'en'
+            ? 'Quick actions'
+            : (
+                $lang === 'de'
+                    ? 'Schnellaktionen'
+                    : 'Actions rapides'
+            )
+    );
+?>">
+    <div class="ya-shell ya-home-app-actions-grid">
+
+        <a href="<?php echo esc_url($services_url); ?>">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Explore services'
+                        : (
+                            $lang === 'de'
+                                ? 'Services ansehen'
+                                : 'Voir les services'
+                        )
+                );
+                ?>
+            </span>
+        </a>
+
+        <a href="<?php echo esc_url($quote_url); ?>">
+            <i class="fa-solid fa-file-signature"></i>
+            <span>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Request a quote'
+                        : (
+                            $lang === 'de'
+                                ? 'Angebot anfordern'
+                                : 'Demander un devis'
+                        )
+                );
+                ?>
+            </span>
+        </a>
+
+        <a href="<?php echo esc_url($contact_url); ?>">
+            <i class="fa-regular fa-message"></i>
+            <span>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Contact support'
+                        : (
+                            $lang === 'de'
+                                ? 'Support kontaktieren'
+                                : 'Contacter le support'
+                        )
+                );
+                ?>
+            </span>
+        </a>
+
+        <button
+            type="button"
+            data-ya-app-search-open
+        >
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Search'
+                        : (
+                            $lang === 'de'
+                                ? 'Suchen'
+                                : 'Rechercher'
+                        )
+                );
+                ?>
+            </span>
+        </button>
+
+    </div>
+</section>
+
+<section id="ya-home-services" class="ya-section ya-services-section">
     <div class="ya-shell">
         <div class="ya-section-head reveal">
             <span class="ya-kicker"><?php echo esc_html(ya_t('services')); ?></span>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Yama Ahmadi Pro — Fully Multilingual Inner Pages
+ * Yama Ahmadi Pro — Multilingual Premium Inner Pages v2.6.6
  * French / English / German
  */
 
@@ -460,6 +460,154 @@ while (have_posts()) :
     </div>
 </section>
 
+<section class="ya-section ya-service-extra-section">
+    <div class="ya-shell">
+
+        <div class="ya-section-head reveal">
+            <span class="ya-kicker">
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'ADDITIONAL CAPABILITIES'
+                        : (
+                            $lang === 'de'
+                                ? 'WEITERE LEISTUNGEN'
+                                : 'COMPÉTENCES COMPLÉMENTAIRES'
+                        )
+                );
+                ?>
+            </span>
+
+            <h2>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'More ways to support your users and sites'
+                        : (
+                            $lang === 'de'
+                                ? 'Weitere Unterstützung für Benutzer und Standorte'
+                                : 'Des services complémentaires pour vos utilisateurs et vos sites'
+                        )
+                );
+                ?>
+            </h2>
+
+            <p>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Fast assistance, on-site support, tailored solutions and reinforced security for day-to-day IT operations.'
+                        : (
+                            $lang === 'de'
+                                ? 'Schnelle Unterstützung, Vor-Ort-Support, individuelle Lösungen und verstärkte Sicherheit für den täglichen IT-Betrieb.'
+                                : 'Assistance rapide, support sur site, solutions personnalisées et sécurité renforcée pour vos opérations informatiques quotidiennes.'
+                        )
+                );
+                ?>
+            </p>
+        </div>
+
+        <div class="ya-card-grid ya-service-extra-grid">
+            <?php
+            $extra_services = [
+                [
+                    'rapid',
+                    'fa-bolt',
+                    $lang === 'en' ? 'Rapid Assistance' : ($lang === 'de' ? 'Schnelle Unterstützung' : 'Assistance rapide'),
+                    $lang === 'en'
+                        ? 'Fast diagnosis and first-response support for urgent user or equipment issues.'
+                        : ($lang === 'de'
+                            ? 'Schnelle Diagnose und Erstunterstützung bei dringenden Benutzer- oder Geräteproblemen.'
+                            : 'Diagnostic rapide et première prise en charge pour les incidents urgents liés aux utilisateurs ou aux équipements.')
+                ],
+                [
+                    'onsite',
+                    'fa-location-dot',
+                    $lang === 'en' ? 'On-site Support' : ($lang === 'de' ? 'Vor-Ort-Support' : 'Support sur site'),
+                    $lang === 'en'
+                        ? 'Professional field intervention for offices, stores, logistics and industrial environments.'
+                        : ($lang === 'de'
+                            ? 'Professionelle Vor-Ort-Einsätze für Büros, Geschäfte, Logistik und Industrie.'
+                            : 'Intervention terrain professionnelle pour bureaux, commerces, logistique et environnements industriels.')
+                ],
+                [
+                    'custom',
+                    'fa-sliders',
+                    $lang === 'en' ? 'Tailored IT Solutions' : ($lang === 'de' ? 'Individuelle IT-Lösungen' : 'Solutions personnalisées'),
+                    $lang === 'en'
+                        ? 'Solutions aligned with your users, equipment, locations and operational priorities.'
+                        : ($lang === 'de'
+                            ? 'Lösungen passend zu Benutzern, Geräten, Standorten und betrieblichen Prioritäten.'
+                            : 'Des solutions adaptées à vos utilisateurs, vos équipements, vos sites et vos priorités opérationnelles.')
+                ],
+                [
+                    'reinforced',
+                    'fa-shield',
+                    $lang === 'en' ? 'Reinforced Security' : ($lang === 'de' ? 'Verstärkte Sicherheit' : 'Sécurité renforcée'),
+                    $lang === 'en'
+                        ? 'Additional protection for accounts, endpoints, access and business data.'
+                        : ($lang === 'de'
+                            ? 'Zusätzlicher Schutz für Konten, Endgeräte, Zugriffe und Unternehmensdaten.'
+                            : 'Protection supplémentaire des comptes, postes, accès et données professionnelles.')
+                ],
+            ];
+
+            foreach ($extra_services as $i => $extra_service) :
+
+                $extra_url = function_exists('ya_service_article_url')
+                    ? ya_service_article_url($extra_service[0])
+                    : ya_page('services');
+
+                $extra_image = function_exists('ya_service_article_image')
+                    ? ya_service_article_image($extra_service[0], '')
+                    : '';
+            ?>
+                <article
+                    class="ya-premium-card ya-service-extra-card reveal"
+                    style="--delay:<?php echo esc_attr($i * 60); ?>ms"
+                >
+                    <?php if ($extra_image) : ?>
+                        <a
+                            class="ya-service-media"
+                            href="<?php echo esc_url($extra_url); ?>"
+                            aria-label="<?php echo esc_attr($extra_service[2]); ?>"
+                        >
+                            <img
+                                src="<?php echo esc_url($extra_image); ?>"
+                                alt="<?php echo esc_attr($extra_service[2]); ?>"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                            <span class="ya-service-media-overlay"></span>
+                        </a>
+                    <?php endif; ?>
+
+                    <div class="ya-card-icon">
+                        <i class="fa-solid <?php echo esc_attr($extra_service[1]); ?>"></i>
+                    </div>
+
+                    <h3>
+                        <a href="<?php echo esc_url($extra_url); ?>">
+                            <?php echo esc_html($extra_service[2]); ?>
+                        </a>
+                    </h3>
+
+                    <p><?php echo esc_html($extra_service[3]); ?></p>
+
+                    <a
+                        class="ya-service-readmore"
+                        href="<?php echo esc_url($extra_url); ?>"
+                    >
+                        <?php echo esc_html($L['buttons']['read_article']); ?>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+</section>
+
 <section class="ya-dark-feature ya-service-benefits">
     <div class="ya-shell">
         <div class="ya-section-head ya-section-head-light reveal">
@@ -643,11 +791,13 @@ while (have_posts()) :
                 <?php if (has_post_thumbnail()) : ?>
                     <?php the_post_thumbnail('large', ['class'=>'ya-about-photo','alt'=>'Yama Ahmadi']); ?>
                 <?php else : ?>
-                    <div class="ya-about-photo-placeholder">
-                        <i class="fa-solid fa-user-gear"></i>
-                        <span>Yama Ahmadi</span>
-                        <small><?php echo esc_html($L['badges'][0]); ?></small>
-                    </div>
+                    <img
+                        class="ya-about-photo"
+                        src="https://yamaahmadi.fr/wp-content/uploads/2024/11/IMG_7830-edited.jpg"
+                        alt="Yama Ahmadi"
+                        loading="eager"
+                        decoding="async"
+                    >
                 <?php endif; ?>
                 <span class="ya-about-status"><i class="fa-solid fa-circle"></i><?php echo esc_html($L['about']['status']); ?></span>
             </div>
@@ -656,6 +806,105 @@ while (have_posts()) :
                 <span><?php echo esc_html($L['about']['meta']); ?></span>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="ya-section ya-about-gallery-section">
+    <div class="ya-shell">
+
+        <div class="ya-section-head reveal">
+            <span class="ya-kicker">
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'FIELD EXPERIENCE'
+                        : (
+                            $lang === 'de'
+                                ? 'PRAXISERFAHRUNG'
+                                : 'EXPÉRIENCE TERRAIN'
+                        )
+                );
+                ?>
+            </span>
+
+            <h2>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'Technology, support and infrastructure in real environments'
+                        : (
+                            $lang === 'de'
+                                ? 'Technologie, Support und Infrastruktur in realen Umgebungen'
+                                : 'Technologie, support et infrastructure dans des environnements réels'
+                        )
+                );
+                ?>
+            </h2>
+
+            <p>
+                <?php
+                echo esc_html(
+                    $lang === 'en'
+                        ? 'A practical view of the services delivered across user support, networking, security and infrastructure.'
+                        : (
+                            $lang === 'de'
+                                ? 'Ein praxisnaher Einblick in Leistungen rund um Benutzersupport, Netzwerk, Sicherheit und Infrastruktur.'
+                                : 'Un aperçu concret des services réalisés autour du support utilisateurs, du réseau, de la sécurité et de l’infrastructure.'
+                        )
+                );
+                ?>
+            </p>
+        </div>
+
+        <div class="ya-about-media-grid">
+            <?php
+            $about_media = [
+                [
+                    function_exists('ya_service_article_image')
+                        ? ya_service_article_image('support', '')
+                        : '',
+                    $lang === 'en' ? 'User support' : ($lang === 'de' ? 'Benutzersupport' : 'Support utilisateurs')
+                ],
+                [
+                    function_exists('ya_service_article_image')
+                        ? ya_service_article_image('network', '')
+                        : '',
+                    $lang === 'en' ? 'Networks and Wi-Fi' : ($lang === 'de' ? 'Netzwerke und Wi-Fi' : 'Réseaux et Wi-Fi')
+                ],
+                [
+                    function_exists('ya_service_article_image')
+                        ? ya_service_article_image('security', '')
+                        : '',
+                    $lang === 'en' ? 'Cybersecurity' : ($lang === 'de' ? 'Cybersicherheit' : 'Cybersécurité')
+                ],
+                [
+                    function_exists('ya_service_article_image')
+                        ? ya_service_article_image('infra', '')
+                        : '',
+                    $lang === 'en' ? 'IT infrastructure' : ($lang === 'de' ? 'IT-Infrastruktur' : 'Infrastructure IT')
+                ],
+            ];
+
+            foreach ($about_media as $media) :
+                if (empty($media[0])) {
+                    continue;
+                }
+            ?>
+                <figure class="ya-about-media-card reveal">
+                    <img
+                        src="<?php echo esc_url($media[0]); ?>"
+                        alt="<?php echo esc_attr($media[1]); ?>"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                    <figcaption>
+                        <span><?php echo esc_html($media[1]); ?></span>
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                    </figcaption>
+                </figure>
+            <?php endforeach; ?>
+        </div>
+
     </div>
 </section>
 

@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '2.6.5');
+define('YA_VERSION', '3.0.0');
 
 /* =========================================================
    THEME SETUP
@@ -907,6 +907,12 @@ function ya_service_article_map() {
                 'Support informatique',
                 'Support IT',
             ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique-2.png',
+            ],
         ],
 
         'network' => [
@@ -921,6 +927,12 @@ function ya_service_article_map() {
                 'Réseaux Wi-Fi',
                 'Réseau Wi-Fi',
             ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Reseaux-Wi-Fi.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Reseaux-Wi-Fi.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Reseaux-Wi-Fi-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Reseaux-Wi-Fi-2.png',
+            ],
         ],
 
         'security' => [
@@ -932,6 +944,12 @@ function ya_service_article_map() {
             'titles' => [
                 'Cybersécurité',
                 'Sécurité informatique',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/cybersecurite-2.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/cybersecurite-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/cybersecurite-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/cybersecurite.png',
             ],
         ],
 
@@ -945,6 +963,11 @@ function ya_service_article_map() {
                 'Microsoft 365 & Cloud',
                 'Microsoft 365',
             ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/microsoft-365-1.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/microsoft-365-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/microsoft-365.png',
+            ],
         ],
 
         'infra' => [
@@ -956,6 +979,12 @@ function ya_service_article_map() {
             'titles' => [
                 'Infrastructure IT',
                 'Infrastructure informatique',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Infrastructure-IT.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Infrastructure-IT.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Infrastructure-IT-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Infrastructure-IT-1.png',
             ],
         ],
 
@@ -969,8 +998,152 @@ function ya_service_article_map() {
                 'Conseil & accompagnement',
                 'Conseil IT',
             ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Conseil-accompagnement.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Conseil-accompagnement.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Conseil-accompagnement-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Conseil-accompagnement-1.png',
+            ],
+        ],
+
+        'rapid' => [
+            'slugs' => [
+                'assistance-rapide',
+                'intervention-rapide',
+            ],
+            'titles' => [
+                'Assistance rapide',
+                'Intervention rapide',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/assistant-rapid.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/assistant-rapid.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/assistant-rapid-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/assistant-rapid-3.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/assitant-rapid-5.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Assitant-rapid-4.png',
+            ],
+        ],
+
+        'onsite' => [
+            'slugs' => [
+                'support-sur-site-2',
+                'support-sur-site',
+            ],
+            'titles' => [
+                'Support sur site',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/On-site-support-1.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/On-site-support-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/one-site-support-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/one-site-support-3.png',
+            ],
+        ],
+
+        'custom' => [
+            'slugs' => [
+                'solutions-informatiques-personnalisees',
+            ],
+            'titles' => [
+                'Solutions informatiques personnalisées',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Solutions-informatiques-personnalisees.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Solutions-informatiques-personnalisees.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Solutions-informatiques-personnalisees-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Solutions-informatiques-personnalisees-2.png',
+            ],
+        ],
+
+        'reliable' => [
+            'slugs' => [
+                'support-fiable',
+            ],
+            'titles' => [
+                'Support fiable',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-fiable.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-fiable.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-fiable-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-fiable-2.png',
+            ],
+        ],
+
+        'reinforced' => [
+            'slugs' => [
+                'securite-renforcee',
+            ],
+            'titles' => [
+                'Sécurité renforcée',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/Securite-renforcee-2.png',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Securite-renforcee-2.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Securite-renforcee-1.png',
+                'https://yamaahmadi.fr/wp-content/uploads/2026/07/Securite-renforcee.png',
+            ],
+        ],
+
+        'web' => [
+            'slugs' => [
+                'hebergement-web-developpement-de-sites-internet',
+            ],
+            'titles' => [
+                'Hébergement web & développement de sites internet',
+            ],
+            'image' => 'https://yamaahmadi.fr/wp-content/uploads/2025/12/network-support.webp',
+            'gallery' => [
+                'https://yamaahmadi.fr/wp-content/uploads/2025/12/network-support.webp',
+            ],
         ],
     ];
+}
+
+
+/*
+ * Returns the preferred media-library image explicitly mapped to a service.
+ */
+function ya_service_mapped_image($service_key, $fallback = '') {
+
+    $map = ya_service_article_map();
+    $service_key = sanitize_key($service_key);
+
+    if (
+        isset($map[$service_key]['image']) &&
+        $map[$service_key]['image']
+    ) {
+        return esc_url_raw($map[$service_key]['image']);
+    }
+
+    return $fallback;
+}
+
+
+/*
+ * Returns all mapped gallery images for richer service/about layouts.
+ */
+function ya_service_gallery($service_key) {
+
+    $map = ya_service_article_map();
+    $service_key = sanitize_key($service_key);
+
+    if (
+        empty($map[$service_key]['gallery']) ||
+        !is_array($map[$service_key]['gallery'])
+    ) {
+        return [];
+    }
+
+    return array_values(
+        array_filter(
+            array_map(
+                'esc_url_raw',
+                $map[$service_key]['gallery']
+            )
+        )
+    );
 }
 
 
@@ -1098,6 +1271,15 @@ function ya_service_article_image(
     $service_key,
     $fallback = ''
 ) {
+
+    $mapped = ya_service_mapped_image(
+        $service_key,
+        ''
+    );
+
+    if ($mapped) {
+        return $mapped;
+    }
 
     $post = ya_find_service_article($service_key);
 

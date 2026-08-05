@@ -6143,3 +6143,1421 @@ body.admin-bar .ya-site-header-shell{
 
 }
 
+/* =========================================================
+   YAMA AHMADI PRO v2.6.6
+   MEDIA HEROES + ABOUT GALLERY + ENHANCED SERVICE CARDS
+========================================================= */
+
+/* ---------- SHARED MEDIA HERO LAYERS ---------- */
+
+.ya-home-hero,
+.ya-universal-inner-hero{
+    isolation:isolate;
+}
+
+.ya-home-hero::before,
+.ya-universal-inner-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-4;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    transform:scale(1.025);
+}
+
+.ya-home-hero::after,
+.ya-universal-inner-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+}
+
+/*
+ * The GIF is the immediate homepage fallback.
+ * When front-page.php contains .ya-hero-video, the MP4 sits above this
+ * background and below the overlay/content.
+ */
+.ya-home-hero::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif");
+    background-position:center center;
+}
+
+.ya-home-hero::after{
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,13,17,.96) 0%,
+            rgba(3,20,25,.89) 38%,
+            rgba(3,25,30,.65) 68%,
+            rgba(3,20,25,.78) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(2,13,17,.14),
+            rgba(2,13,17,.76)
+        );
+}
+
+.ya-hero-video{
+    position:absolute;
+    inset:0;
+    z-index:-3;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    pointer-events:none;
+    filter:saturate(.82) contrast(1.05) brightness(.74);
+}
+
+.ya-hero-photo{
+    position:absolute;
+    inset:0;
+    z-index:-4;
+    background:
+        url("https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif")
+        center/cover no-repeat;
+}
+
+.ya-hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,13,17,.96),
+            rgba(3,21,25,.86) 44%,
+            rgba(3,24,29,.55) 72%,
+            rgba(2,13,17,.72)
+        );
+}
+
+.ya-home-hero .ya-hero-layout,
+.ya-home-hero .ya-hero-bottom,
+.ya-home-hero .ya-hero-mesh,
+.ya-home-hero .ya-hero-orb{
+    position:relative;
+    z-index:2;
+}
+
+/* ---------- INNER-PAGE IMAGE HERO MAPPING ---------- */
+
+.ya-inner-hero-a-propos::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2024/11/IMG_7830-edited.jpg");
+    background-position:72% 28%;
+}
+
+.ya-inner-hero-services::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique.png");
+}
+
+.ya-inner-hero-solutions::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Solutions-informatiques-personnalisees.png");
+}
+
+.ya-inner-hero-projets::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Infrastructure-IT.png");
+}
+
+.ya-inner-hero-contact::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2024/11/Helpdesk.jpg");
+}
+
+.ya-inner-hero-demander-un-devis::before{
+    background-image:
+        url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Conseil-accompagnement.png");
+}
+
+.ya-universal-inner-hero::after{
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,14,18,.97) 0%,
+            rgba(3,22,27,.91) 42%,
+            rgba(3,23,28,.67) 70%,
+            rgba(2,14,18,.78) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(2,12,16,.14),
+            rgba(2,12,16,.62)
+        );
+}
+
+.ya-universal-inner-hero .ya-inner-grid{
+    z-index:-1;
+    opacity:.55 !important;
+}
+
+.ya-universal-inner-hero .ya-inner-hero-in{
+    z-index:2 !important;
+}
+
+.ya-universal-inner-hero .ya-inner-copy{
+    padding:30px 0;
+}
+
+.ya-universal-inner-hero .ya-inner-copy > p{
+    color:#d1e3e0 !important;
+    text-shadow:0 2px 18px rgba(0,0,0,.32);
+}
+
+.ya-universal-inner-hero .ya-inner-copy h1{
+    text-shadow:0 5px 34px rgba(0,0,0,.35);
+}
+
+.ya-universal-inner-hero .ya-inner-visual{
+    display:none !important;
+}
+
+/* ---------- GLASS CONTENT ON MEDIA HEROES ---------- */
+
+.ya-home-hero .ya-hero-copy{
+    position:relative;
+    padding:34px 34px 32px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:26px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3,19,24,.78),
+            rgba(4,31,36,.53)
+        );
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.24),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+.ya-home-hero .ya-network-visual{
+    opacity:.94;
+    filter:drop-shadow(0 24px 50px rgba(0,0,0,.28));
+}
+
+/* ---------- HOME VIDEO PERFORMANCE ---------- */
+
+@media(max-width:820px){
+    .ya-hero-video{
+        display:none;
+    }
+
+    .ya-home-hero::before,
+    .ya-hero-photo{
+        background-image:
+            url("https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif");
+        background-position:center;
+    }
+
+    .ya-home-hero::after,
+    .ya-hero-overlay{
+        background:
+            linear-gradient(
+                180deg,
+                rgba(2,13,17,.91),
+                rgba(3,20,25,.88)
+            );
+    }
+
+    .ya-home-hero .ya-hero-copy{
+        padding:26px 22px;
+        border-radius:21px;
+    }
+}
+
+/* ---------- SERVICE IMAGE CARDS ---------- */
+
+.ya-services-showcase{
+    gap:28px !important;
+}
+
+.ya-service-showcase-card{
+    overflow:hidden;
+    border-radius:24px !important;
+    border:1px solid #d8e9e5 !important;
+    background:#fff !important;
+    box-shadow:0 18px 55px rgba(7,65,59,.07);
+    transition:
+        transform .38s var(--ya-ease),
+        box-shadow .38s var(--ya-ease),
+        border-color .38s var(--ya-ease);
+}
+
+.ya-service-showcase-card:hover{
+    transform:translateY(-10px);
+    border-color:#9edacb !important;
+    box-shadow:0 32px 78px rgba(6,63,58,.15);
+}
+
+.ya-service-showcase-media{
+    position:relative;
+    min-height:320px !important;
+    overflow:hidden;
+}
+
+.ya-service-showcase-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:
+        transform .75s var(--ya-ease),
+        filter .55s var(--ya-ease);
+}
+
+.ya-service-showcase-card:hover
+.ya-service-showcase-media img{
+    transform:scale(1.075);
+    filter:saturate(1.08) contrast(1.03);
+}
+
+.ya-service-showcase-overlay{
+    background:
+        linear-gradient(
+            180deg,
+            transparent 25%,
+            rgba(3,24,28,.16) 56%,
+            rgba(3,22,27,.78) 100%
+        ) !important;
+}
+
+.ya-service-showcase-number,
+.ya-service-showcase-icon{
+    transition:
+        transform .35s var(--ya-ease),
+        background .35s,
+        color .35s;
+}
+
+.ya-service-showcase-card:hover
+.ya-service-showcase-number{
+    transform:translateY(-4px);
+}
+
+.ya-service-showcase-card:hover
+.ya-service-showcase-icon{
+    transform:translateY(-5px) rotate(-5deg) scale(1.06);
+}
+
+.ya-service-showcase-content{
+    padding:30px 30px 32px !important;
+}
+
+.ya-service-showcase-content h3{
+    font-size:clamp(22px,2vw,30px) !important;
+}
+
+.ya-service-showcase-link{
+    position:relative;
+    overflow:hidden;
+}
+
+.ya-service-showcase-link i{
+    transition:transform .25s var(--ya-ease);
+}
+
+.ya-service-showcase-link:hover i{
+    transform:translateX(5px);
+}
+
+/* ---------- ADDITIONAL SERVICES ---------- */
+
+.ya-service-extra-section{
+    position:relative;
+    background:
+        radial-gradient(
+            circle at 8% 10%,
+            rgba(89,224,173,.08),
+            transparent 24%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fcfb,
+            #eef7f5
+        );
+}
+
+.ya-service-extra-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+}
+
+.ya-service-extra-card{
+    padding:0 0 26px !important;
+    border-radius:21px !important;
+}
+
+.ya-service-extra-card .ya-service-media{
+    display:block;
+    position:relative;
+    height:205px;
+    margin:0 0 25px;
+    overflow:hidden;
+    border-radius:20px 20px 0 0;
+}
+
+.ya-service-extra-card .ya-service-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:
+        transform .65s var(--ya-ease),
+        filter .45s;
+}
+
+.ya-service-extra-card:hover
+.ya-service-media img{
+    transform:scale(1.08);
+    filter:saturate(1.08);
+}
+
+.ya-service-extra-card .ya-card-icon,
+.ya-service-extra-card h3,
+.ya-service-extra-card p,
+.ya-service-extra-card .ya-service-readmore{
+    margin-left:25px;
+    margin-right:25px;
+}
+
+.ya-service-extra-card h3{
+    font-size:18px;
+    margin-top:18px;
+}
+
+.ya-service-extra-card p{
+    min-height:88px;
+}
+
+.ya-service-extra-card .ya-service-readmore{
+    width:calc(100% - 50px);
+    justify-content:space-between;
+    padding-top:12px;
+    border-top:1px solid #edf3f1;
+}
+
+/* ---------- ABOUT PROFILE ---------- */
+
+.ya-about-profile-visual{
+    position:relative;
+    overflow:hidden;
+    border-radius:27px;
+    background:#08272d;
+    box-shadow:0 32px 85px rgba(5,58,54,.17);
+}
+
+.ya-about-photo{
+    display:block;
+    width:100%;
+    height:590px;
+    object-fit:cover;
+    object-position:center 18%;
+    transition:
+        transform .75s var(--ya-ease),
+        filter .55s;
+}
+
+.ya-about-profile:hover .ya-about-photo{
+    transform:scale(1.035);
+    filter:saturate(1.04);
+}
+
+.ya-about-profile-visual::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(2,15,19,.62)
+        );
+}
+
+.ya-about-status{
+    z-index:2;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+}
+
+/* ---------- ABOUT MEDIA GALLERY ---------- */
+
+.ya-about-gallery-section{
+    position:relative;
+    background:
+        linear-gradient(
+            180deg,
+            #f5faf9,
+            #edf6f4
+        );
+}
+
+.ya-about-media-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:235px;
+    gap:18px;
+}
+
+.ya-about-media-card{
+    position:relative;
+    overflow:hidden;
+    margin:0;
+    border-radius:22px;
+    border:1px solid #d7e8e4;
+    background:#08272d;
+    box-shadow:0 17px 48px rgba(6,58,54,.08);
+    isolation:isolate;
+}
+
+.ya-about-media-card:nth-child(1){
+    grid-column:span 7;
+    grid-row:span 2;
+}
+
+.ya-about-media-card:nth-child(2){
+    grid-column:span 5;
+}
+
+.ya-about-media-card:nth-child(3){
+    grid-column:span 5;
+}
+
+.ya-about-media-card:nth-child(4){
+    grid-column:span 12;
+}
+
+.ya-about-media-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:
+        transform .75s var(--ya-ease),
+        filter .55s;
+}
+
+.ya-about-media-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 48%,
+            rgba(2,18,22,.82)
+        );
+}
+
+.ya-about-media-card:hover img{
+    transform:scale(1.075);
+    filter:saturate(1.08) contrast(1.03);
+}
+
+.ya-about-media-card figcaption{
+    position:absolute;
+    z-index:2;
+    left:22px;
+    right:22px;
+    bottom:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    color:#fff;
+    font:700 15px/1.25 Manrope,Inter,sans-serif;
+}
+
+.ya-about-media-card figcaption i{
+    width:38px;
+    height:38px;
+    flex:0 0 38px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.20);
+    background:rgba(4,28,32,.50);
+    color:var(--ya-mint);
+    backdrop-filter:blur(8px);
+    transition:
+        transform .35s var(--ya-ease),
+        background .35s,
+        color .35s;
+}
+
+.ya-about-media-card:hover figcaption i{
+    transform:rotate(45deg);
+    background:var(--ya-mint);
+    color:#05231b;
+}
+
+/* ---------- SUBTLE CARD TILT ---------- */
+
+@media(hover:hover) and (pointer:fine){
+
+    .ya-service-extra-card:hover,
+    .ya-about-media-card:hover{
+        transform:translateY(-8px);
+    }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:1120px){
+
+    .ya-service-extra-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .ya-about-photo{
+        height:520px;
+    }
+}
+
+@media(max-width:820px){
+
+    .ya-universal-inner-hero::before{
+        background-position:center;
+    }
+
+    .ya-inner-hero-a-propos::before{
+        background-position:64% 24%;
+    }
+
+    .ya-universal-inner-hero::after{
+        background:
+            linear-gradient(
+                180deg,
+                rgba(2,14,18,.89),
+                rgba(2,14,18,.86)
+            );
+    }
+
+    .ya-universal-inner-hero .ya-inner-copy{
+        padding:18px 0;
+    }
+
+    .ya-about-media-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:230px;
+    }
+
+    .ya-about-media-card:nth-child(n){
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .ya-about-media-card:nth-child(1),
+    .ya-about-media-card:nth-child(4){
+        grid-column:span 2;
+    }
+
+    .ya-service-showcase-media{
+        min-height:260px !important;
+    }
+
+    .ya-about-photo{
+        height:500px;
+    }
+}
+
+@media(max-width:560px){
+
+    .ya-home-hero .ya-hero-copy{
+        padding:23px 18px;
+        border-radius:18px;
+    }
+
+    .ya-service-extra-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ya-service-extra-card p{
+        min-height:0;
+    }
+
+    .ya-service-showcase-media{
+        min-height:225px !important;
+    }
+
+    .ya-service-showcase-content{
+        padding:25px 21px 27px !important;
+    }
+
+    .ya-about-photo{
+        height:430px;
+    }
+
+    .ya-about-media-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:230px;
+        gap:13px;
+    }
+
+    .ya-about-media-card:nth-child(n){
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .ya-about-media-card figcaption{
+        left:17px;
+        right:17px;
+        bottom:15px;
+        font-size:13px;
+    }
+}
+
+/* ---------- ACCESSIBILITY / DATA SAVING ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+    .ya-hero-video{
+        display:none !important;
+    }
+
+    .ya-home-hero::before{
+        background-image:
+            url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique.png");
+    }
+
+    .ya-about-photo,
+    .ya-about-media-card img,
+    .ya-service-showcase-media img,
+    .ya-service-extra-card .ya-service-media img{
+        transform:none !important;
+    }
+}
+
+@media(prefers-reduced-data:reduce){
+
+    .ya-hero-video{
+        display:none !important;
+    }
+
+    .ya-home-hero::before{
+        background-image:
+            url("https://yamaahmadi.fr/wp-content/uploads/2026/07/Support-Informatique.png");
+    }
+}
+
+/* =========================================================
+   YAMA AHMADI PRO v3.0.0
+   PWA APP SHELL + MOBILE BOTTOM NAVIGATION
+========================================================= */
+
+:root{
+    --ya-app-nav-height:78px;
+    --ya-app-safe-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* ---------- APP QUICK ACTIONS ---------- */
+
+.ya-home-app-actions{
+    position:relative;
+    z-index:5;
+    background:#fff;
+    border-bottom:1px solid #e3efec;
+}
+
+.ya-home-app-actions-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:#e6efed;
+    border-left:1px solid #e6efed;
+    border-right:1px solid #e6efed;
+}
+
+.ya-home-app-actions a,
+.ya-home-app-actions button{
+    min-height:104px;
+    border:0;
+    background:#fff;
+    color:#17383d;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:11px;
+    cursor:pointer;
+    transition:
+        transform .28s var(--ya-ease),
+        background .28s,
+        color .28s;
+}
+
+.ya-home-app-actions i{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:#e9faf5;
+    color:#148f72;
+    font-size:18px;
+    transition:.28s;
+}
+
+.ya-home-app-actions span{
+    font-size:11px;
+    font-weight:750;
+}
+
+.ya-home-app-actions a:hover,
+.ya-home-app-actions button:hover{
+    background:#f7fbfa;
+    transform:translateY(-3px);
+}
+
+.ya-home-app-actions a:hover i,
+.ya-home-app-actions button:hover i{
+    transform:scale(1.08) rotate(-4deg);
+    background:var(--ya-mint);
+    color:#05231b;
+}
+
+/* ---------- HERO SCROLL CUE ---------- */
+
+.ya-home-scroll-cue{
+    position:absolute;
+    z-index:5;
+    left:50%;
+    bottom:70px;
+    transform:translateX(-50%);
+    width:38px;
+    height:58px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#d9ece8;
+    opacity:.72;
+    transition:.25s;
+}
+
+.ya-home-scroll-cue span{
+    width:20px;
+    height:31px;
+    border:1px solid rgba(255,255,255,.38);
+    border-radius:999px;
+    position:relative;
+}
+
+.ya-home-scroll-cue span::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:7px;
+    width:3px;
+    height:7px;
+    border-radius:999px;
+    background:var(--ya-mint);
+    transform:translateX(-50%);
+    animation:yaScrollDot 1.7s ease-in-out infinite;
+}
+
+.ya-home-scroll-cue i{
+    font-size:10px;
+}
+
+.ya-home-scroll-cue:hover{
+    opacity:1;
+    color:var(--ya-mint);
+}
+
+@keyframes yaScrollDot{
+    0%,100%{transform:translate(-50%,0);opacity:.45}
+    50%{transform:translate(-50%,9px);opacity:1}
+}
+
+/* ---------- BOTTOM APP NAV ---------- */
+
+.ya-app-bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:11500;
+    display:none;
+    grid-template-columns:repeat(5,1fr);
+    align-items:end;
+    min-height:calc(var(--ya-app-nav-height) + var(--ya-app-safe-bottom));
+    padding:
+        7px
+        8px
+        calc(8px + var(--ya-app-safe-bottom));
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4,20,25,.93),
+            rgba(2,13,17,.985)
+        );
+    border-top:1px solid rgba(255,255,255,.10);
+    box-shadow:0 -18px 55px rgba(0,0,0,.28);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+}
+
+.ya-app-bottom-nav > a,
+.ya-app-bottom-nav > button{
+    position:relative;
+    min-width:0;
+    min-height:56px;
+    border:0;
+    background:transparent;
+    color:#87a7a2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:7px 4px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:
+        color .25s,
+        background .25s,
+        transform .25s;
+}
+
+.ya-app-bottom-nav > a > i,
+.ya-app-bottom-nav > button > i{
+    font-size:18px;
+}
+
+.ya-app-bottom-nav > a > span,
+.ya-app-bottom-nav > button > span{
+    max-width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:8px;
+    font-weight:750;
+    letter-spacing:.02em;
+}
+
+.ya-app-bottom-nav > a.active,
+.ya-app-bottom-nav > a[aria-current="page"]{
+    color:var(--ya-mint);
+    background:rgba(89,224,173,.07);
+}
+
+.ya-app-bottom-nav > a.active::before,
+.ya-app-bottom-nav > a[aria-current="page"]::before{
+    content:"";
+    position:absolute;
+    top:2px;
+    width:22px;
+    height:2px;
+    border-radius:999px;
+    background:var(--ya-mint);
+    box-shadow:0 0 12px rgba(89,224,173,.55);
+}
+
+/* ---------- CENTER SEARCH ACTION ---------- */
+
+.ya-app-bottom-nav .ya-app-nav-primary{
+    overflow:visible;
+    transform:translateY(-14px);
+}
+
+.ya-app-bottom-nav .ya-app-nav-primary:hover{
+    transform:translateY(-17px);
+}
+
+.ya-app-nav-primary-icon{
+    width:58px;
+    height:58px;
+    border-radius:21px;
+    display:grid;
+    place-items:center;
+    background:
+        linear-gradient(
+            145deg,
+            var(--ya-mint),
+            #3fcfa1
+        );
+    color:#05231b;
+    font-size:20px;
+    border:4px solid #031116;
+    box-shadow:
+        0 14px 34px rgba(48,199,150,.34),
+        inset 0 1px 0 rgba(255,255,255,.30);
+}
+
+.ya-app-bottom-nav .ya-app-nav-primary > span:last-child{
+    color:#a8c2be;
+    margin-top:1px;
+}
+
+/* ---------- APP SHEET BASE ---------- */
+
+.ya-app-search,
+.ya-app-more{
+    position:fixed;
+    inset:0;
+    z-index:12000;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s var(--ya-ease),visibility .25s;
+}
+
+.ya-app-search.open,
+.ya-app-more.open{
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+}
+
+.ya-app-sheet-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(1,9,11,.72);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+}
+
+.ya-app-sheet{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:min(640px,100%);
+    max-height:min(82vh,760px);
+    overflow:auto;
+    transform:translate(-50%,105%);
+    padding:
+        13px
+        20px
+        calc(24px + var(--ya-app-safe-bottom));
+    border-radius:28px 28px 0 0;
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(89,224,173,.09),
+            transparent 26%
+        ),
+        #f8fcfb;
+    color:#17383d;
+    box-shadow:0 -30px 100px rgba(0,0,0,.34);
+    transition:transform .34s var(--ya-ease);
+}
+
+.ya-app-search.open .ya-app-sheet,
+.ya-app-more.open .ya-app-sheet{
+    transform:translate(-50%,0);
+}
+
+.ya-app-sheet-handle{
+    width:48px;
+    height:5px;
+    margin:0 auto 18px;
+    border-radius:999px;
+    background:#cfddda;
+}
+
+.ya-app-sheet-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.ya-app-sheet-head h2{
+    margin:7px 0 0;
+    color:var(--ya-ink);
+    font:800 clamp(25px,6vw,36px)/1.08 Manrope,Inter,sans-serif;
+    letter-spacing:-.04em;
+}
+
+.ya-app-sheet-close{
+    flex:0 0 42px;
+    width:42px;
+    height:42px;
+    border:1px solid #d8e7e4;
+    border-radius:13px;
+    background:#fff;
+    color:#17383d;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.ya-app-sheet-close:hover{
+    background:#e9faf5;
+    border-color:#a8dccf;
+    color:#12886c;
+    transform:rotate(5deg);
+}
+
+/* ---------- SEARCH SHEET ---------- */
+
+.ya-app-search-form{
+    position:relative;
+    display:grid;
+    grid-template-columns:22px 1fr;
+    align-items:center;
+    gap:10px;
+    min-height:58px;
+    padding:0 17px;
+    margin-bottom:23px;
+    border:1px solid #d5e5e2;
+    border-radius:17px;
+    background:#fff;
+    box-shadow:0 12px 34px rgba(10,72,66,.06);
+}
+
+.ya-app-search-form > i{
+    color:#148d70;
+    font-size:17px;
+}
+
+.ya-app-search-form input{
+    width:100%;
+    height:56px;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#17383d;
+    font-size:14px;
+}
+
+.ya-app-search-form input::placeholder{
+    color:#8ca19e;
+}
+
+.ya-app-search-suggestions h3{
+    margin:0 0 11px;
+    color:#6b8582;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+}
+
+.ya-app-search-suggestions{
+    display:grid;
+    gap:9px;
+}
+
+.ya-app-search-suggestions > a{
+    display:grid;
+    grid-template-columns:43px 1fr 22px;
+    align-items:center;
+    gap:12px;
+    min-height:60px;
+    padding:9px 12px;
+    border:1px solid #dfece9;
+    border-radius:15px;
+    background:#fff;
+    transition:.25s;
+}
+
+.ya-app-search-suggestions > a > i:first-child{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:#e9faf5;
+    color:#148d70;
+}
+
+.ya-app-search-suggestions > a > span{
+    font-size:12px;
+    font-weight:720;
+    color:#214348;
+}
+
+.ya-app-search-suggestions > a > i:last-child{
+    color:#9bb0ad;
+    font-size:11px;
+    transition:.25s;
+}
+
+.ya-app-search-suggestions > a:hover{
+    transform:translateX(4px);
+    border-color:#a8dccf;
+    box-shadow:0 13px 32px rgba(10,72,66,.07);
+}
+
+.ya-app-search-suggestions > a:hover > i:last-child{
+    transform:translateX(4px);
+    color:#148d70;
+}
+
+/* ---------- MORE SHEET ---------- */
+
+.ya-app-more-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:11px;
+    margin-bottom:19px;
+}
+
+.ya-app-more-grid > a{
+    min-height:104px;
+    padding:14px 10px;
+    border:1px solid #dce9e6;
+    border-radius:17px;
+    background:#fff;
+    color:#23464b;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:11px;
+    text-align:center;
+    box-shadow:0 10px 28px rgba(10,70,65,.04);
+    transition:.28s var(--ya-ease);
+}
+
+.ya-app-more-grid > a i{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:#e9faf5;
+    color:#158d71;
+    font-size:17px;
+    transition:.28s;
+}
+
+.ya-app-more-grid > a span{
+    font-size:10px;
+    font-weight:750;
+    line-height:1.3;
+}
+
+.ya-app-more-grid > a:hover{
+    transform:translateY(-5px);
+    border-color:#9ed7c9;
+    box-shadow:0 18px 40px rgba(9,70,64,.09);
+}
+
+.ya-app-more-grid > a:hover i{
+    transform:scale(1.08) rotate(-4deg);
+    background:var(--ya-mint);
+    color:#05231b;
+}
+
+.ya-app-language-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    border:1px solid #dce9e6;
+    border-radius:17px;
+    background:#fff;
+}
+
+.ya-app-language-card > div:first-child{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#284b50;
+    font-size:11px;
+    font-weight:750;
+}
+
+.ya-app-language-card > div:first-child i{
+    color:#148d70;
+}
+
+.ya-app-language-options{
+    display:flex;
+    gap:7px;
+}
+
+.ya-app-language-options a{
+    min-width:48px;
+    height:38px;
+    padding:0 8px;
+    border:1px solid #dbe8e5;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#607b78;
+    font-size:9px;
+    font-weight:800;
+}
+
+.ya-app-language-options a.active{
+    background:#e8faf4;
+    border-color:#9bd8c8;
+    color:#117f66;
+}
+
+/* ---------- STANDALONE PWA BEHAVIOR ---------- */
+
+.ya-standalone .ya-app-bottom-nav{
+    display:grid;
+}
+
+.ya-standalone body{
+    padding-bottom:
+        calc(
+            var(--ya-app-nav-height) +
+            var(--ya-app-safe-bottom)
+        );
+}
+
+.ya-standalone .ya-footer{
+    padding-bottom:
+        calc(
+            var(--ya-app-nav-height) +
+            var(--ya-app-safe-bottom)
+        );
+}
+
+.ya-standalone .ya-back-top{
+    bottom:
+        calc(
+            var(--ya-app-nav-height) +
+            var(--ya-app-safe-bottom) +
+            14px
+        );
+}
+
+/*
+ * Browser preview support:
+ * On small screens the app navigation is shown after JS initializes,
+ * making it possible to test before reinstalling the PWA.
+ */
+@media(max-width:760px){
+    .ya-app-shell-ready .ya-app-bottom-nav{
+        display:grid;
+    }
+
+    .ya-app-shell-ready body{
+        padding-bottom:
+            calc(
+                var(--ya-app-nav-height) +
+                var(--ya-app-safe-bottom)
+            );
+    }
+
+    .ya-app-shell-ready .ya-footer{
+        padding-bottom:
+            calc(
+                var(--ya-app-nav-height) +
+                var(--ya-app-safe-bottom)
+            );
+    }
+
+    .ya-app-shell-ready .ya-back-top{
+        bottom:
+            calc(
+                var(--ya-app-nav-height) +
+                var(--ya-app-safe-bottom) +
+                14px
+            );
+    }
+}
+
+/* ---------- MOBILE POLISH ---------- */
+
+@media(max-width:760px){
+
+    .ya-home-app-actions-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .ya-home-app-actions a,
+    .ya-home-app-actions button{
+        min-height:92px;
+    }
+
+    .ya-home-scroll-cue{
+        display:none;
+    }
+
+    .ya-topbar{
+        display:none;
+    }
+
+    #ya-header.ya-header{
+        top:0 !important;
+    }
+
+    .ya-app-sheet{
+        max-height:88vh;
+        padding-left:16px;
+        padding-right:16px;
+    }
+}
+
+@media(max-width:430px){
+
+    .ya-app-bottom-nav{
+        padding-left:4px;
+        padding-right:4px;
+    }
+
+    .ya-app-bottom-nav > a,
+    .ya-app-bottom-nav > button{
+        padding-left:2px;
+        padding-right:2px;
+    }
+
+    .ya-app-nav-primary-icon{
+        width:55px;
+        height:55px;
+    }
+
+    .ya-app-more-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .ya-app-language-card{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .ya-app-language-options{
+        width:100%;
+    }
+
+    .ya-app-language-options a{
+        flex:1;
+    }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+    .ya-home-scroll-cue span::after{
+        animation:none !important;
+    }
+
+    .ya-app-sheet,
+    .ya-app-search,
+    .ya-app-more{
+        transition:none !important;
+    }
+
+    .ya-app-bottom-nav .ya-app-nav-primary:hover,
+    .ya-app-more-grid > a:hover,
+    .ya-home-app-actions a:hover,
+    .ya-home-app-actions button:hover{
+        transform:none !important;
+    }
+}
