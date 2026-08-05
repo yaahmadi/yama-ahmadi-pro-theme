@@ -464,3 +464,920 @@
         margin-top:34px !important;
     }
 }
+/* =========================================================
+   YAMA AHMADI — PHASE 2 PREMIUM HOMEPAGE
+========================================================= */
+
+/* ---------- GLOBAL MOTION POLISH ---------- */
+
+.ya-premium-card,
+.ya-project-card,
+.ya-tech-chip,
+.ya-home-trust-item,
+.ya-stat-grid > div,
+.ya-store,
+.ya-btn,
+.ya-post-card{
+    transition:
+        transform .32s var(--ya-ease),
+        box-shadow .32s var(--ya-ease),
+        border-color .32s var(--ya-ease),
+        background .32s var(--ya-ease),
+        color .32s var(--ya-ease);
+}
+
+/* ---------- HERO ORBS ---------- */
+
+.ya-hero-orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(6px);
+    pointer-events:none;
+    opacity:.5;
+}
+
+.ya-hero-orb-one{
+    width:360px;
+    height:360px;
+    right:8%;
+    top:8%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(66,228,209,.18),
+            transparent 68%
+        );
+    animation:yaOrbFloat 9s ease-in-out infinite;
+}
+
+.ya-hero-orb-two{
+    width:260px;
+    height:260px;
+    left:10%;
+    bottom:5%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(89,224,173,.11),
+            transparent 70%
+        );
+    animation:yaOrbFloat 11s ease-in-out infinite reverse;
+}
+
+@keyframes yaOrbFloat{
+    50%{
+        transform:translate3d(0,-20px,0) scale(1.05);
+    }
+}
+
+/* ---------- TRUST STRIP ---------- */
+
+.ya-home-trust{
+    position:relative;
+    z-index:4;
+
+    background:#fff;
+
+    border-bottom:1px solid #e2eeeb;
+}
+
+.ya-home-trust-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    min-height:104px;
+}
+
+.ya-home-trust-item{
+    display:grid;
+
+    grid-template-columns:44px 1fr;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:22px 24px;
+
+    border-right:1px solid #e7efed;
+}
+
+.ya-home-trust-item:first-child{
+    border-left:1px solid #e7efed;
+}
+
+.ya-home-trust-item > i{
+    width:44px;
+    height:44px;
+
+    border-radius:13px;
+
+    display:grid;
+    place-items:center;
+
+    color:#168f72;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e6fbf4,
+            #f7fffc
+        );
+
+    border:1px solid #d7f0e9;
+
+    font-size:17px;
+}
+
+.ya-home-trust-item div{
+    min-width:0;
+}
+
+.ya-home-trust-item strong{
+    display:block;
+
+    color:#12343a;
+
+    font-size:13px;
+    line-height:1.25;
+}
+
+.ya-home-trust-item span{
+    display:block;
+
+    margin-top:4px;
+
+    color:#728b88;
+
+    font-size:10px;
+    line-height:1.35;
+}
+
+.ya-home-trust-item:hover{
+    background:#f8fcfb;
+}
+
+.ya-home-trust-item:hover > i{
+    transform:scale(1.08) rotate(-3deg);
+}
+
+/* ---------- SERVICE CARDS ---------- */
+
+.ya-home-service-card{
+    min-height:275px;
+
+    padding:30px 28px 27px;
+
+    isolation:isolate;
+}
+
+.ya-home-service-card:after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-70px;
+    bottom:-80px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(89,224,173,.17),
+            transparent 68%
+        );
+
+    opacity:0;
+
+    transition:.35s var(--ya-ease);
+
+    z-index:-1;
+}
+
+.ya-home-service-card:hover{
+    transform:
+        translateY(-10px)
+        scale(1.01);
+
+    border-color:#a5ddce;
+
+    box-shadow:
+        0 28px 70px rgba(9,71,64,.12);
+}
+
+.ya-home-service-card:hover:after{
+    opacity:1;
+}
+
+.ya-card-number{
+    position:absolute;
+
+    right:22px;
+    top:18px;
+
+    color:#d8ebe6;
+
+    font:800 30px/1 Manrope,Inter,sans-serif;
+
+    letter-spacing:-.04em;
+
+    transition:.3s;
+}
+
+.ya-home-service-card:hover .ya-card-number{
+    color:#a8dfd0;
+
+    transform:translateY(-3px);
+}
+
+.ya-home-service-card .ya-card-icon{
+    transition:
+        transform .3s var(--ya-ease),
+        box-shadow .3s,
+        background .3s;
+}
+
+.ya-home-service-card:hover .ya-card-icon{
+    transform:
+        translateY(-4px)
+        rotate(-4deg)
+        scale(1.07);
+
+    background:
+        linear-gradient(
+            145deg,
+            #d9f9ee,
+            #f4fffb
+        );
+
+    box-shadow:
+        0 14px 32px rgba(46,181,143,.16);
+}
+
+.ya-home-service-card h3{
+    font-size:19px;
+}
+
+.ya-home-service-card > a{
+    margin-top:13px;
+
+    padding-top:10px;
+
+    border-top:1px solid #edf3f1;
+
+    width:100%;
+
+    justify-content:space-between;
+}
+
+/* ---------- WHY SECTION ---------- */
+
+.ya-home-why:before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(89,224,173,.025) 45%,
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.ya-why-points{
+    display:grid;
+
+    gap:10px;
+
+    margin-top:24px;
+}
+
+.ya-why-points span{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#d8e9e6;
+
+    font-size:12px;
+}
+
+.ya-why-points i{
+    color:var(--ya-mint);
+}
+
+.ya-home-why .ya-stat-grid > div{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.ya-home-why .ya-stat-grid > div:before{
+    content:"";
+
+    position:absolute;
+
+    inset:auto -35px -55px auto;
+
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(89,224,173,.13),
+            transparent 70%
+        );
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.ya-home-why .ya-stat-grid > div:hover:before{
+    opacity:1;
+}
+
+.ya-home-why .ya-stat-grid strong{
+    position:relative;
+
+    z-index:2;
+}
+
+/* ---------- TECHNOLOGY CHIPS ---------- */
+
+.ya-technology-section{
+    background:
+        linear-gradient(
+            180deg,
+            #f8fcfb,
+            #eff8f6
+        );
+}
+
+.ya-tech-chip{
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:82px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:17px 18px;
+
+    border:1px solid #dceae7;
+
+    border-radius:15px;
+
+    background:#fff;
+
+    color:#254a4f;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 10px 30px rgba(11,70,64,.035);
+}
+
+.ya-tech-chip:after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(89,224,173,.11),
+            transparent
+        );
+
+    transform:translateX(-120%);
+
+    transition:.55s var(--ya-ease);
+}
+
+.ya-tech-chip:hover{
+    transform:
+        translateY(-7px);
+
+    border-color:#acdacc;
+
+    box-shadow:
+        0 20px 48px rgba(10,79,69,.10);
+}
+
+.ya-tech-chip:hover:after{
+    transform:translateX(120%);
+}
+
+.ya-tech-icon{
+    position:relative;
+    z-index:2;
+
+    width:40px;
+    height:40px;
+
+    border-radius:12px;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#14896e;
+
+    background:#e9faf5;
+
+    border:1px solid #d9f1ea;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.ya-tech-chip:hover .ya-tech-icon{
+    transform:
+        rotate(-5deg)
+        scale(1.08);
+
+    background:#ddf8ef;
+}
+
+.ya-tech-chip > span:last-child{
+    position:relative;
+    z-index:2;
+}
+
+/* ---------- PROJECT CARDS ---------- */
+
+.ya-home-project-card{
+    position:relative;
+
+    min-height:245px;
+
+    overflow:hidden;
+}
+
+.ya-home-project-card:before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(89,224,173,.08),
+            transparent 42%
+        );
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.ya-home-project-card:hover{
+    transform:
+        translateY(-9px);
+
+    box-shadow:
+        0 28px 65px rgba(7,61,58,.12);
+}
+
+.ya-home-project-card:hover:before{
+    opacity:1;
+}
+
+.ya-project-top{
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:18px;
+}
+
+.ya-home-project-card .ya-project-arrow{
+    position:static;
+
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#188d73;
+
+    background:#edf9f6;
+
+    border:1px solid #d7eee8;
+
+    transition:.3s;
+}
+
+.ya-home-project-card:hover .ya-project-arrow{
+    transform:
+        rotate(45deg)
+        scale(1.08);
+
+    background:var(--ya-mint);
+
+    color:#04231b;
+}
+
+.ya-home-project-card h3,
+.ya-home-project-card small,
+.ya-home-project-card p{
+    position:relative;
+
+    z-index:2;
+}
+
+/* ---------- PARTNER MARQUEE ---------- */
+
+.ya-partner-band{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #04181d,
+            #031116
+        );
+
+    color:#fff;
+
+    padding:58px 0 62px;
+}
+
+.ya-partner-title{
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.ya-partner-title p{
+    color:#94b1ad;
+
+    font-size:12px;
+}
+
+.ya-marquee{
+    position:relative;
+
+    width:100%;
+
+    overflow:hidden;
+}
+
+.ya-marquee-track{
+    width:max-content;
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    animation:
+        yaPartnerScroll
+        34s
+        linear
+        infinite;
+}
+
+.ya-marquee:hover .ya-marquee-track{
+    animation-play-state:paused;
+}
+
+@keyframes yaPartnerScroll{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+.ya-partner-logo{
+    min-width:180px;
+    height:72px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    padding:0 22px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:#839f9b;
+
+    font-size:12px;
+
+    letter-spacing:.05em;
+
+    filter:grayscale(1);
+
+    transition:
+        transform .3s var(--ya-ease),
+        color .3s,
+        background .3s,
+        border-color .3s,
+        filter .3s;
+}
+
+.ya-partner-logo i{
+    font-size:19px;
+
+    color:#6e8c88;
+
+    transition:.3s;
+}
+
+.ya-partner-logo:hover{
+    transform:
+        translateY(-6px)
+        scale(1.03);
+
+    filter:none;
+
+    color:#fff;
+
+    background:
+        rgba(89,224,173,.07);
+
+    border-color:
+        rgba(89,224,173,.30);
+}
+
+.ya-partner-logo:hover i{
+    color:var(--ya-mint);
+
+    transform:scale(1.1);
+}
+
+.ya-marquee-fade{
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    width:100px;
+
+    z-index:5;
+
+    pointer-events:none;
+}
+
+.ya-marquee-fade-left{
+    left:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #031116,
+            transparent
+        );
+}
+
+.ya-marquee-fade-right{
+    right:0;
+
+    background:
+        linear-gradient(
+            -90deg,
+            #031116,
+            transparent
+        );
+}
+
+/* ---------- BLOG ---------- */
+
+.ya-home-blog{
+    background:#f7fbfa;
+}
+
+.ya-home-blog .ya-post-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 26px 65px rgba(8,70,65,.11);
+}
+
+.ya-home-blog .ya-post-image{
+    overflow:hidden;
+}
+
+.ya-home-blog .ya-post-image img{
+    transition:
+        transform .55s var(--ya-ease);
+}
+
+.ya-home-blog .ya-post-card:hover img{
+    transform:scale(1.045);
+}
+
+/* ---------- FINAL CTA ---------- */
+
+.ya-home-final-cta{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.ya-home-final-cta:before{
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    right:-100px;
+    top:-160px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(89,224,173,.20),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.ya-cta-actions{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:flex-end;
+
+    gap:10px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:980px){
+
+    .ya-home-trust-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .ya-home-trust-item:nth-child(2){
+        border-right:0;
+    }
+
+    .ya-home-trust-item:nth-child(3),
+    .ya-home-trust-item:nth-child(4){
+        border-top:1px solid #e7efed;
+    }
+
+    .ya-tech-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:760px){
+
+    .ya-home-trust-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ya-home-trust-item{
+        border-right:0;
+        border-left:0 !important;
+
+        border-bottom:1px solid #e7efed;
+
+        padding:17px 4px;
+    }
+
+    .ya-home-trust-item:nth-child(3),
+    .ya-home-trust-item:nth-child(4){
+        border-top:0;
+    }
+
+    .ya-tech-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .ya-home-service-card{
+        min-height:0;
+    }
+
+    .ya-partner-band{
+        padding:48px 0;
+    }
+
+    .ya-partner-logo{
+        min-width:150px;
+
+        height:62px;
+    }
+
+    .ya-marquee-fade{
+        width:45px;
+    }
+
+    .ya-cta-actions{
+        width:100%;
+
+        display:grid;
+
+        grid-template-columns:1fr;
+    }
+
+    .ya-cta-actions .ya-btn{
+        width:100%;
+    }
+
+}
+
+@media(max-width:470px){
+
+    .ya-tech-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ya-partner-logo{
+        min-width:135px;
+
+        padding:0 15px;
+    }
+
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+    .ya-marquee-track{
+        animation:none !important;
+    }
+
+    .ya-hero-orb{
+        animation:none !important;
+    }
+
+    .ya-premium-card:hover,
+    .ya-project-card:hover,
+    .ya-tech-chip:hover,
+    .ya-home-trust-item:hover{
+        transform:none !important;
+    }
+
+}
