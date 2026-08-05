@@ -181,15 +181,6 @@ $quote_url = ya_page('demander-un-devis');
             </div>
 
 
-            <a
-                class="ya-top-quote"
-                href="<?php echo esc_url($quote_url); ?>"
-            >
-
-                <?php echo esc_html(ya_t('quote')); ?>
-
-            </a>
-
         </div>
 
     </div>
@@ -242,7 +233,7 @@ $quote_url = ya_page('demander-un-devis');
         <!-- DESKTOP NAV -->
         <nav
             class="ya-nav"
-            aria-label="Primary navigation"
+            aria-label="Navigation principale"
         >
 
             <?php if (has_nav_menu('primary')): ?>
@@ -365,7 +356,7 @@ $quote_url = ya_page('demander-un-devis');
             <button
                 class="ya-menu"
                 type="button"
-                aria-label="Open menu"
+                aria-label="Ouvrir le menu"
                 aria-expanded="false"
             >
 
@@ -429,7 +420,7 @@ $quote_url = ya_page('demander-un-devis');
             <button
                 class="ya-mobile-close"
                 type="button"
-                aria-label="Close menu"
+                aria-label="Fermer le menu"
             >
 
                 ×

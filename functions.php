@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '2.5.0');
+define('YA_VERSION', '2.6.0');
 
 /* =========================================================
    THEME SETUP
@@ -127,7 +127,16 @@ function ya_languages() {
 function ya_lang() {
 
     $langs = ya_languages();
+    $cookie_name = 'ya_lang_v2';
 
+    /*
+     * A language changes only when the visitor explicitly selects it
+     * with ?lang=fr, ?lang=en or ?lang=de.
+     *
+     * We intentionally ignore the previous ya_lang cookie so an old
+     * automatic English/German selection cannot override the French
+     * homepage after the v2.6 update.
+     */
     if (
         isset($_GET['lang']) &&
         isset($langs[sanitize_key($_GET['lang'])])
@@ -136,7 +145,7 @@ function ya_lang() {
 
         if (!headers_sent()) {
             setcookie(
-                'ya_lang',
+                $cookie_name,
                 $lang,
                 [
                     'expires'  => time() + YEAR_IN_SECONDS,
@@ -147,23 +156,52 @@ function ya_lang() {
                     'samesite' => 'Lax',
                 ]
             );
+
+            /*
+             * Remove the legacy cookie that may have been created by
+             * the former browser-language auto detection.
+             */
+            setcookie(
+                'ya_lang',
+                '',
+                [
+                    'expires'  => time() - HOUR_IN_SECONDS,
+                    'path'     => COOKIEPATH ?: '/',
+                    'domain'   => COOKIE_DOMAIN ?: '',
+                    'secure'   => is_ssl(),
+                    'httponly' => false,
+                    'samesite' => 'Lax',
+                ]
+            );
         }
 
-        $_COOKIE['ya_lang'] = $lang;
+        $_COOKIE[$cookie_name] = $lang;
+        unset($_COOKIE['ya_lang']);
+
         return $lang;
     }
 
     if (
-        isset($_COOKIE['ya_lang']) &&
-        isset($langs[sanitize_key($_COOKIE['ya_lang'])])
+        isset($_COOKIE[$cookie_name]) &&
+        isset($langs[sanitize_key($_COOKIE[$cookie_name])])
     ) {
-        return sanitize_key($_COOKIE['ya_lang']);
+        return sanitize_key($_COOKIE[$cookie_name]);
     }
 
+    /*
+     * French is always the default language.
+     */
     return 'fr';
 }
 
 function ya_url_lang($lang) {
+
+    $langs = ya_languages();
+    $lang  = sanitize_key($lang);
+
+    if (!isset($langs[$lang])) {
+        $lang = 'fr';
+    }
 
     $path = wp_parse_url(
         $_SERVER['REQUEST_URI'] ?? '/',
@@ -172,7 +210,7 @@ function ya_url_lang($lang) {
 
     return add_query_arg(
         'lang',
-        sanitize_key($lang),
+        $lang,
         home_url($path ?: '/')
     );
 }
@@ -202,16 +240,16 @@ function ya_t($key) {
             'hero_text'      => 'Support informatique, réseaux, cybersécurité, Microsoft 365, cloud et assistance terrain pour les entreprises qui exigent fiabilité, sécurité et réactivité.',
             'hero_cta'       => 'Découvrir nos services',
             'hero_quote'     => 'Demander un devis',
-            'services_title' => 'Des services IT complets pour vos besoins',
+            'services_title' => 'Des services IT complets pour répondre à vos besoins',
             'services_intro' => 'Des solutions professionnelles sur site et à distance pour maintenir, sécuriser et faire évoluer votre environnement informatique.',
             'why'            => 'Pourquoi choisir Yama Ahmadi',
-            'why_title'      => 'Une assistance rapide, claire et professionnelle',
+            'why_title'      => 'Un support informatique rapide, clair et professionnel',
             'coverage'       => 'Interventions partout en France',
             'certified'      => 'Compétences & certifications IT',
             'response'       => 'Réponse rapide selon disponibilité',
-            'cta_title'      => 'Besoin d’un expert IT ?',
+            'cta_title'      => 'Besoin d’un expert informatique ?',
             'cta_text'       => 'Expliquez votre besoin et recevez une réponse claire et professionnelle.',
-            'app'            => 'Installer notre application',
+            'app'            => 'Installez notre application',
             'app_text'       => 'Ajoutez Yama Ahmadi à votre écran d’accueil pour un accès rapide.',
             'privacy'        => 'Confidentialité',
             'legal'          => 'Mentions légales',
@@ -221,7 +259,7 @@ function ya_t($key) {
             'language'       => 'Langue',
             'close'          => 'Fermer',
             'readmore'       => 'En savoir plus',
-            'latest'         => 'Conseils & actualités IT',
+            'latest'         => 'Conseils & actualités informatiques',
             'latest_intro'   => 'Guides, sécurité, réseaux et bonnes pratiques pour votre entreprise.',
         ],
 
@@ -234,7 +272,7 @@ function ya_t($key) {
             'blog'           => 'Insights',
             'contact'        => 'Contact',
             'quote'          => 'Request a quote',
-            'location'       => 'Service area',
+            'location'       => 'Zone d’intervention',
             'france'         => 'France',
             'hero_kicker'    => 'YAMA AHMADI • IT SERVICES',
             'hero_title'     => 'Reliable IT solutions for your business.',
@@ -317,12 +355,59 @@ function ya_t($key) {
 ========================================================= */
 
 function ya_page($slug) {
+
     $page = get_page_by_path($slug);
 
-    return $page
+    $url = $page
         ? get_permalink($page)
         : home_url('/' . trim($slug, '/') . '/');
+
+    /*
+     * French uses clean canonical URLs.
+     * English and German keep the selected language across internal pages.
+     */
+    $lang = ya_lang();
+
+    if (in_array($lang, ['en', 'de'], true)) {
+        $url = add_query_arg('lang', $lang, $url);
+    }
+
+    return $url;
 }
+
+
+function ya_home_url() {
+
+    $url  = home_url('/');
+    $lang = ya_lang();
+
+    if (in_array($lang, ['en', 'de'], true)) {
+        $url = add_query_arg('lang', $lang, $url);
+    }
+
+    return $url;
+}
+
+
+/*
+ * Preserve English/German on standard WordPress post links.
+ */
+function ya_language_permalink($url) {
+
+    if (is_admin()) {
+        return $url;
+    }
+
+    $lang = ya_lang();
+
+    if (in_array($lang, ['en', 'de'], true)) {
+        return add_query_arg('lang', $lang, $url);
+    }
+
+    return remove_query_arg('lang', $url);
+}
+add_filter('post_link', 'ya_language_permalink');
+add_filter('page_link', 'ya_language_permalink');
 
 
 /* =========================================================
@@ -334,29 +419,29 @@ function ya_contact_info_customize($wp_customize) {
     $wp_customize->add_section(
         'ya_company',
         [
-            'title'    => 'Yama Ahmadi — Company',
+            'title'    => 'Yama Ahmadi — Entreprise',
             'priority' => 30,
         ]
     );
 
     $fields = [
         'ya_phone' => [
-            'Phone',
+            'Téléphone',
             '+33 7 84 20 31 50',
             'sanitize_text_field',
         ],
         'ya_email' => [
-            'Email',
+            'E-mail',
             'support@yamaahmadi.fr',
             'sanitize_email',
         ],
         'ya_location' => [
-            'Service area',
+            'Zone d’intervention',
             'France',
             'sanitize_text_field',
         ],
         'ya_hours' => [
-            'Hours',
+            'Horaires',
             'Lun – Ven : 08:00 – 18:00',
             'sanitize_text_field',
         ],
@@ -477,7 +562,7 @@ function ya_pwa_output() {
             'id'               => home_url('/'),
             'name'             => 'Yama Ahmadi IT Support & Services',
             'short_name'       => 'Yama Ahmadi',
-            'description'      => 'IT support, networks, cybersecurity, Microsoft 365, cloud and field services.',
+            'description'      => 'Support informatique, réseaux, cybersécurité, Microsoft 365, cloud et interventions terrain en France.',
             'start_url'        => home_url('/'),
             'scope'            => home_url('/'),
             'display'          => 'standalone',
@@ -517,7 +602,7 @@ function ya_pwa_output() {
         $css  = get_template_directory_uri() . '/assets/css/main.css';
         $js   = get_template_directory_uri() . '/assets/js/main.js';
         ?>
-const CACHE_NAME = 'yama-ahmadi-v2-5';
+const CACHE_NAME = 'yama-ahmadi-v2-6';
 
 const STATIC_ASSETS = [
     <?php echo wp_json_encode($home); ?>,
@@ -751,21 +836,21 @@ function ya_fallback_page($slug) {
         <h2>Solutions professionnelles</h2>
         <div class="ya-services">
             <article class="ya-service">
-                <h3>Modern Workplace</h3>
+                <h3>Environnement de travail moderne</h3>
                 <p>
                     Microsoft 365, Teams, OneDrive, identité,
                     sécurité et mobilité.
                 </p>
             </article>
             <article class="ya-service">
-                <h3>Secure Network</h3>
+                <h3>Réseau sécurisé</h3>
                 <p>
                     Wi‑Fi professionnel, segmentation,
                     firewall, VPN et optimisation réseau.
                 </p>
             </article>
             <article class="ya-service">
-                <h3>IT Operations</h3>
+                <h3>Opérations IT</h3>
                 <p>
                     Support utilisateurs, postes,
                     déploiements, maintenance et documentation.
