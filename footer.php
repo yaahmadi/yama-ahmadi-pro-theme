@@ -78,7 +78,7 @@ $youtube = get_theme_mod('ya_youtube');
                     <span>
 
                         <small>
-                            Installer sur
+                            <?php echo esc_html(ya_t('install_on')); ?>
                         </small>
 
                         <strong>
@@ -101,7 +101,7 @@ $youtube = get_theme_mod('ya_youtube');
                     <span>
 
                         <small>
-                            Ajouter sur
+                            <?php echo esc_html(ya_t('add_to')); ?>
                         </small>
 
                         <strong>
@@ -156,9 +156,7 @@ $youtube = get_theme_mod('ya_youtube');
 
 
                 <p>
-                    Support informatique, réseaux, cybersécurité,
-                    Microsoft 365, cloud, maintenance et assistance
-                    professionnelle pour les entreprises en France.
+                    <?php echo esc_html(ya_t('footer_about')); ?>
                 </p>
 
 
@@ -166,7 +164,7 @@ $youtube = get_theme_mod('ya_youtube');
 
                     <span>
                         <i class="fa-solid fa-shield-halved"></i>
-                        IT sécurisé
+                        <?php echo esc_html(ya_t('secure_it')); ?>
                     </span>
 
                     <span>
@@ -176,13 +174,13 @@ $youtube = get_theme_mod('ya_youtube');
 
                     <span>
                         <i class="fa-solid fa-headset"></i>
-                        Support L1/L2
+                        <?php echo esc_html(ya_t('l1l2')); ?>
                     </span>
 
                 </div>
 
 
-                <div class="ya-social" aria-label="Réseaux sociaux">
+                <div class="ya-social" aria-label="<?php echo esc_html(ya_t('social')); ?>">
 
                     <?php if ($linkedin): ?>
                         <a
@@ -259,19 +257,19 @@ $youtube = get_theme_mod('ya_youtube');
                 <a href="<?php echo esc_url(
                     ya_page('services') . '#support'
                 ); ?>">
-                    Support informatique
+                    <?php echo esc_html(ya_t('svc_support')); ?>
                 </a>
 
                 <a href="<?php echo esc_url(
                     ya_page('services') . '#network'
                 ); ?>">
-                    Réseaux & Wi-Fi
+                    <?php echo esc_html(ya_t('svc_network')); ?>
                 </a>
 
                 <a href="<?php echo esc_url(
                     ya_page('services') . '#security'
                 ); ?>">
-                    Cybersécurité
+                    <?php echo esc_html(ya_t('svc_security')); ?>
                 </a>
 
                 <a href="<?php echo esc_url(
@@ -283,7 +281,7 @@ $youtube = get_theme_mod('ya_youtube');
                 <a href="<?php echo esc_url(
                     ya_page('services') . '#infra'
                 ); ?>">
-                    Infrastructure IT
+                    <?php echo esc_html(ya_t('svc_infra')); ?>
                 </a>
 
             </div>
@@ -293,7 +291,7 @@ $youtube = get_theme_mod('ya_youtube');
             <div class="ya-footer-col">
 
                 <h3>
-                    Entreprise
+                    <?php echo esc_html(ya_t('company')); ?>
                 </h3>
 
                 <a href="<?php echo esc_url(
@@ -388,7 +386,7 @@ $youtube = get_theme_mod('ya_youtube');
             <div class="ya-footer-col">
 
                 <h3>
-                    Informations légales
+                    <?php echo esc_html(ya_t('legal_info')); ?>
                 </h3>
 
                 <a href="<?php echo esc_url(
@@ -427,11 +425,11 @@ $youtube = get_theme_mod('ya_youtube');
 
             <span>
                 © <?php echo esc_html(date('Y')); ?>
-                Yama Ahmadi Services Informatiques.
+                <?php echo esc_html(ya_t('copyright')); ?>
             </span>
 
             <span>
-                France • Support IT • Réseaux • Cybersécurité • Cloud
+                France • Support IT • Réseaux • <?php echo esc_html(ya_t('svc_security')); ?> • Cloud
             </span>
 
         </div>
@@ -462,7 +460,7 @@ $youtube = get_theme_mod('ya_youtube');
             class="ya-location-close"
             data-ya-location-close
             type="button"
-            aria-label="Fermer"
+            aria-label="<?php echo esc_html(ya_t('close')); ?>"
         >
             ×
         </button>
@@ -488,8 +486,7 @@ $youtube = get_theme_mod('ya_youtube');
 
 
         <p>
-            Votre localisation précise n’est utilisée que si vous
-            l’autorisez dans votre navigateur.
+            <?php echo esc_html(ya_t('location_text')); ?>
         </p>
 
 
@@ -516,7 +513,7 @@ $youtube = get_theme_mod('ya_youtube');
     class="ya-back-top"
     data-ya-back-top
     type="button"
-    aria-label="Retour en haut"
+    aria-label="<?php echo esc_html(ya_t('back_top')); ?>"
 >
     <i class="fa-solid fa-arrow-up"></i>
 </button>

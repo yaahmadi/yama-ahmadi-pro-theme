@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '2.6.0');
+define('YA_VERSION', '2.6.5');
 
 /* =========================================================
    THEME SETUP
@@ -261,6 +261,22 @@ function ya_t($key) {
             'readmore'       => 'En savoir plus',
             'latest'         => 'Conseils & actualités informatiques',
             'latest_intro'   => 'Guides, sécurité, réseaux et bonnes pratiques pour votre entreprise.',
+            'install_on' => 'Installer sur',
+            'add_to' => 'Ajouter sur',
+            'footer_about' => 'Support informatique, réseaux, cybersécurité, Microsoft 365, cloud, maintenance et assistance professionnelle pour les entreprises en France.',
+            'secure_it' => 'IT sécurisé',
+            'l1l2' => 'Support L1/L2',
+            'social' => 'Réseaux sociaux',
+            'svc_support' => 'Support informatique',
+            'svc_network' => 'Réseaux & Wi-Fi',
+            'svc_security' => 'Cybersécurité',
+            'svc_infra' => 'Infrastructure IT',
+            'company' => 'Entreprise',
+            'legal_info' => 'Informations légales',
+            'copyright' => 'Yama Ahmadi Services Informatiques.',
+            'footer_tagline' => 'France • Support IT • Réseaux • Cybersécurité • Cloud',
+            'location_text' => 'Votre localisation précise n’est utilisée que si vous l’autorisez dans votre navigateur.',
+            'back_top' => 'Retour en haut',
         ],
 
         'en' => [
@@ -300,6 +316,22 @@ function ya_t($key) {
             'readmore'       => 'Learn more',
             'latest'         => 'IT insights & updates',
             'latest_intro'   => 'Practical guidance on security, networking and business IT.',
+            'install_on' => 'Install on',
+            'add_to' => 'Add to',
+            'footer_about' => 'IT support, networks, cybersecurity, Microsoft 365, cloud, maintenance and professional assistance for businesses across France.',
+            'secure_it' => 'Secure IT',
+            'l1l2' => 'L1/L2 Support',
+            'social' => 'Social media',
+            'svc_support' => 'IT Support',
+            'svc_network' => 'Networks & Wi-Fi',
+            'svc_security' => 'Cybersecurity',
+            'svc_infra' => 'IT Infrastructure',
+            'company' => 'Company',
+            'legal_info' => 'Legal information',
+            'copyright' => 'Yama Ahmadi IT Services.',
+            'footer_tagline' => 'France • IT Support • Networks • Cybersecurity • Cloud',
+            'location_text' => 'Your precise location is used only if you allow it in your browser.',
+            'back_top' => 'Back to top',
         ],
 
         'de' => [
@@ -339,6 +371,22 @@ function ya_t($key) {
             'readmore'       => 'Mehr erfahren',
             'latest'         => 'IT-Tipps & Neuigkeiten',
             'latest_intro'   => 'Praxisnahe Hinweise zu Sicherheit, Netzwerken und Business-IT.',
+            'install_on' => 'Installieren auf',
+            'add_to' => 'Hinzufügen zu',
+            'footer_about' => 'IT-Support, Netzwerke, Cybersicherheit, Microsoft 365, Cloud, Wartung und professionelle Unterstützung für Unternehmen in Frankreich.',
+            'secure_it' => 'Sichere IT',
+            'l1l2' => 'L1/L2-Support',
+            'social' => 'Soziale Medien',
+            'svc_support' => 'IT-Support',
+            'svc_network' => 'Netzwerke & Wi-Fi',
+            'svc_security' => 'Cybersicherheit',
+            'svc_infra' => 'IT-Infrastruktur',
+            'company' => 'Unternehmen',
+            'legal_info' => 'Rechtliche Informationen',
+            'copyright' => 'Yama Ahmadi IT-Services.',
+            'footer_tagline' => 'Frankreich • IT-Support • Netzwerke • Cybersicherheit • Cloud',
+            'location_text' => 'Ihr genauer Standort wird nur verwendet, wenn Sie dies im Browser erlauben.',
+            'back_top' => 'Nach oben',
         ],
     ];
 
@@ -564,6 +612,283 @@ function ya_language_permalink($url) {
 add_filter('post_link', 'ya_language_permalink');
 add_filter('page_link', 'ya_language_permalink');
 
+
+
+
+
+/* =========================================================
+   MULTILINGUAL WORDPRESS MENU + PAGE TITLES
+========================================================= */
+
+function ya_menu_translation_map() {
+
+    return [
+
+        'fr' => [
+            'home'       => 'Accueil',
+            'about'      => 'À propos',
+            'services'   => 'Services',
+            'solutions'  => 'Solutions',
+            'projects'   => 'Projets',
+            'blog'       => 'Blog',
+            'contact'    => 'Contact',
+            'quote'      => 'Demander un devis',
+        ],
+
+        'en' => [
+            'home'       => 'Home',
+            'about'      => 'About',
+            'services'   => 'Services',
+            'solutions'  => 'Solutions',
+            'projects'   => 'Projects',
+            'blog'       => 'Insights',
+            'contact'    => 'Contact',
+            'quote'      => 'Request a quote',
+        ],
+
+        'de' => [
+            'home'       => 'Startseite',
+            'about'      => 'Über uns',
+            'services'   => 'Services',
+            'solutions'  => 'Lösungen',
+            'projects'   => 'Projekte',
+            'blog'       => 'Blog',
+            'contact'    => 'Kontakt',
+            'quote'      => 'Angebot anfordern',
+        ],
+    ];
+}
+
+
+function ya_menu_item_key($item) {
+
+    $url   = !empty($item->url)
+        ? (string) $item->url
+        : '';
+
+    $title = !empty($item->title)
+        ? sanitize_title($item->title)
+        : '';
+
+    $path = wp_parse_url(
+        $url,
+        PHP_URL_PATH
+    );
+
+    $slug = sanitize_title(
+        basename(
+            untrailingslashit(
+                $path ?: '/'
+            )
+        )
+    );
+
+    $home_url = trailingslashit(
+        home_url('/')
+    );
+
+    $item_url = trailingslashit(
+        remove_query_arg(
+            'lang',
+            $url
+        )
+    );
+
+    if (
+        $item_url === $home_url ||
+        in_array(
+            $slug,
+            ['', 'home', 'accueil'],
+            true
+        ) ||
+        in_array(
+            $title,
+            ['home', 'accueil', 'startseite'],
+            true
+        )
+    ) {
+        return 'home';
+    }
+
+    $aliases = [
+
+        'about' => [
+            'a-propos',
+            'about',
+            'about-us',
+            'uber-uns',
+            'ueber-uns',
+        ],
+
+        'services' => [
+            'services',
+            'service',
+            'it-services',
+        ],
+
+        'solutions' => [
+            'solutions',
+            'solution',
+            'losungen',
+            'loesungen',
+        ],
+
+        'projects' => [
+            'projets',
+            'projects',
+            'experiences',
+            'projekte',
+        ],
+
+        'blog' => [
+            'blog',
+            'insights',
+            'actualites',
+            'news',
+        ],
+
+        'contact' => [
+            'contact',
+            'contact-us',
+            'kontakt',
+        ],
+
+        'quote' => [
+            'demander-un-devis',
+            'demande-de-devis',
+            'request-a-quote',
+            'request-quote',
+            'quote',
+            'angebot-anfordern',
+        ],
+    ];
+
+    foreach ($aliases as $key => $values) {
+
+        if (
+            in_array($slug, $values, true) ||
+            in_array($title, $values, true)
+        ) {
+            return $key;
+        }
+    }
+
+    return '';
+}
+
+
+function ya_translate_menu_item_title(
+    $title,
+    $item,
+    $args,
+    $depth
+) {
+
+    if (is_admin()) {
+        return $title;
+    }
+
+    $key = ya_menu_item_key($item);
+
+    if (!$key) {
+        return $title;
+    }
+
+    $translations = ya_menu_translation_map();
+    $lang         = ya_lang();
+
+    return $translations[$lang][$key]
+        ?? $translations['fr'][$key]
+        ?? $title;
+}
+add_filter(
+    'nav_menu_item_title',
+    'ya_translate_menu_item_title',
+    10,
+    4
+);
+
+
+/*
+ * Preserve the selected language in every WordPress menu URL.
+ */
+function ya_translate_menu_item_url($atts, $item, $args, $depth) {
+
+    if (
+        is_admin() ||
+        empty($atts['href'])
+    ) {
+        return $atts;
+    }
+
+    $lang = ya_lang();
+
+    if (in_array($lang, ['en', 'de'], true)) {
+        $atts['href'] = add_query_arg(
+            'lang',
+            $lang,
+            $atts['href']
+        );
+    } else {
+        $atts['href'] = remove_query_arg(
+            'lang',
+            $atts['href']
+        );
+    }
+
+    return $atts;
+}
+add_filter(
+    'nav_menu_link_attributes',
+    'ya_translate_menu_item_url',
+    10,
+    4
+);
+
+
+/*
+ * Translate standard WordPress page titles when they appear outside
+ * the custom premium templates, without modifying the database title.
+ */
+function ya_frontend_page_title($title, $post_id = 0) {
+
+    if (
+        is_admin() ||
+        !$post_id ||
+        'page' !== get_post_type($post_id)
+    ) {
+        return $title;
+    }
+
+    $post = get_post($post_id);
+
+    if (!$post instanceof WP_Post) {
+        return $title;
+    }
+
+    $fake_item = (object) [
+        'url'   => get_permalink($post),
+        'title' => $post->post_title,
+    ];
+
+    $key = ya_menu_item_key($fake_item);
+
+    if (!$key) {
+        return $title;
+    }
+
+    $translations = ya_menu_translation_map();
+    $lang         = ya_lang();
+
+    return $translations[$lang][$key]
+        ?? $title;
+}
+add_filter(
+    'the_title',
+    'ya_frontend_page_title',
+    10,
+    2
+);
 
 
 /* =========================================================
@@ -1182,42 +1507,63 @@ function ya_github_repo() {
     ];
 }
 
+function ya_github_release_cache_key() {
+    return 'ya_github_theme_release_v2';
+}
 
 function ya_github_api_headers() {
-
     $headers = [
-        'Accept'     => 'application/vnd.github+json',
-        'User-Agent' => 'Yama-Ahmadi-Pro-WordPress-Theme',
+        'Accept'               => 'application/vnd.github+json',
+        'X-GitHub-Api-Version' => '2022-11-28',
+        'User-Agent'           => 'Yama-Ahmadi-Pro-WordPress-Theme',
     ];
 
-    /*
-     * Optional support for a private repository.
-     * If the repository is private, define this in wp-config.php:
-     *
-     * define('YA_GITHUB_TOKEN', 'github_pat_xxx');
-     *
-     * Never place a private token directly inside the theme files.
-     */
-    if (
-        defined('YA_GITHUB_TOKEN') &&
-        YA_GITHUB_TOKEN
-    ) {
-        $headers['Authorization'] =
-            'Bearer ' . trim(YA_GITHUB_TOKEN);
+    if (defined('YA_GITHUB_TOKEN') && YA_GITHUB_TOKEN) {
+        $headers['Authorization'] = 'Bearer ' . trim(YA_GITHUB_TOKEN);
     }
 
     return $headers;
 }
 
+function ya_github_set_status($status, $message = '', $release = null) {
+    update_option(
+        'ya_github_updater_status',
+        [
+            'status'       => sanitize_key($status),
+            'message'      => sanitize_text_field($message),
+            'checked_at'   => current_time('mysql'),
+            'checked_time' => time(),
+            'release'      => is_array($release)
+                ? [
+                    'version'   => sanitize_text_field($release['version'] ?? ''),
+                    'tag'       => sanitize_text_field($release['tag'] ?? ''),
+                    'published' => sanitize_text_field($release['published'] ?? ''),
+                    'html_url'  => esc_url_raw($release['html_url'] ?? ''),
+                ]
+                : [],
+        ],
+        false
+    );
+}
+
+function ya_github_get_status() {
+    $status = get_option('ya_github_updater_status', []);
+    return is_array($status) ? $status : [];
+}
+
+function ya_github_clear_release_cache() {
+    delete_transient(ya_github_release_cache_key());
+    delete_transient('ya_github_theme_release_v1');
+    delete_site_transient('update_themes');
+}
 
 function ya_github_latest_release($force = false) {
-
-    $cache_key = 'ya_github_theme_release_v1';
+    $cache_key = ya_github_release_cache_key();
 
     if (!$force) {
         $cached = get_transient($cache_key);
 
-        if (is_array($cached)) {
+        if (is_array($cached) && !empty($cached['version'])) {
             return $cached;
         }
     }
@@ -1233,69 +1579,68 @@ function ya_github_latest_release($force = false) {
     $response = wp_remote_get(
         $endpoint,
         [
-            'timeout' => 15,
-            'headers' => ya_github_api_headers(),
+            'timeout'     => 20,
+            'redirection' => 5,
+            'headers'     => ya_github_api_headers(),
         ]
     );
 
     if (is_wp_error($response)) {
+        ya_github_set_status('error', $response->get_error_message());
         return null;
     }
 
-    $status = wp_remote_retrieve_response_code($response);
+    $status_code = (int) wp_remote_retrieve_response_code($response);
 
-    if (200 !== (int) $status) {
+    if (200 !== $status_code) {
+        $body = json_decode(wp_remote_retrieve_body($response), true);
+
+        $message = is_array($body) && !empty($body['message'])
+            ? (string) $body['message']
+            : 'GitHub API HTTP ' . $status_code;
+
+        ya_github_set_status('error', $message);
         return null;
     }
 
-    $data = json_decode(
-        wp_remote_retrieve_body($response),
-        true
-    );
+    $data = json_decode(wp_remote_retrieve_body($response), true);
 
     if (
         !is_array($data) ||
         empty($data['tag_name']) ||
         empty($data['zipball_url'])
     ) {
+        ya_github_set_status('error', 'Réponse GitHub invalide ou incomplète.');
         return null;
     }
 
     $release = [
         'version'     => ltrim((string) $data['tag_name'], "vV"),
         'tag'         => (string) $data['tag_name'],
-        'name'        => !empty($data['name'])
-            ? (string) $data['name']
-            : (string) $data['tag_name'],
-        'body'        => !empty($data['body'])
-            ? (string) $data['body']
-            : '',
-        'published'   => !empty($data['published_at'])
-            ? (string) $data['published_at']
-            : '',
-        'html_url'    => !empty($data['html_url'])
-            ? (string) $data['html_url']
-            : '',
+        'name'        => !empty($data['name']) ? (string) $data['name'] : (string) $data['tag_name'],
+        'body'        => !empty($data['body']) ? (string) $data['body'] : '',
+        'published'   => !empty($data['published_at']) ? (string) $data['published_at'] : '',
+        'html_url'    => !empty($data['html_url']) ? (string) $data['html_url'] : '',
         'package_url' => (string) $data['zipball_url'],
     ];
 
-    set_transient(
-        $cache_key,
-        $release,
-        6 * HOUR_IN_SECONDS
-    );
+    set_transient($cache_key, $release, 5 * MINUTE_IN_SECONDS);
+    ya_github_set_status('success', 'Connexion GitHub réussie.', $release);
 
     return $release;
 }
 
-
 function ya_github_theme_update_transient($transient) {
+    if (!is_object($transient)) {
+        $transient = new stdClass();
+    }
 
-    if (
-        !is_object($transient) ||
-        empty($transient->checked)
-    ) {
-        return $transient;
+    if (!isset($transient->response)) {
+        $transient->response = [];
+    }
+
+    if (!isset($transient->no_update)) {
+        $transient->no_update = [];
     }
 
     $theme = wp_get_theme();
@@ -1308,46 +1653,32 @@ function ya_github_theme_update_transient($transient) {
     $current_version = $theme->get('Version');
     $release         = ya_github_latest_release();
 
-    if (
-        !$release ||
-        empty($release['version']) ||
-        empty($release['package_url'])
-    ) {
+    if (!$release || empty($release['version']) || empty($release['package_url'])) {
         return $transient;
     }
 
-    if (
-        version_compare(
-            $release['version'],
-            $current_version,
-            '>'
-        )
-    ) {
-        $transient->response[$stylesheet] = [
-            'theme'       => $stylesheet,
-            'new_version' => $release['version'],
-            'url'         => $release['html_url'],
-            'package'     => $release['package_url'],
-        ];
+    $update_data = [
+        'theme'        => $stylesheet,
+        'new_version'  => $release['version'],
+        'url'          => $release['html_url'],
+        'package'      => $release['package_url'],
+        'requires'     => $theme->get('RequiresWP'),
+        'requires_php' => $theme->get('RequiresPHP'),
+    ];
+
+    if (version_compare($release['version'], $current_version, '>')) {
+        $transient->response[$stylesheet] = $update_data;
+        unset($transient->no_update[$stylesheet]);
     } else {
-        $transient->no_update[$stylesheet] = [
-            'theme'       => $stylesheet,
-            'new_version' => $current_version,
-            'url'         => $release['html_url'],
-            'package'     => '',
-        ];
+        $transient->no_update[$stylesheet] = $update_data;
+        unset($transient->response[$stylesheet]);
     }
 
     return $transient;
 }
-add_filter(
-    'pre_set_site_transient_update_themes',
-    'ya_github_theme_update_transient'
-);
-
+add_filter('pre_set_site_transient_update_themes', 'ya_github_theme_update_transient');
 
 function ya_github_theme_api($result, $action, $args) {
-
     if (
         'theme_information' !== $action ||
         empty($args->slug) ||
@@ -1374,39 +1705,14 @@ function ya_github_theme_api($result, $action, $args) {
         'requires_php'  => $theme->get('RequiresPHP'),
         'download_link' => $release['package_url'],
         'sections'      => [
-            'description' => wpautop(
-                esc_html(
-                    $theme->get('Description')
-                )
-            ),
-            'changelog'   => wpautop(
-                esc_html(
-                    $release['body'] ?: 'Mise à jour du thème Yama Ahmadi Pro.'
-                )
-            ),
+            'description' => wpautop(esc_html($theme->get('Description'))),
+            'changelog'   => wpautop(esc_html($release['body'] ?: 'Mise à jour du thème Yama Ahmadi Pro.')),
         ],
     ];
 }
-add_filter(
-    'themes_api',
-    'ya_github_theme_api',
-    10,
-    3
-);
+add_filter('themes_api', 'ya_github_theme_api', 10, 3);
 
-
-/*
- * GitHub zipballs unpack to a generated folder name.
- * WordPress normally handles this correctly during an update.
- * This safety filter ensures the source actually contains style.css.
- */
-function ya_github_upgrader_source_check(
-    $source,
-    $remote_source,
-    $upgrader,
-    $hook_extra
-) {
-
+function ya_github_upgrader_source_check($source, $remote_source, $upgrader, $hook_extra) {
     if (
         empty($hook_extra['theme']) ||
         $hook_extra['theme'] !== get_stylesheet()
@@ -1414,62 +1720,167 @@ function ya_github_upgrader_source_check(
         return $source;
     }
 
-    if (
-        file_exists(
-            trailingslashit($source) . 'style.css'
-        )
-    ) {
+    if (file_exists(trailingslashit($source) . 'style.css')) {
         return $source;
     }
 
-    $folders = glob(
-        trailingslashit($source) . '*',
-        GLOB_ONLYDIR
-    );
+    $folders = glob(trailingslashit($source) . '*', GLOB_ONLYDIR);
 
     if (
         is_array($folders) &&
         1 === count($folders) &&
-        file_exists(
-            trailingslashit($folders[0]) . 'style.css'
-        )
+        file_exists(trailingslashit($folders[0]) . 'style.css')
     ) {
         return trailingslashit($folders[0]);
     }
 
     return $source;
 }
-add_filter(
-    'upgrader_source_selection',
-    'ya_github_upgrader_source_check',
-    10,
-    4
-);
+add_filter('upgrader_source_selection', 'ya_github_upgrader_source_check', 10, 4);
 
-
-/*
- * Clear cached release information after any theme update.
- */
-function ya_clear_github_release_cache(
-    $upgrader,
-    $hook_extra
-) {
-
-    if (
-        !empty($hook_extra['type']) &&
-        'theme' === $hook_extra['type']
-    ) {
-        delete_transient(
-            'ya_github_theme_release_v1'
-        );
+function ya_clear_github_release_cache($upgrader, $hook_extra) {
+    if (!empty($hook_extra['type']) && 'theme' === $hook_extra['type']) {
+        ya_github_clear_release_cache();
     }
 }
-add_action(
-    'upgrader_process_complete',
-    'ya_clear_github_release_cache',
-    10,
-    2
-);
+add_action('upgrader_process_complete', 'ya_clear_github_release_cache', 10, 2);
+
+/* =========================================================
+   GITHUB UPDATER ADMIN SCREEN
+========================================================= */
+
+function ya_github_updater_admin_menu() {
+    add_theme_page(
+        'Mises à jour GitHub',
+        'Mises à jour GitHub',
+        'update_themes',
+        'ya-github-updater',
+        'ya_github_updater_admin_page'
+    );
+}
+add_action('admin_menu', 'ya_github_updater_admin_menu');
+
+function ya_github_force_check_handler() {
+    if (!current_user_can('update_themes')) {
+        wp_die(esc_html__('Vous n’avez pas la permission.', 'yama-ahmadi-pro'));
+    }
+
+    check_admin_referer('ya_github_force_check');
+
+    ya_github_clear_release_cache();
+    $release = ya_github_latest_release(true);
+    wp_update_themes();
+
+    $redirect = add_query_arg(
+        [
+            'page'       => 'ya-github-updater',
+            'ya_checked' => $release ? '1' : '0',
+        ],
+        admin_url('themes.php')
+    );
+
+    wp_safe_redirect($redirect);
+    exit;
+}
+add_action('admin_post_ya_github_force_check', 'ya_github_force_check_handler');
+
+function ya_github_updater_admin_page() {
+    if (!current_user_can('update_themes')) {
+        return;
+    }
+
+    $theme             = wp_get_theme();
+    $installed_version = $theme->get('Version');
+    $release           = ya_github_latest_release();
+    $status            = ya_github_get_status();
+
+    $latest_version = !empty($release['version'])
+        ? $release['version']
+        : (!empty($status['release']['version']) ? $status['release']['version'] : 'Indisponible');
+
+    $update_available =
+        is_array($release) &&
+        !empty($release['version']) &&
+        version_compare($release['version'], $installed_version, '>');
+    ?>
+    <div class="wrap">
+        <h1>Mises à jour GitHub — Yama Ahmadi Pro</h1>
+
+        <?php if (isset($_GET['ya_checked'])) : ?>
+            <?php if ('1' === sanitize_key($_GET['ya_checked'])) : ?>
+                <div class="notice notice-success is-dismissible"><p>Vérification GitHub terminée.</p></div>
+            <?php else : ?>
+                <div class="notice notice-error is-dismissible"><p>La vérification GitHub a échoué.</p></div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <table class="widefat striped" style="max-width:760px;margin-top:20px">
+            <tbody>
+                <tr>
+                    <th style="width:260px">Version installée</th>
+                    <td><strong><?php echo esc_html($installed_version); ?></strong></td>
+                </tr>
+                <tr>
+                    <th>Dernière version GitHub</th>
+                    <td><strong><?php echo esc_html($latest_version); ?></strong></td>
+                </tr>
+                <tr>
+                    <th>État</th>
+                    <td>
+                        <?php if ($update_available) : ?>
+                            <span style="color:#b32d2e;font-weight:700">Mise à jour disponible</span>
+                        <?php else : ?>
+                            <span style="color:#008a20;font-weight:700">À jour ou aucune version plus récente</span>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dernière vérification</th>
+                    <td><?php echo !empty($status['checked_at']) ? esc_html($status['checked_at']) : 'Jamais'; ?></td>
+                </tr>
+                <tr>
+                    <th>Message GitHub</th>
+                    <td><?php echo !empty($status['message']) ? esc_html($status['message']) : 'Aucun message'; ?></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:20px">
+            <a
+                class="button button-primary"
+                href="<?php echo esc_url(wp_nonce_url(
+                    admin_url('admin-post.php?action=ya_github_force_check'),
+                    'ya_github_force_check'
+                )); ?>"
+            >
+                Forcer la vérification GitHub
+            </a>
+
+            <a class="button" href="<?php echo esc_url(admin_url('update-core.php')); ?>">
+                Ouvrir les mises à jour WordPress
+            </a>
+        </p>
+
+        <p class="description">
+            Les résultats GitHub sont mis en cache pendant cinq minutes.
+            Ce bouton efface immédiatement le cache et relance la détection.
+        </p>
+    </div>
+    <?php
+}
+
+function ya_github_refresh_on_update_screen() {
+    if (!is_admin() || !current_user_can('update_themes')) {
+        return;
+    }
+
+    global $pagenow;
+
+    if ('update-core.php' === $pagenow && isset($_GET['force-check'])) {
+        ya_github_clear_release_cache();
+    }
+}
+add_action('admin_init', 'ya_github_refresh_on_update_screen');
 
 
 /* =========================================================
