@@ -1,0 +1,3 @@
+<?php get_header(); ?>
+<section class="ya-inner-hero"><div class="ya-inner-grid"></div><div class="ya-shell ya-inner-hero-in"><div><span class="ya-kicker">404</span><h1>Cette page n’est pas disponible.</h1><p>Le lien a peut-être changé. Revenez à l’accueil ou consultez nos services IT.</p><div class="ya-actions"><a class="ya-btn" href="<?php echo esc_url(home_url('/')); ?>">Accueil</a><a class="ya-btn ya-btn-outline" href="<?php echo esc_url(ya_page('services')); ?>">Services</a></div></div><div class="ya-inner-visual"><div class="ya-inner-icon"><i class="fa-solid fa-link-slash"></i></div></div></div></section>
+<?php get_footer(); ?>
