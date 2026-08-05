@@ -21,12 +21,25 @@ while (have_posts()) :
 
     $premium_pages = [
         'a-propos',
+        'about',
         'services',
         'solutions',
         'projets',
+        'projects',
         'contact',
-        'demander-un-devis'
+        'demander-un-devis',
+        'request-a-quote'
     ];
+
+    /*
+     * Normalize legacy English WordPress slugs to the French
+     * page templates used by the theme.
+     */
+    $template_slug = [
+        'about'           => 'a-propos',
+        'projects'        => 'projets',
+        'request-a-quote' => 'demander-un-devis',
+    ][$slug] ?? $slug;
 
     $hero_map = [
 
@@ -76,7 +89,7 @@ while (have_posts()) :
 
     if (in_array($slug, $premium_pages, true)) :
 
-        $hero = $hero_map[$slug];
+        $hero = $hero_map[$template_slug];
 ?>
 
 <!-- =========================================================
@@ -152,7 +165,7 @@ while (have_posts()) :
 </section>
 
 
-<?php if ($slug === 'services') : ?>
+<?php if ($template_slug === 'services') : ?>
 
 <!-- =========================================================
      SERVICES — PREMIUM FINAL
@@ -450,7 +463,7 @@ while (have_posts()) :
 </section>
 
 
-<?php elseif ($slug === 'solutions') : ?>
+<?php elseif ($template_slug === 'solutions') : ?>
 
 <!-- =========================================================
      SOLUTIONS — PREMIUM DETAILED FINAL
@@ -863,44 +876,7 @@ while (have_posts()) :
 </section>
 
 
-<!-- =========================================================
-     SOLUTION CTA
-========================================================= -->
-<section class="ya-cta ya-solution-final-cta">
-
-    <div class="ya-shell ya-cta-in reveal">
-
-        <div>
-
-            <span class="ya-kicker">
-                VOTRE ENVIRONNEMENT
-            </span>
-
-            <h2>
-                Besoin d’améliorer votre infrastructure informatique ?
-            </h2>
-
-            <p>
-                Présentez votre environnement et vos priorités afin d’identifier
-                ensemble les actions les plus utiles.
-            </p>
-
-        </div>
-
-        <a
-            class="ya-btn"
-            href="<?php echo esc_url(ya_page('demander-un-devis')); ?>"
-        >
-            Demander un devis
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-
-</section>
-
-
-<?php elseif ($slug === 'a-propos') : ?>
+<?php elseif ($template_slug === 'a-propos') : ?>
 
 <!-- =========================================================
      ABOUT — PREMIUM PROFILE / EXPERIENCE
@@ -1025,7 +1001,7 @@ while (have_posts()) :
 </section>
 
 
-<?php elseif ($slug === 'projets') : ?>
+<?php elseif ($template_slug === 'projets') : ?>
 
 <!-- =========================================================
      PROJECTS / EXPERIENCE
@@ -1150,7 +1126,7 @@ while (have_posts()) :
 </section>
 
 
-<?php elseif ($slug === 'contact' || $slug === 'demander-un-devis') : ?>
+<?php elseif ($template_slug === 'contact' || $template_slug === 'demander-un-devis') : ?>
 
 <!-- =========================================================
      CONTACT / QUOTE
@@ -1167,7 +1143,7 @@ while (have_posts()) :
 
             <h2>
                 <?php
-                echo $slug === 'demander-un-devis'
+                echo $template_slug === 'demander-un-devis'
                     ? 'Préparez votre demande'
                     : 'Nous sommes à votre écoute';
                 ?>
@@ -1269,7 +1245,7 @@ while (have_posts()) :
             <span class="ya-kicker">
 
                 <?php
-                echo $slug === 'demander-un-devis'
+                echo $template_slug === 'demander-un-devis'
                     ? 'DEMANDE DE DEVIS'
                     : 'MESSAGE';
                 ?>
@@ -1279,7 +1255,7 @@ while (have_posts()) :
             <h2>
 
                 <?php
-                echo $slug === 'demander-un-devis'
+                echo $template_slug === 'demander-un-devis'
                     ? 'Décrivez votre besoin'
                     : 'Envoyez votre demande';
                 ?>
