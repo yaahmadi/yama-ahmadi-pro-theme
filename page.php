@@ -155,31 +155,32 @@ while (have_posts()) :
 <?php if ($slug === 'services') : ?>
 
 <!-- =========================================================
-     SERVICES
+     SERVICES — PREMIUM FINAL
 ========================================================= -->
-<section class="ya-section ya-inner-services">
+<section class="ya-section ya-services-premium">
 
     <div class="ya-shell">
 
         <div class="ya-section-head reveal">
 
             <span class="ya-kicker">
-                6 DOMAINES IT
+                SERVICES INFORMATIQUES
             </span>
 
             <h2>
-                Une couverture complète de vos besoins informatiques
+                Des services IT professionnels pour vos opérations quotidiennes
             </h2>
 
             <p>
-                Support, infrastructure, réseau, sécurité et cloud avec une
-                méthodologie claire avant, pendant et après chaque intervention.
+                Support utilisateurs, réseaux, cybersécurité, Microsoft 365,
+                infrastructure et accompagnement technique avec une approche
+                structurée, claire et orientée résultat.
             </p>
 
         </div>
 
 
-        <div class="ya-card-grid ya-services-grid">
+        <div class="ya-services-showcase">
 
             <?php
             $services = [
@@ -188,48 +189,48 @@ while (have_posts()) :
                     'support',
                     'headset',
                     'Support informatique',
-                    'Assistance L1/L2 sur site et à distance pour postes Windows/macOS, logiciels, périphériques et incidents utilisateurs.',
-                    ['Support utilisateurs', 'Diagnostic incidents', 'Postes & logiciels']
+                    'Assistance L1/L2 sur site et à distance pour utilisateurs, postes, logiciels, imprimantes et incidents courants.',
+                    ['Support utilisateurs', 'Diagnostic d’incidents', 'Windows & macOS', 'Imprimantes & périphériques']
                 ],
 
                 [
                     'network',
                     'network-wired',
                     'Réseaux & Wi-Fi',
-                    'Installation, diagnostic et optimisation des infrastructures réseau professionnelles.',
-                    ['Wi-Fi professionnel', 'Switches & VLAN', 'DNS & connectivité']
+                    'Installation, diagnostic et optimisation des réseaux professionnels, Wi-Fi, switches, VLAN, DNS et connectivité.',
+                    ['Wi-Fi professionnel', 'Switches & VLAN', 'DNS & connectivité', 'Diagnostic réseau']
                 ],
 
                 [
                     'security',
                     'shield-halved',
                     'Cybersécurité',
-                    'Protection des utilisateurs, postes, comptes, accès et infrastructures.',
-                    ['Sécurisation comptes', 'Protection des postes', 'Bonnes pratiques']
+                    'Protection des comptes, postes et accès avec des pratiques adaptées aux environnements professionnels.',
+                    ['Sécurisation des comptes', 'Protection des postes', 'Gestion des accès', 'Bonnes pratiques']
                 ],
 
                 [
                     'cloud',
                     'cloud',
                     'Microsoft 365 & Cloud',
-                    'Administration et accompagnement autour des outils Microsoft 365 et services cloud.',
-                    ['Teams & OneDrive', 'Exchange', 'Comptes & migrations']
+                    'Administration et accompagnement Microsoft 365 pour améliorer la collaboration, la mobilité et la continuité de service.',
+                    ['Teams & OneDrive', 'Exchange', 'Comptes & licences', 'Migrations']
                 ],
 
                 [
                     'infra',
                     'server',
                     'Infrastructure IT',
-                    'Déploiement, maintenance et support des équipements et infrastructures professionnelles.',
-                    ['Postes & serveurs', 'Rack & périphériques', 'Déploiements']
+                    'Déploiement, maintenance et support des postes, serveurs, racks, périphériques et équipements d’entreprise.',
+                    ['Postes & serveurs', 'Rack & périphériques', 'Déploiements', 'Maintenance']
                 ],
 
                 [
                     'consult',
                     'lightbulb',
                     'Conseil & accompagnement',
-                    'Audit, recommandations et accompagnement pour améliorer la fiabilité de votre environnement IT.',
-                    ['Audit', 'Recommandations', 'Optimisation']
+                    'Audit, recommandations et accompagnement technique pour améliorer la fiabilité et la performance de votre environnement IT.',
+                    ['Audit IT', 'Recommandations', 'Optimisation', 'Accompagnement']
                 ]
 
             ];
@@ -239,56 +240,94 @@ while (have_posts()) :
                 $service_url = function_exists('ya_service_article_url')
                     ? ya_service_article_url($service[0])
                     : ya_page('services') . '#' . $service[0];
+
+                $service_post = function_exists('ya_find_service_article')
+                    ? ya_find_service_article($service[0])
+                    : null;
+
+                $fallback_images = [
+                    'support'  => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=82',
+                    'network'  => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1100&q=82',
+                    'security' => 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1100&q=82',
+                    'cloud'    => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1100&q=82',
+                    'infra'    => 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=82',
+                    'consult'  => 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=82',
+                ];
+
+                $service_image = function_exists('ya_service_article_image')
+                    ? ya_service_article_image(
+                        $service[0],
+                        $fallback_images[$service[0]]
+                    )
+                    : $fallback_images[$service[0]];
             ?>
 
                 <article
                     id="<?php echo esc_attr($service[0]); ?>"
-                    class="ya-premium-card ya-service-detail reveal"
+                    class="ya-service-showcase-card reveal"
                     style="--delay:<?php echo esc_attr($i * 55); ?>ms"
                 >
 
-                    <span class="ya-card-number">
-                        <?php echo esc_html(str_pad($i + 1, 2, '0', STR_PAD_LEFT)); ?>
-                    </span>
+                    <a
+                        class="ya-service-showcase-media"
+                        href="<?php echo esc_url($service_url); ?>"
+                        aria-label="<?php echo esc_attr($service[2]); ?>"
+                    >
+                        <img
+                            src="<?php echo esc_url($service_image); ?>"
+                            alt="<?php echo esc_attr($service[2]); ?>"
+                            loading="lazy"
+                            decoding="async"
+                        >
 
-                    <div class="ya-card-icon">
+                        <span class="ya-service-showcase-overlay"></span>
 
-                        <i class="fa-solid fa-<?php echo esc_attr($service[1]); ?>"></i>
+                        <span class="ya-service-showcase-number">
+                            <?php echo esc_html(
+                                str_pad($i + 1, 2, '0', STR_PAD_LEFT)
+                            ); ?>
+                        </span>
+
+                        <span class="ya-service-showcase-icon">
+                            <i class="fa-solid fa-<?php echo esc_attr($service[1]); ?>"></i>
+                        </span>
+                    </a>
+
+
+                    <div class="ya-service-showcase-content">
+
+                        <span class="ya-mini-label">
+                            SERVICE IT
+                        </span>
+
+                        <h3>
+                            <a href="<?php echo esc_url($service_url); ?>">
+                                <?php echo esc_html($service[2]); ?>
+                            </a>
+                        </h3>
+
+                        <p>
+                            <?php echo esc_html($service[3]); ?>
+                        </p>
+
+                        <ul>
+                            <?php foreach ($service[4] as $item) : ?>
+                                <li>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <?php echo esc_html($item); ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <a
+                            class="ya-service-showcase-link"
+                            href="<?php echo esc_url($service_url); ?>"
+                        >
+                            Lire l’article
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
                     </div>
-
-                    <h3>
-                        <a href="<?php echo esc_url($service_url); ?>">
-                            <?php echo esc_html($service[2]); ?>
-                        </a>
-                    </h3>
-
-                    <p>
-                        <?php echo esc_html($service[3]); ?>
-                    </p>
-
-                    <ul>
-
-                        <?php foreach ($service[4] as $item) : ?>
-
-                            <li>
-                                <?php echo esc_html($item); ?>
-                            </li>
-
-                        <?php endforeach; ?>
-
-                    </ul>
-
-                    <a
-                        class="ya-service-readmore"
-                        href="<?php echo esc_url($service_url); ?>"
-                    >
-
-                        Lire l’article
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </a>
 
                 </article>
 
@@ -301,24 +340,26 @@ while (have_posts()) :
 </section>
 
 
-<!-- PROCESS -->
-<section class="ya-dark-feature ya-process-section">
+<!-- =========================================================
+     SERVICE ADVANTAGES
+========================================================= -->
+<section class="ya-dark-feature ya-service-benefits">
 
     <div class="ya-shell">
 
         <div class="ya-section-head ya-section-head-light reveal">
 
             <span class="ya-kicker">
-                NOTRE MÉTHODE
+                POURQUOI NOUS CHOISIR
             </span>
 
             <h2>
-                Une intervention simple et structurée
+                Une intervention technique claire, structurée et professionnelle
             </h2>
 
             <p>
-                Chaque mission suit un processus clair pour réduire les imprévus
-                et garantir une meilleure qualité d’exécution.
+                Chaque mission est préparée avec les bonnes informations,
+                exécutée avec méthode et validée avant clôture.
             </p>
 
         </div>
@@ -329,13 +370,13 @@ while (have_posts()) :
             <?php
             $steps = [
 
-                ['01', 'Qualification', 'Compréhension du besoin, du site, de l’urgence et des contraintes.'],
+                ['01', 'Qualification', 'Compréhension du besoin, du site, des contraintes et du niveau de priorité.'],
 
-                ['02', 'Préparation', 'Planification, prérequis techniques et coordination avant intervention.'],
+                ['02', 'Préparation', 'Vérification des accès, équipements, prérequis et informations techniques.'],
 
-                ['03', 'Intervention', 'Exécution méthodique avec communication pendant la mission.'],
+                ['03', 'Intervention', 'Exécution des actions prévues avec méthode et communication pendant la mission.'],
 
-                ['04', 'Validation', 'Tests, compte rendu et recommandations avant clôture.']
+                ['04', 'Validation', 'Tests, vérification du résultat et compte rendu avant clôture.']
 
             ];
 
@@ -344,21 +385,63 @@ while (have_posts()) :
 
                 <article class="ya-process-card reveal">
 
-                    <b>
-                        <?php echo esc_html($step[0]); ?>
-                    </b>
+                    <b><?php echo esc_html($step[0]); ?></b>
 
-                    <h3>
-                        <?php echo esc_html($step[1]); ?>
-                    </h3>
+                    <h3><?php echo esc_html($step[1]); ?></h3>
 
-                    <p>
-                        <?php echo esc_html($step[2]); ?>
-                    </p>
+                    <p><?php echo esc_html($step[2]); ?></p>
 
                 </article>
 
             <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICE CTA
+========================================================= -->
+<section class="ya-section ya-service-contact-strip">
+
+    <div class="ya-shell ya-service-contact-in reveal">
+
+        <div>
+
+            <span class="ya-kicker">
+                BESOIN D’UNE INTERVENTION ?
+            </span>
+
+            <h2>
+                Décrivez votre besoin et recevez une réponse claire
+            </h2>
+
+            <p>
+                Indiquez le contexte, le lieu, l’équipement concerné
+                et le niveau d’urgence afin de faciliter la préparation.
+            </p>
+
+        </div>
+
+        <div class="ya-actions">
+
+            <a
+                class="ya-btn"
+                href="<?php echo esc_url(ya_page('demander-un-devis')); ?>"
+            >
+                Demander un devis
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a
+                class="ya-btn ya-btn-outline ya-btn-dark-outline"
+                href="<?php echo esc_url(ya_page('contact')); ?>"
+            >
+                Nous contacter
+            </a>
 
         </div>
 
