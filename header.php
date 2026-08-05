@@ -133,16 +133,13 @@ $brand_subtitle = [
                 href="<?php echo esc_url($home_url); ?>"
                 aria-label="Yama Ahmadi"
             >
-                <span class="ya-brand-mark" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-
-                <span class="ya-brand-copy">
-                    <strong>YAMA AHMADI</strong>
-                    <small><?php echo esc_html($brand_subtitle); ?></small>
-                </span>
+                <img
+                    class="ya-header-logo"
+                    src="https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png"
+                    alt="Yama Ahmadi IT Support & Services"
+                    width="190"
+                    height="55"
+                >
             </a>
 
             <nav
@@ -225,16 +222,13 @@ $brand_subtitle = [
         <div class="ya-mobile-head">
 
             <a class="ya-brand" href="<?php echo esc_url($home_url); ?>">
-                <span class="ya-brand-mark" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-
-                <span class="ya-brand-copy">
-                    <strong>YAMA AHMADI</strong>
-                    <small><?php echo esc_html($brand_subtitle); ?></small>
-                </span>
+                <img
+                    class="ya-header-logo"
+                    src="https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png"
+                    alt="Yama Ahmadi IT Support & Services"
+                    width="190"
+                    height="55"
+                >
             </a>
 
             <button

@@ -356,20 +356,175 @@ function ya_t($key) {
 
 function ya_page($slug) {
 
-    $page = get_page_by_path($slug);
-
-    $url = $page
-        ? get_permalink($page)
-        : home_url('/' . trim($slug, '/') . '/');
+    $requested = sanitize_title($slug);
 
     /*
-     * French uses clean canonical URLs.
-     * English and German keep the selected language across internal pages.
+     * Canonical page aliases.
+     * This keeps links reliable even when WordPress contains an older
+     * English slug while the visible website is French.
      */
-    $lang = ya_lang();
+    $aliases = [
 
-    if (in_array($lang, ['en', 'de'], true)) {
-        $url = add_query_arg('lang', $lang, $url);
+        'home' => [
+            '',
+            'accueil',
+            'home',
+        ],
+
+        'accueil' => [
+            '',
+            'accueil',
+            'home',
+        ],
+
+        'a-propos' => [
+            'a-propos',
+            'about',
+        ],
+
+        'about' => [
+            'a-propos',
+            'about',
+        ],
+
+        'services' => [
+            'services',
+        ],
+
+        'solutions' => [
+            'solutions',
+        ],
+
+        'contact' => [
+            'contact',
+        ],
+
+        'demander-un-devis' => [
+            'demande-de-devis',
+            'demander-un-devis',
+            'request-a-quote',
+            'request-quote',
+            'quote',
+        ],
+
+        'demande-de-devis' => [
+            'demande-de-devis',
+            'demander-un-devis',
+            'request-a-quote',
+            'request-quote',
+            'quote',
+        ],
+
+        'request-a-quote' => [
+            'demande-de-devis',
+            'demander-un-devis',
+            'request-a-quote',
+            'request-quote',
+            'quote',
+        ],
+
+        'mentions-legales' => [
+            'mentions-legales',
+            'legal-notice',
+        ],
+
+        'confidentialite' => [
+            'confidentialite',
+            'privacy-policy',
+        ],
+
+        'cookies' => [
+            'cookies',
+            'cookie-policy',
+        ],
+
+        'conditions-utilisation' => [
+            'conditions-utilisation',
+            'conditions-dutilisation',
+            'terms-of-use',
+        ],
+
+        'support' => [
+            'support',
+        ],
+
+        'blog' => [
+            'blog',
+        ],
+
+        'projets' => [
+            'projets',
+            'projects',
+        ],
+
+        'projects' => [
+            'projets',
+            'projects',
+        ],
+    ];
+
+    /*
+     * Homepage is always the real WordPress front page.
+     */
+    if (
+        '' === $requested ||
+        'home' === $requested ||
+        'accueil' === $requested
+    ) {
+        $url = home_url('/');
+    } else {
+
+        $candidates = $aliases[$requested] ?? [$requested];
+        $url = '';
+
+        foreach ($candidates as $candidate) {
+
+            if ('' === $candidate) {
+                $url = home_url('/');
+                break;
+            }
+
+            $page = get_page_by_path(
+                $candidate,
+                OBJECT,
+                'page'
+            );
+
+            if (
+                $page instanceof WP_Post &&
+                'publish' === $page->post_status
+            ) {
+                $url = get_permalink($page);
+                break;
+            }
+        }
+
+        /*
+         * Final fallback uses the preferred canonical slug.
+         */
+        if (!$url) {
+            $preferred = $candidates[0] ?? $requested;
+            $url = home_url('/' . trim($preferred, '/') . '/');
+        }
+    }
+
+    /*
+     * French is the canonical/default website.
+     * Only translated views need a query parameter.
+     */
+    if (
+        function_exists('ya_lang') &&
+        in_array(
+            ya_lang(),
+            ['en', 'de'],
+            true
+        )
+    ) {
+        $url = add_query_arg(
+            'lang',
+            ya_lang(),
+            $url
+        );
     }
 
     return $url;

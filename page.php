@@ -453,9 +453,9 @@ while (have_posts()) :
 <?php elseif ($slug === 'solutions') : ?>
 
 <!-- =========================================================
-     SOLUTIONS
+     SOLUTIONS — PREMIUM DETAILED FINAL
 ========================================================= -->
-<section class="ya-section ya-solutions-page">
+<section class="ya-section ya-solutions-page ya-solutions-premium">
 
     <div class="ya-shell">
 
@@ -466,12 +466,13 @@ while (have_posts()) :
             </span>
 
             <h2>
-                Une infrastructure IT plus stable et mieux structurée
+                Une infrastructure IT plus stable, sécurisée et adaptée à vos opérations
             </h2>
 
             <p>
-                Des solutions organisées autour des besoins quotidiens des
-                entreprises : utilisateurs, sécurité, réseau et exploitation.
+                Des solutions structurées autour des besoins quotidiens des entreprises :
+                collaboration, sécurité, réseau, postes de travail, infrastructure,
+                exploitation et interventions terrain.
             </p>
 
         </div>
@@ -485,7 +486,7 @@ while (have_posts()) :
                 [
                     '01',
                     'Environnement de travail moderne',
-                    'Microsoft 365, Teams, OneDrive, identités et collaboration pour un environnement utilisateur moderne.',
+                    'Centralisez la collaboration, les identités et les données avec Microsoft 365 afin de simplifier le travail quotidien et améliorer la continuité de service.',
                     'fa-cloud',
                     'Microsoft 365 • Teams • OneDrive • Exchange'
                 ],
@@ -493,7 +494,7 @@ while (have_posts()) :
                 [
                     '02',
                     'Réseau sécurisé',
-                    'Wi-Fi professionnel, segmentation réseau, firewall, VPN et optimisation de la connectivité.',
+                    'Améliorez la stabilité et la sécurité de votre réseau grâce à une architecture mieux segmentée, un Wi-Fi professionnel et une connectivité maîtrisée.',
                     'fa-shield-halved',
                     'Wi-Fi • VLAN • Firewall • VPN'
                 ],
@@ -501,7 +502,7 @@ while (have_posts()) :
                 [
                     '03',
                     'Opérations IT',
-                    'Support utilisateurs, maintenance des postes, déploiement et documentation technique.',
+                    'Standardisez le support utilisateurs, les postes, les déploiements et la maintenance afin de réduire les incidents récurrents et gagner en efficacité.',
                     'fa-gears',
                     'L1/L2 • Équipements • Déploiement • Support'
                 ],
@@ -509,7 +510,7 @@ while (have_posts()) :
                 [
                     '04',
                     'Services terrain',
-                    'Interventions terrain, remote hands, rack, remplacement matériel et support multi-sites.',
+                    'Bénéficiez d’un support technique sur site pour les interventions, remplacements matériels, remote hands, rack, câblage et assistance multi-sites.',
                     'fa-location-crosshairs',
                     'Sur site • Remote hands • Infrastructure'
                 ]
@@ -526,9 +527,7 @@ while (have_posts()) :
                     </span>
 
                     <div class="ya-solution-icon">
-
                         <i class="fa-solid <?php echo esc_attr($solution[3]); ?>"></i>
-
                     </div>
 
                     <div class="ya-solution-content">
@@ -554,11 +553,9 @@ while (have_posts()) :
                     <a
                         href="<?php echo esc_url(ya_page('contact')); ?>"
                         class="ya-circle-link"
-                        aria-label="Contact"
+                        aria-label="Nous contacter"
                     >
-
                         <i class="fa-solid fa-arrow-right"></i>
-
                     </a>
 
                 </article>
@@ -566,6 +563,337 @@ while (have_posts()) :
             <?php endforeach; ?>
 
         </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODERN WORKPLACE DETAIL
+========================================================= -->
+<section class="ya-section ya-solution-detail-section">
+
+    <div class="ya-shell ya-solution-detail-grid">
+
+        <div class="ya-solution-detail-copy reveal">
+
+            <span class="ya-kicker">
+                MICROSOFT 365 & CLOUD
+            </span>
+
+            <h2>
+                Un environnement de travail moderne pour vos équipes
+            </h2>
+
+            <p>
+                Microsoft 365 permet de centraliser la messagerie, la collaboration,
+                le partage documentaire et les identités. L’objectif est d’obtenir
+                un environnement simple à utiliser, plus sécurisé et plus facile à administrer.
+            </p>
+
+            <div class="ya-solution-feature-list">
+
+                <span><i class="fa-solid fa-circle-check"></i> Microsoft Teams et collaboration</span>
+                <span><i class="fa-solid fa-circle-check"></i> OneDrive et partage documentaire</span>
+                <span><i class="fa-solid fa-circle-check"></i> Exchange et messagerie professionnelle</span>
+                <span><i class="fa-solid fa-circle-check"></i> Comptes, licences et identités</span>
+                <span><i class="fa-solid fa-circle-check"></i> Migration et accompagnement utilisateurs</span>
+                <span><i class="fa-solid fa-circle-check"></i> Sécurisation des accès et bonnes pratiques</span>
+
+            </div>
+
+        </div>
+
+        <div class="ya-solution-detail-panel reveal">
+
+            <div class="ya-solution-panel-icon">
+                <i class="fa-brands fa-microsoft"></i>
+            </div>
+
+            <h3>
+                Microsoft 365
+            </h3>
+
+            <p>
+                Une plateforme adaptée aux entreprises qui souhaitent centraliser
+                communication, fichiers et collaboration.
+            </p>
+
+            <div class="ya-solution-tags">
+                <span>Teams</span>
+                <span>OneDrive</span>
+                <span>Exchange</span>
+                <span>SharePoint</span>
+                <span>Intune</span>
+                <span>Entra ID</span>
+            </div>
+
+            <a
+                class="ya-service-showcase-link"
+                href="<?php echo esc_url(ya_page('contact')); ?>"
+            >
+                Parler de votre environnement
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NETWORK & SECURITY DETAIL
+========================================================= -->
+<section class="ya-dark-feature ya-solution-network-section">
+
+    <div class="ya-shell ya-split">
+
+        <div class="reveal">
+
+            <span class="ya-kicker">
+                RÉSEAU & SÉCURITÉ
+            </span>
+
+            <h2>
+                Une connectivité fiable et mieux protégée
+            </h2>
+
+            <p>
+                Une infrastructure réseau bien structurée améliore la disponibilité,
+                la sécurité et l’expérience utilisateur. Diagnostic, segmentation,
+                Wi-Fi, firewall et optimisation peuvent être adaptés à votre environnement.
+            </p>
+
+            <div class="ya-about-skill-tags">
+                <span>Wi-Fi professionnel</span>
+                <span>Switching</span>
+                <span>VLAN</span>
+                <span>DNS</span>
+                <span>VPN</span>
+                <span>Firewall</span>
+                <span>Ubiquiti</span>
+                <span>Cisco</span>
+                <span>Fortinet</span>
+            </div>
+
+        </div>
+
+        <div class="ya-stat-grid">
+
+            <div class="reveal">
+                <strong>Wi-Fi</strong>
+                <span>Couverture & stabilité</span>
+            </div>
+
+            <div class="reveal">
+                <strong>VLAN</strong>
+                <span>Segmentation réseau</span>
+            </div>
+
+            <div class="reveal">
+                <strong>VPN</strong>
+                <span>Accès distant sécurisé</span>
+            </div>
+
+            <div class="reveal">
+                <strong>24/7</strong>
+                <span>Continuité à préparer</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OPERATIONS / FIELD SERVICES
+========================================================= -->
+<section class="ya-section ya-solution-operations">
+
+    <div class="ya-shell">
+
+        <div class="ya-section-head reveal">
+
+            <span class="ya-kicker">
+                OPÉRATIONS & SERVICES TERRAIN
+            </span>
+
+            <h2>
+                Du support quotidien jusqu’aux interventions sur site
+            </h2>
+
+            <p>
+                Des services adaptés aux environnements multi-sites, industriels,
+                logistiques, commerces et PME qui ont besoin d’une assistance
+                technique fiable et documentée.
+            </p>
+
+        </div>
+
+
+        <div class="ya-solution-capability-grid">
+
+            <?php
+            $capabilities = [
+
+                [
+                    'fa-headset',
+                    'Support utilisateurs',
+                    'Assistance L1/L2, incidents, postes, logiciels et périphériques.'
+                ],
+
+                [
+                    'fa-laptop',
+                    'Déploiement de postes',
+                    'Préparation, configuration, remplacement et mise en service.'
+                ],
+
+                [
+                    'fa-server',
+                    'Remote hands',
+                    'Assistance physique pour équipes IT distantes et opérations infrastructure.'
+                ],
+
+                [
+                    'fa-network-wired',
+                    'Infrastructure réseau',
+                    'Switches, câblage, rack, équipements et diagnostic de connectivité.'
+                ],
+
+                [
+                    'fa-screwdriver-wrench',
+                    'Remplacement matériel',
+                    'Interventions terrain pour équipements, composants et périphériques.'
+                ],
+
+                [
+                    'fa-file-lines',
+                    'Compte rendu',
+                    'Validation, tests, documentation et remontée claire des résultats.'
+                ]
+
+            ];
+
+            foreach ($capabilities as $item) :
+            ?>
+
+                <article class="ya-value-card ya-solution-capability-card reveal">
+
+                    <div class="ya-card-icon">
+                        <i class="fa-solid <?php echo esc_attr($item[0]); ?>"></i>
+                    </div>
+
+                    <h3>
+                        <?php echo esc_html($item[1]); ?>
+                    </h3>
+
+                    <p>
+                        <?php echo esc_html($item[2]); ?>
+                    </p>
+
+                </article>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOLUTION PROCESS
+========================================================= -->
+<section class="ya-section ya-solution-process-section">
+
+    <div class="ya-shell">
+
+        <div class="ya-section-head reveal">
+
+            <span class="ya-kicker">
+                MÉTHODE
+            </span>
+
+            <h2>
+                Une solution adaptée commence par une bonne compréhension du besoin
+            </h2>
+
+        </div>
+
+        <div class="ya-process-grid">
+
+            <?php
+            $solution_steps = [
+
+                ['01', 'Analyser', 'Comprendre les utilisateurs, les équipements, l’infrastructure et les contraintes.'],
+
+                ['02', 'Concevoir', 'Définir une approche réaliste, claire et adaptée au contexte opérationnel.'],
+
+                ['03', 'Déployer', 'Mettre en œuvre les actions avec méthode, tests et coordination.'],
+
+                ['04', 'Améliorer', 'Documenter, recommander les prochaines actions et réduire les incidents récurrents.']
+
+            ];
+
+            foreach ($solution_steps as $step) :
+            ?>
+
+                <article class="ya-process-card ya-solution-process-card reveal">
+
+                    <b><?php echo esc_html($step[0]); ?></b>
+
+                    <h3><?php echo esc_html($step[1]); ?></h3>
+
+                    <p><?php echo esc_html($step[2]); ?></p>
+
+                </article>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOLUTION CTA
+========================================================= -->
+<section class="ya-cta ya-solution-final-cta">
+
+    <div class="ya-shell ya-cta-in reveal">
+
+        <div>
+
+            <span class="ya-kicker">
+                VOTRE ENVIRONNEMENT
+            </span>
+
+            <h2>
+                Besoin d’améliorer votre infrastructure informatique ?
+            </h2>
+
+            <p>
+                Présentez votre environnement et vos priorités afin d’identifier
+                ensemble les actions les plus utiles.
+            </p>
+
+        </div>
+
+        <a
+            class="ya-btn"
+            href="<?php echo esc_url(ya_page('demander-un-devis')); ?>"
+        >
+            Demander un devis
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
 
     </div>
 
