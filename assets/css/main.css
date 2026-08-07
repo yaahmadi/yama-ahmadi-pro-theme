@@ -9269,3 +9269,166 @@ a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}
     .reveal{opacity:1!important;transform:none!important}
     *{scroll-behavior:auto!important}
 }
+
+/* =========================================================
+   YAMA AHMADI PRO v3.2.1 — FINAL RESPONSIVE POLISH
+   - Larger header brand presentation.
+   - Logo-only technology and experience presentation.
+   - Media-library Apple / Google Play artwork for PWA install.
+   - Consistent desktop, tablet, phone and standalone-PWA sizing.
+========================================================= */
+
+/* Brand: make the real logo more legible without increasing navigation noise. */
+.ya-header-in{
+    grid-template-columns:248px minmax(0,1fr) auto!important;
+}
+.ya-brand{min-width:0!important;overflow:visible!important}
+.ya-brand-logo-stack{
+    width:224px!important;
+    height:62px!important;
+    flex:0 0 224px!important;
+}
+.ya-brand-logo-stack .ya-header-logo{
+    width:224px!important;
+    height:62px!important;
+    object-fit:contain!important;
+    object-position:left center!important;
+}
+
+/* Technologies: visual identity is carried by the logo; no repeated brand name below it. */
+.ya-tech-chip{
+    min-height:104px!important;
+    padding:14px 10px!important;
+    gap:0!important;
+}
+.ya-tech-logo-wrap{
+    width:116px!important;
+    height:62px!important;
+    flex:0 0 62px!important;
+    padding:9px 12px!important;
+}
+.ya-tech-logo-wrap img{
+    width:92px!important;
+    height:42px!important;
+    max-width:92px!important;
+    max-height:42px!important;
+}
+.ya-tech-chip>.screen-reader-text{position:absolute!important}
+
+/* Experience: when an official logo is available it replaces the duplicated company heading. */
+.ya-home-project-card{min-height:248px!important}
+.ya-project-brand{
+    width:166px!important;
+    height:64px!important;
+    margin:18px 0 12px!important;
+    padding:8px 11px!important;
+}
+.ya-project-brand img{
+    width:136px!important;
+    height:42px!important;
+    max-width:136px!important;
+    max-height:42px!important;
+}
+.ya-home-project-card>small{
+    display:block;
+    margin-top:2px;
+    color:#8eb0ab!important;
+    font-weight:650;
+}
+
+/* PWA install strip: use uploaded brand artwork, not generic Font Awesome marks. */
+.ya-store{
+    min-width:184px!important;
+    min-height:58px!important;
+    padding:7px 13px!important;
+    gap:12px!important;
+    overflow:hidden;
+}
+.ya-store-logo{
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    border-radius:9px;
+    background:#fff;
+}
+.ya-store-logo img{
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    object-position:center;
+    filter:none!important;
+}
+.ya-store-logo-google{
+    width:58px;
+    flex-basis:58px;
+    padding:4px;
+}
+.ya-store-logo-google img{width:52px;height:34px;object-fit:contain}
+.ya-store-logo-apple{padding:7px}
+.ya-store-logo-apple img{width:30px;height:30px;object-fit:contain}
+.ya-store-copy{min-width:0}
+.ya-store-copy small,.ya-store-copy strong{white-space:nowrap}
+
+/* Keep every scrolling-logo stage exactly equal and logo-only. */
+.ya-partner-logo{
+    width:166px!important;
+    min-width:166px!important;
+    height:66px!important;
+    padding:9px 15px!important;
+}
+.ya-partner-logo img{
+    width:126px!important;
+    height:42px!important;
+    max-width:126px!important;
+    max-height:42px!important;
+}
+
+/* Laptop / iPad landscape */
+@media (max-width:1180px){
+    .ya-header-in{grid-template-columns:220px minmax(0,1fr) auto!important}
+    .ya-brand-logo-stack{width:196px!important;height:56px!important;flex-basis:196px!important}
+    .ya-brand-logo-stack .ya-header-logo{width:196px!important;height:56px!important}
+}
+
+/* Tablet / iPad portrait */
+@media (max-width:980px){
+    .ya-header-in{grid-template-columns:minmax(0,1fr) auto!important}
+    .ya-brand-logo-stack{width:190px!important;height:54px!important;flex-basis:190px!important}
+    .ya-brand-logo-stack .ya-header-logo{width:190px!important;height:54px!important}
+    .ya-tech-logo-wrap{width:108px!important;height:58px!important;flex-basis:58px!important}
+    .ya-tech-logo-wrap img{width:86px!important;height:38px!important;max-width:86px!important;max-height:38px!important}
+}
+
+/* Phones, including iPhone and Android PWA. */
+@media (max-width:680px){
+    .ya-brand-logo-stack{width:170px!important;height:50px!important;flex-basis:170px!important}
+    .ya-brand-logo-stack .ya-header-logo{width:170px!important;height:50px!important}
+    .ya-tech-chip{min-height:98px!important;padding:11px 6px!important}
+    .ya-tech-logo-wrap{width:96px!important;height:54px!important;flex-basis:54px!important;padding:8px!important}
+    .ya-tech-logo-wrap img{width:78px!important;height:36px!important;max-width:78px!important;max-height:36px!important}
+    .ya-project-brand{width:158px!important;height:60px!important}
+    .ya-project-brand img{width:130px!important;height:40px!important;max-width:130px!important;max-height:40px!important}
+    .ya-store-row{display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
+    .ya-store{width:100%!important;min-width:0!important;justify-content:flex-start!important}
+    .ya-partner-logo{width:148px!important;min-width:148px!important;height:62px!important}
+    .ya-partner-logo img{width:112px!important;height:38px!important;max-width:112px!important;max-height:38px!important}
+}
+
+@media (max-width:390px){
+    .ya-brand-logo-stack{width:154px!important;height:46px!important;flex-basis:154px!important}
+    .ya-brand-logo-stack .ya-header-logo{width:154px!important;height:46px!important}
+    .ya-tech-logo-wrap{width:88px!important;height:50px!important;flex-basis:50px!important}
+    .ya-tech-logo-wrap img{width:72px!important;height:32px!important;max-width:72px!important;max-height:32px!important}
+}
+
+/* Standalone PWA safe-area consistency. */
+@media (display-mode:standalone){
+    .ya-site-header-shell{padding-top:env(safe-area-inset-top,0px)}
+    .ya-app-strip{scroll-margin-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+}

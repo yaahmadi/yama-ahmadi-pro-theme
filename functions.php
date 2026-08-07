@@ -103,7 +103,7 @@ add_action('wp_enqueue_scripts', 'ya_assets');
 
 
 /* =========================================================
-   MEDIA / BRAND ASSETS — v3.2.0
+   MEDIA / BRAND ASSETS — v3.2.1
    These URLs come from the site's own WordPress Media Library.
 ========================================================= */
 

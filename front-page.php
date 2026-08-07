@@ -387,7 +387,7 @@ $projects_url = ya_page('projets');
                             <i class="fa-solid fa-microchip" aria-hidden="true"></i>
                         <?php endif; ?>
                     </span>
-                    <span><?php echo esc_html($tech[0]); ?></span>
+                    <span class="screen-reader-text"><?php echo esc_html($tech[0]); ?></span>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -422,7 +422,11 @@ $projects_url = ya_page('projets');
                     <?php if ($project_logo): ?>
                         <div class="ya-project-brand"><img src="<?php echo esc_url($project_logo); ?>" alt="<?php echo esc_attr($project[0]); ?>" loading="lazy" decoding="async"></div>
                     <?php endif; ?>
-                    <h3><?php echo esc_html($project[0]); ?></h3>
+                    <?php if ($project_logo): ?>
+                        <h3 class="screen-reader-text"><?php echo esc_html($project[0]); ?></h3>
+                    <?php else: ?>
+                        <h3><?php echo esc_html($project[0]); ?></h3>
+                    <?php endif; ?>
                     <small><?php echo esc_html($project[1]); ?></small>
                     <p><?php echo esc_html($project[2]); ?></p>
                 </article>

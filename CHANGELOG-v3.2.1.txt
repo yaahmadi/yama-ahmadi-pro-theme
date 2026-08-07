@@ -1,0 +1,12 @@
+Yama Ahmadi Pro — v3.2.1
+Final Responsive & PWA Polish
+
+- Enlarged the real Yama Ahmadi header logo on desktop, tablet and mobile while preserving navigation space.
+- Removed visible duplicate technology names below technology logos; accessible names remain available to screen readers.
+- Removed visible duplicate company names in experience cards when the official company logo is present.
+- Kept location, mission description and experience category so the professional context remains clear.
+- Standardized technology, experience and marquee logo stages for consistent visual sizing.
+- Integrated the WordPress Media Library Apple and Google Play artwork into PWA installation controls.
+- Retained native PWA installation behavior rather than falsely linking to app stores where no native listing is configured.
+- Added final responsive sizing for desktop, laptop, iPad/tablet, Android phones, iPhone and standalone PWA safe areas.
+- Preserved reduced-motion, keyboard-focus, touch and performance behavior from v3.2.0.

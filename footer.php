@@ -30,6 +30,9 @@ $linkedin = get_theme_mod('ya_linkedin');
 $facebook = get_theme_mod('ya_facebook');
 $instagram = get_theme_mod('ya_instagram');
 $youtube = get_theme_mod('ya_youtube');
+$brand_assets = function_exists('ya_brand_assets') ? ya_brand_assets() : [];
+$app_google_logo = $brand_assets['google_play'] ?? '';
+$app_apple_logo  = $brand_assets['apple'] ?? '';
 ?>
 
 </main>
@@ -69,47 +72,40 @@ $youtube = get_theme_mod('ya_youtube');
 
                 <button
                     data-ya-install
-                    class="ya-store"
+                    class="ya-store ya-store-google"
                     type="button"
+                    aria-label="<?php echo esc_attr(ya_t('install_on') . ' Android'); ?>"
                 >
-
-                    <i class="fa-brands fa-android"></i>
-
-                    <span>
-
-                        <small>
-                            <?php echo esc_html(ya_t('install_on')); ?>
-                        </small>
-
-                        <strong>
-                            Android
-                        </strong>
-
+                    <span class="ya-store-logo ya-store-logo-google" aria-hidden="true">
+                        <?php if ($app_google_logo): ?>
+                            <img src="<?php echo esc_url($app_google_logo); ?>" alt="" loading="lazy" decoding="async">
+                        <?php else: ?>
+                            <i class="fa-brands fa-google-play"></i>
+                        <?php endif; ?>
                     </span>
-
+                    <span class="ya-store-copy">
+                        <small><?php echo esc_html(ya_t('install_on')); ?></small>
+                        <strong>Android</strong>
+                    </span>
                 </button>
-
 
                 <button
                     data-ya-install
-                    class="ya-store"
+                    class="ya-store ya-store-apple"
                     type="button"
+                    aria-label="<?php echo esc_attr(ya_t('add_to') . ' iPhone / iPad'); ?>"
                 >
-
-                    <i class="fa-brands fa-apple"></i>
-
-                    <span>
-
-                        <small>
-                            <?php echo esc_html(ya_t('add_to')); ?>
-                        </small>
-
-                        <strong>
-                            iPhone / iPad
-                        </strong>
-
+                    <span class="ya-store-logo ya-store-logo-apple" aria-hidden="true">
+                        <?php if ($app_apple_logo): ?>
+                            <img src="<?php echo esc_url($app_apple_logo); ?>" alt="" loading="lazy" decoding="async">
+                        <?php else: ?>
+                            <i class="fa-brands fa-apple"></i>
+                        <?php endif; ?>
                     </span>
-
+                    <span class="ya-store-copy">
+                        <small><?php echo esc_html(ya_t('add_to')); ?></small>
+                        <strong>iPhone / iPad</strong>
+                    </span>
                 </button>
 
             </div>
