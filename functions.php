@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '3.1.0');
+define('YA_VERSION', '3.1.1');
 
 /* =========================================================
    THEME SETUP
@@ -98,6 +98,47 @@ function ya_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'ya_assets');
+
+
+
+
+/* =========================================================
+   MEDIA / BRAND ASSETS — v3.1.1
+   These URLs come from the site's own WordPress Media Library.
+========================================================= */
+
+function ya_brand_assets() {
+    return [
+        'logo_white'      => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png',
+        'logo_color'      => 'https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-trans-color-e1783249311708.png',
+        'apple'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/apple-logo.png',
+        'google_play'     => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Google-Play-Logo-scaled.png',
+        'lenovo'          => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Lenovo-Logo-scaled.png',
+        'hp'              => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/HP-Logo-scaled.png',
+        'dell'            => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/dell-logo.png',
+        'linux'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/linux-logo-scaled.png',
+        'macos'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Mac-os-logo-scaled.png',
+        'vmware'          => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/VMware-Logo-scaled.png',
+        'windows'         => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/windows-logo.webp',
+        'azure'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Microsoft-Azure-Logo-scaled.png',
+        'microsoft365'    => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/microsoft-365_logo-.png',
+        'marelli'         => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/marelli-logo.webp',
+        'ubiquiti'        => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Ubiquiti-Logo-2013-scaled.png',
+        'fortinet'        => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Fortinet-Logo-scaled.png',
+        'cisco'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/cisco-logo.png',
+        'microsoft'       => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/microsoft-logo-scaled.png',
+        'wipro'           => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/wipro-logo.webp',
+        'teceze'          => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/teceze.webp',
+        'action'          => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Action_Logo-scaled.png',
+        'cognizant'       => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/Cognizant-Logo-scaled.png',
+        'hcltech'         => 'https://yamaahmadi.fr/wp-content/uploads/2026/08/hcltech-logo-scaled.png',
+    ];
+}
+
+function ya_brand_asset($key) {
+    $assets = ya_brand_assets();
+    return $assets[$key] ?? '';
+}
 
 
 /* =========================================================

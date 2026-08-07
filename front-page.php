@@ -9,6 +9,7 @@ defined('ABSPATH') || exit;
 get_header();
 
 $lang = ya_lang();
+$brand_assets = function_exists('ya_brand_assets') ? ya_brand_assets() : [];
 
 $home_i18n = [
 
@@ -455,17 +456,24 @@ $projects_url = ya_page('projets');
         <div class="ya-tech-grid">
             <?php
             $technologies = [
-                ['Microsoft 365', 'fa-brands fa-microsoft'], ['Azure', 'fa-solid fa-cloud'],
-                ['Windows', 'fa-brands fa-windows'], ['Cisco', 'fa-solid fa-network-wired'],
-                ['Fortinet', 'fa-solid fa-shield-halved'], ['VMware', 'fa-solid fa-server'],
-                ['Ubiquiti', 'fa-solid fa-wifi'], ['Apple macOS', 'fa-brands fa-apple'],
-                ['Linux', 'fa-brands fa-linux'], ['Dell', 'fa-solid fa-laptop'],
-                ['HP', 'fa-solid fa-print'], ['Lenovo', 'fa-solid fa-computer']
+                ['Microsoft 365', 'microsoft365'], ['Microsoft Azure', 'azure'],
+                ['Windows', 'windows'], ['Microsoft', 'microsoft'],
+                ['Cisco', 'cisco'], ['Fortinet', 'fortinet'],
+                ['VMware', 'vmware'], ['Ubiquiti', 'ubiquiti'],
+                ['Apple', 'apple'], ['macOS', 'macos'], ['Linux', 'linux'],
+                ['Dell', 'dell'], ['HP', 'hp'], ['Lenovo', 'lenovo']
             ];
             foreach ($technologies as $tech):
+                $tech_logo = $brand_assets[$tech[1]] ?? '';
             ?>
-                <div class="ya-tech-chip reveal">
-                    <span class="ya-tech-icon"><i class="<?php echo esc_attr($tech[1]); ?>"></i></span>
+                <div class="ya-tech-chip ya-tech-chip-logo reveal">
+                    <span class="ya-tech-icon ya-tech-logo-wrap">
+                        <?php if ($tech_logo): ?>
+                            <img src="<?php echo esc_url($tech_logo); ?>" alt="<?php echo esc_attr($tech[0]); ?>" loading="lazy" decoding="async">
+                        <?php else: ?>
+                            <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+                        <?php endif; ?>
+                    </span>
                     <span><?php echo esc_html($tech[0]); ?></span>
                 </div>
             <?php endforeach; ?>
@@ -482,12 +490,25 @@ $projects_url = ya_page('projets');
         </div>
 
         <div class="ya-card-grid ya-project-grid">
-            <?php foreach ($H['projects'] as $project): ?>
+            <?php foreach ($H['projects'] as $project):
+                $project_key = [
+                    'Marelli' => 'marelli',
+                    'Action Logistics' => 'action',
+                    'HCL Technologies' => 'hcltech',
+                    'TECEZE' => 'teceze',
+                    'Cognizant' => 'cognizant',
+                    'Wipro' => 'wipro',
+                ][$project[0]] ?? '';
+                $project_logo = $project_key ? ($brand_assets[$project_key] ?? '') : '';
+            ?>
                 <article class="ya-project-card ya-home-project-card reveal">
                     <div class="ya-project-top">
                         <span class="ya-mini-label"><?php echo esc_html($project[3]); ?></span>
                         <span class="ya-project-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
                     </div>
+                    <?php if ($project_logo): ?>
+                        <div class="ya-project-brand"><img src="<?php echo esc_url($project_logo); ?>" alt="<?php echo esc_attr($project[0]); ?>" loading="lazy" decoding="async"></div>
+                    <?php endif; ?>
                     <h3><?php echo esc_html($project[0]); ?></h3>
                     <small><?php echo esc_html($project[1]); ?></small>
                     <p><?php echo esc_html($project[2]); ?></p>
@@ -513,15 +534,26 @@ $projects_url = ya_page('projets');
         <div class="ya-marquee-track">
             <?php
             $brands = [
-                ['MARELLI', '', 'MA'], ['ACTION', '', 'AC'],
-                ['HCLTECH', 'https://cdn.simpleicons.org/hcl', 'HC'],
-                ['TECEZE', '', 'TZ'],
-                ['COGNIZANT', 'https://cdn.simpleicons.org/cognizant', 'CG'],
-                ['WIPRO', 'https://cdn.simpleicons.org/wipro', 'WP'],
-                ['MICROSOFT', 'https://cdn.simpleicons.org/microsoft', 'MS'],
-                ['CISCO', 'https://cdn.simpleicons.org/cisco', 'CS'],
-                ['FORTINET', 'https://cdn.simpleicons.org/fortinet', 'FT'],
-                ['UBIQUITI', 'https://cdn.simpleicons.org/ubiquiti', 'UB']
+                ['MARELLI', $brand_assets['marelli'] ?? ''],
+                ['ACTION', $brand_assets['action'] ?? ''],
+                ['HCLTECH', $brand_assets['hcltech'] ?? ''],
+                ['TECEZE', $brand_assets['teceze'] ?? ''],
+                ['COGNIZANT', $brand_assets['cognizant'] ?? ''],
+                ['WIPRO', $brand_assets['wipro'] ?? ''],
+                ['MICROSOFT', $brand_assets['microsoft'] ?? ''],
+                ['CISCO', $brand_assets['cisco'] ?? ''],
+                ['FORTINET', $brand_assets['fortinet'] ?? ''],
+                ['UBIQUITI', $brand_assets['ubiquiti'] ?? ''],
+                ['LENOVO', $brand_assets['lenovo'] ?? ''],
+                ['HP', $brand_assets['hp'] ?? ''],
+                ['DELL', $brand_assets['dell'] ?? ''],
+                ['VMWARE', $brand_assets['vmware'] ?? ''],
+                ['AZURE', $brand_assets['azure'] ?? ''],
+                ['MICROSOFT 365', $brand_assets['microsoft365'] ?? ''],
+                ['WINDOWS', $brand_assets['windows'] ?? ''],
+                ['APPLE', $brand_assets['apple'] ?? ''],
+                ['MACOS', $brand_assets['macos'] ?? ''],
+                ['LINUX', $brand_assets['linux'] ?? ''],
             ];
 
             for ($repeat = 0; $repeat < 2; $repeat++):
@@ -531,7 +563,7 @@ $projects_url = ya_page('projets');
                         <?php if (!empty($brand[1])): ?>
                             <img src="<?php echo esc_url($brand[1]); ?>" alt="" loading="lazy" decoding="async">
                         <?php else: ?>
-                            <span class="ya-partner-monogram"><?php echo esc_html($brand[2]); ?></span>
+                            <span class="ya-partner-monogram"><?php echo esc_html(substr($brand[0], 0, 2)); ?></span>
                         <?php endif; ?>
                         <strong><?php echo esc_html($brand[0]); ?></strong>
                     </span>

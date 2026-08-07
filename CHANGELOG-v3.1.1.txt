@@ -1,0 +1,21 @@
+Yama Ahmadi Pro v3.1.1
+======================
+
+Production design / media integration release.
+
+- Fixed full sticky header by making the header shell fixed above all pages.
+- Removed the desktop top gap/topbar and let the hero begin directly behind the premium header.
+- Header uses the WordPress Media Library white logo and transitions to a compact solid dark state on scroll.
+- Converted the main site canvas to a predominantly dark premium visual system with teal/mint accents.
+- Improved dark text contrast, cards, buttons, forms, hover elevation and section transitions.
+- Replaced icon/fallback technology marks with the user's real WordPress Media Library logos.
+- Added original-color logos for Microsoft 365, Azure, Windows, Microsoft, Cisco, Fortinet, VMware, Ubiquiti, Apple, macOS, Linux, Dell, HP and Lenovo.
+- Added real company/project logos for Marelli, Action, HCLTech, TECEZE, Cognizant and Wipro.
+- Removed dependency on external Simple Icons URLs for the homepage brand marquee.
+- Expanded the brand marquee and restored original logo colors on light logo cards for legibility.
+- Added project logos to professional experience cards while preserving the experience/endorsement disclaimer.
+- Improved desktop, laptop, iPad/tablet, mobile and small-phone responsive behavior.
+- Added admin-bar offsets and PWA/mobile-safe header sizing.
+- Preserved reduced-motion support and lazy-loaded non-critical logo images.
+
+Media source: WordPress export dated 2026-08-07.

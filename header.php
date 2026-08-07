@@ -14,6 +14,9 @@ $phone = get_theme_mod('ya_phone', '+33 7 84 20 31 50');
 $email = get_theme_mod('ya_email', 'support@yamaahmadi.fr');
 
 $quote_url = ya_page('demander-un-devis');
+$brand_assets = function_exists('ya_brand_assets') ? ya_brand_assets() : [];
+$logo_white = $brand_assets['logo_white'] ?? 'https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png';
+$logo_color = $brand_assets['logo_color'] ?? 'https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-trans-color-e1783249311708.png';
 
 $home_url = function_exists('ya_home_url')
     ? ya_home_url()
@@ -133,13 +136,11 @@ $brand_subtitle = [
                 href="<?php echo esc_url($home_url); ?>"
                 aria-label="Yama Ahmadi"
             >
-                <img
-                    class="ya-header-logo"
-                    src="https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png"
-                    alt="Yama Ahmadi IT Support & Services"
-                    width="190"
-                    height="55"
-                >
+                <span class="ya-brand-logo-stack" aria-hidden="true">
+                    <img class="ya-header-logo ya-logo-white" src="<?php echo esc_url($logo_white); ?>" alt="" width="190" height="55">
+                    <img class="ya-header-logo ya-logo-color" src="<?php echo esc_url($logo_color); ?>" alt="" width="190" height="55">
+                </span>
+                <span class="screen-reader-text">Yama Ahmadi IT Support &amp; Services</span>
             </a>
 
             <nav
@@ -247,13 +248,11 @@ $brand_subtitle = [
         <div class="ya-mobile-head">
 
             <a class="ya-brand" href="<?php echo esc_url($home_url); ?>">
-                <img
-                    class="ya-header-logo"
-                    src="https://yamaahmadi.fr/wp-content/uploads/2026/07/logo-transparent-e1783249337721.png"
-                    alt="Yama Ahmadi IT Support & Services"
-                    width="190"
-                    height="55"
-                >
+                <span class="ya-brand-logo-stack" aria-hidden="true">
+                    <img class="ya-header-logo ya-logo-white" src="<?php echo esc_url($logo_white); ?>" alt="" width="190" height="55">
+                    <img class="ya-header-logo ya-logo-color" src="<?php echo esc_url($logo_color); ?>" alt="" width="190" height="55">
+                </span>
+                <span class="screen-reader-text">Yama Ahmadi IT Support &amp; Services</span>
             </a>
 
             <button

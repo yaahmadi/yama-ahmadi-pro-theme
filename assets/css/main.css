@@ -8825,3 +8825,215 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     html.ya-standalone .ya-site-header-shell,.ya-standalone .ya-site-header-shell{top:env(safe-area-inset-top)!important}
     html.ya-standalone .ya-mobile-panel,.ya-standalone .ya-mobile-panel{padding-top:calc(18px + env(safe-area-inset-top))!important;padding-bottom:calc(18px + env(safe-area-inset-bottom))!important}
 }
+
+
+/* ========================================================================
+   YAMA AHMADI PRO v3.1.1 — DARK GLASS / STICKY HEADER / BRAND MEDIA SYSTEM
+   ======================================================================== */
+
+:root{
+    --ya-v311-bg:#031115;
+    --ya-v311-bg2:#061a1f;
+    --ya-v311-panel:#0a2328;
+    --ya-v311-panel2:#0d2c31;
+    --ya-v311-line:rgba(137,234,210,.14);
+    --ya-v311-text:#edf9f6;
+    --ya-v311-muted:#9abbb6;
+    --ya-v311-accent:#65e3bd;
+    --ya-v311-accent2:#28c8bc;
+    --ya-header-h:78px;
+}
+
+html{scroll-padding-top:calc(var(--ya-header-h) + 18px)}
+body{background:var(--ya-v311-bg)!important;color:var(--ya-v311-text)}
+
+/* Fixed header overlays the hero at the top and becomes solid on scroll. */
+.ya-site-header-shell{
+    position:fixed!important;
+    inset:0 0 auto 0!important;
+    z-index:10040!important;
+    pointer-events:none;
+}
+.ya-site-header-shell .ya-header,
+.ya-site-header-shell .ya-topbar{pointer-events:auto}
+.ya-topbar{display:none!important}
+.ya-header{
+    position:relative!important;
+    top:auto!important;
+    min-height:var(--ya-header-h)!important;
+    background:linear-gradient(180deg,rgba(2,13,17,.90),rgba(3,17,21,.58))!important;
+    border-bottom:1px solid rgba(255,255,255,.08)!important;
+    box-shadow:none!important;
+    -webkit-backdrop-filter:blur(18px) saturate(135%);
+    backdrop-filter:blur(18px) saturate(135%);
+}
+.ya-header.scrolled{
+    background:rgba(3,17,21,.96)!important;
+    border-bottom-color:rgba(101,227,189,.13)!important;
+    box-shadow:0 14px 45px rgba(0,0,0,.32)!important;
+}
+.ya-header-in{height:var(--ya-header-h)!important}
+body.admin-bar .ya-site-header-shell{top:32px!important}
+
+.ya-brand-logo-stack{position:relative;display:block;width:190px;height:55px;flex:0 0 190px}
+.ya-brand-logo-stack .ya-header-logo{position:absolute;inset:0;width:190px;height:55px;object-fit:contain;object-position:left center;transition:opacity .25s ease,transform .25s ease}
+.ya-logo-white{opacity:1;transform:translateY(0)}
+.ya-logo-color{opacity:0;transform:translateY(2px)}
+.ya-header.scrolled .ya-logo-white{opacity:.94}
+.ya-header.scrolled .ya-logo-color{opacity:0}
+.ya-brand:hover .ya-header-logo{transform:translateY(-1px) scale(1.015)}
+
+/* Heroes begin behind the transparent header; no blank strip above them. */
+.ya-home-hero{min-height:clamp(680px,82vh,900px)!important}
+.ya-home-hero .ya-hero-layout{min-height:clamp(680px,82vh,900px)!important;padding-top:calc(var(--ya-header-h) + 64px)!important}
+.ya-inner-hero{padding-top:var(--ya-header-h)!important}
+.ya-page,.ya-archive,.ya-single{background:var(--ya-v311-bg)!important}
+body:not(.home) main{padding-top:var(--ya-header-h)}
+body:not(.home) .ya-inner-hero,body:not(.home) main .ya-inner-hero{margin-top:calc(var(--ya-header-h) * -1);padding-top:calc(var(--ya-header-h) + 44px)!important}
+
+/* Premium dark canvas across the majority of the site. */
+.ya-section,
+.ya-services-section,
+.ya-technology-section,
+.ya-project-section,
+.ya-home-blog,
+.ya-page-section,
+.ya-content-section{
+    background:
+      radial-gradient(circle at 12% 8%,rgba(40,200,188,.055),transparent 26%),
+      radial-gradient(circle at 88% 28%,rgba(101,227,189,.045),transparent 24%),
+      var(--ya-v311-bg)!important;
+    color:var(--ya-v311-text)!important;
+}
+.ya-section:nth-of-type(even),.ya-page-section:nth-of-type(even){background:linear-gradient(180deg,#04161b,#061b20)!important}
+.ya-section-head h2,.ya-section h2,.ya-page h1,.ya-page h2,.ya-page h3,.ya-home-blog h2{color:#f2fbf9!important}
+.ya-section-head p,.ya-section p,.ya-page p,.ya-page li,.ya-page small,.ya-disclaimer{color:var(--ya-v311-muted)!important}
+.ya-kicker{color:var(--ya-v311-accent)!important}
+
+/* Cards */
+.ya-premium-card,.ya-project-card,.ya-post-card,.ya-page-card,.ya-contact-card,.ya-solution-card,.ya-feature-card{
+    background:linear-gradient(155deg,rgba(13,44,49,.93),rgba(6,26,31,.94))!important;
+    border:1px solid var(--ya-v311-line)!important;
+    box-shadow:0 16px 50px rgba(0,0,0,.17)!important;
+    color:var(--ya-v311-text)!important;
+}
+.ya-premium-card:hover,.ya-project-card:hover,.ya-post-card:hover,.ya-page-card:hover,.ya-contact-card:hover,.ya-solution-card:hover,.ya-feature-card:hover{
+    transform:translateY(-8px)!important;
+    border-color:rgba(101,227,189,.42)!important;
+    box-shadow:0 24px 70px rgba(0,0,0,.3),0 0 0 1px rgba(101,227,189,.05)!important;
+}
+.ya-premium-card h3,.ya-project-card h3,.ya-post-card h3,.ya-post-card h3 a,.ya-page-card h3{color:#f2fbf9!important}
+.ya-premium-card p,.ya-project-card p,.ya-post-card p{color:#9abbb6!important}
+.ya-card-icon{background:rgba(101,227,189,.09)!important;border-color:rgba(101,227,189,.17)!important;color:var(--ya-v311-accent)!important}
+
+/* Real technology logos */
+.ya-tech-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:14px!important}
+.ya-tech-chip{
+    min-height:118px!important;
+    padding:17px 12px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:11px!important;
+    text-align:center!important;
+    background:linear-gradient(155deg,rgba(13,44,49,.92),rgba(5,24,29,.96))!important;
+    border:1px solid var(--ya-v311-line)!important;
+    border-radius:18px!important;
+    color:#eaf7f4!important;
+    box-shadow:0 14px 42px rgba(0,0,0,.13)!important;
+    transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease!important;
+}
+.ya-tech-chip:hover{transform:translateY(-7px) scale(1.015)!important;border-color:rgba(101,227,189,.38)!important;box-shadow:0 22px 55px rgba(0,0,0,.28)!important}
+.ya-tech-logo-wrap{width:82px!important;height:45px!important;display:grid!important;place-items:center!important;background:rgba(255,255,255,.96)!important;border-radius:11px!important;padding:7px 9px!important;border:1px solid rgba(255,255,255,.16)!important}
+.ya-tech-logo-wrap img{display:block!important;width:100%!important;height:100%!important;max-width:70px!important;object-fit:contain!important;filter:none!important;opacity:1!important}
+.ya-tech-chip>span:last-child{font-size:11px!important;font-weight:750!important;letter-spacing:.01em!important}
+
+/* Project/company cards with official media-library logos. */
+.ya-project-brand{height:58px;margin:18px 0 4px;display:flex;align-items:center}
+.ya-project-brand img{width:auto;max-width:150px;height:46px;object-fit:contain;background:rgba(255,255,255,.96);border-radius:10px;padding:7px 10px;filter:none;opacity:1}
+
+/* Company/technology marquee: remove grayscale and show original brand colors. */
+.ya-partner-band{padding:52px 0!important;background:linear-gradient(180deg,#020d11,#04181d)!important;border-color:rgba(101,227,189,.09)!important}
+.ya-marquee-track{gap:16px!important;animation-duration:48s!important}
+.ya-partner-logo{
+    height:78px!important;
+    min-width:190px!important;
+    padding:10px 20px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:14px!important;
+    background:rgba(255,255,255,.96)!important;
+    border:1px solid rgba(255,255,255,.28)!important;
+    border-radius:16px!important;
+    filter:none!important;
+    opacity:1!important;
+    color:#0a2328!important;
+    box-shadow:0 13px 38px rgba(0,0,0,.18)!important;
+    transition:transform .28s ease,box-shadow .28s ease!important;
+}
+.ya-partner-logo:hover{transform:translateY(-5px) scale(1.02)!important;box-shadow:0 20px 50px rgba(0,0,0,.28)!important}
+.ya-partner-logo img{display:block!important;max-width:105px!important;max-height:42px!important;width:auto!important;height:auto!important;object-fit:contain!important;filter:none!important;opacity:1!important}
+.ya-partner-logo strong{font-size:10px!important;letter-spacing:.08em!important;color:#14363a!important}
+.ya-partner-monogram{color:#14363a!important}
+
+/* Buttons & links */
+.ya-btn{box-shadow:0 10px 30px rgba(52,214,181,.12)}
+.ya-btn:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(52,214,181,.2)}
+.ya-text-link{color:var(--ya-v311-accent)!important}
+
+/* Form surfaces in dark pages */
+.ya-page input,.ya-page textarea,.ya-page select,.ya-contact-form input,.ya-contact-form textarea,.ya-contact-form select{
+    background:#071e23!important;color:#eef9f6!important;border-color:rgba(137,234,210,.17)!important
+}
+.ya-page input::placeholder,.ya-page textarea::placeholder,.ya-contact-form input::placeholder,.ya-contact-form textarea::placeholder{color:#769895!important}
+.ya-page input:focus,.ya-page textarea:focus,.ya-page select:focus,.ya-contact-form input:focus,.ya-contact-form textarea:focus,.ya-contact-form select:focus{border-color:rgba(101,227,189,.65)!important;box-shadow:0 0 0 3px rgba(101,227,189,.08)!important}
+
+/* Navigation and mobile panel */
+.ya-mobile-panel{background:linear-gradient(180deg,#05191e,#031115)!important;color:#fff!important}
+.ya-mobile-nav a{color:#eaf7f4!important;border-bottom-color:rgba(255,255,255,.07)!important}
+.ya-mobile-nav a:hover{color:var(--ya-v311-accent)!important}
+
+/* Smooth, restrained reveal. */
+.reveal{will-change:transform,opacity}
+@media (prefers-reduced-motion:no-preference){
+    .ya-premium-card,.ya-project-card,.ya-post-card,.ya-tech-chip,.ya-partner-logo,.ya-btn{transition-timing-function:cubic-bezier(.2,.8,.2,1)!important}
+}
+
+/* Tablet */
+@media (max-width:1180px){
+    .ya-tech-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+    .ya-header-in{grid-template-columns:210px minmax(0,1fr) auto!important;gap:16px!important}
+    .ya-brand-logo-stack{width:170px;height:50px;flex-basis:170px}
+    .ya-brand-logo-stack .ya-header-logo{width:170px;height:50px}
+}
+@media (max-width:980px){
+    :root{--ya-header-h:70px}
+    .ya-nav,.ya-header-search,.ya-header-contact,.ya-header-quote{display:none!important}
+    .ya-menu{display:block!important}
+    .ya-header-in{grid-template-columns:minmax(0,1fr) auto!important}
+    .ya-tech-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+    .ya-home-hero .ya-hero-layout{padding-top:calc(var(--ya-header-h) + 44px)!important}
+}
+@media (max-width:782px){body.admin-bar .ya-site-header-shell{top:46px!important}}
+@media (max-width:680px){
+    :root{--ya-header-h:66px}
+    .ya-header-in{height:var(--ya-header-h)!important;padding-left:16px!important;padding-right:16px!important}
+    .ya-brand-logo-stack{width:148px;height:44px;flex-basis:148px}
+    .ya-brand-logo-stack .ya-header-logo{width:148px;height:44px}
+    .ya-header-call{display:none!important}
+    .ya-tech-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+    .ya-tech-chip{min-height:104px!important;border-radius:15px!important}
+    .ya-tech-logo-wrap{width:72px!important;height:40px!important}
+    .ya-partner-logo{min-width:158px!important;height:68px!important;padding:8px 14px!important}
+    .ya-partner-logo img{max-width:90px!important;max-height:36px!important}
+    .ya-partner-logo strong{display:none!important}
+    .ya-home-hero{min-height:auto!important}
+    .ya-home-hero .ya-hero-layout{min-height:auto!important;padding-top:calc(var(--ya-header-h) + 38px)!important;padding-bottom:105px!important}
+}
+@media (max-width:390px){
+    .ya-tech-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    .ya-tech-chip{min-height:98px!important;padding:12px 8px!important}
+    .ya-brand-logo-stack{width:136px;flex-basis:136px}.ya-brand-logo-stack .ya-header-logo{width:136px}
+}
