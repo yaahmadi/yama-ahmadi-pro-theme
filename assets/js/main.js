@@ -1131,7 +1131,7 @@
     const header = d.querySelector('#ya-header');
     let ticking = false;
     const syncHeader = () => {
-        header?.classList.toggle('scrolled', window.scrollY > 18);
+        header?.classList.toggle('scrolled', window.scrollY > 72);
         ticking = false;
     };
     window.addEventListener('scroll', () => {

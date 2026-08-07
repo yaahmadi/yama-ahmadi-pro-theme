@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '3.1.1');
+define('YA_VERSION', '3.2.0');
 
 /* =========================================================
    THEME SETUP
@@ -103,7 +103,7 @@ add_action('wp_enqueue_scripts', 'ya_assets');
 
 
 /* =========================================================
-   MEDIA / BRAND ASSETS — v3.1.1
+   MEDIA / BRAND ASSETS — v3.2.0
    These URLs come from the site's own WordPress Media Library.
 ========================================================= */
 

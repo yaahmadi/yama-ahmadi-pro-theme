@@ -291,93 +291,6 @@ $projects_url = ya_page('projets');
     </div>
 </section>
 
-<section class="ya-home-app-actions" aria-label="<?php
-    echo esc_attr(
-        $lang === 'en'
-            ? 'Quick actions'
-            : (
-                $lang === 'de'
-                    ? 'Schnellaktionen'
-                    : 'Actions rapides'
-            )
-    );
-?>">
-    <div class="ya-shell ya-home-app-actions-grid">
-
-        <a href="<?php echo esc_url($services_url); ?>">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>
-                <?php
-                echo esc_html(
-                    $lang === 'en'
-                        ? 'Explore services'
-                        : (
-                            $lang === 'de'
-                                ? 'Services ansehen'
-                                : 'Voir les services'
-                        )
-                );
-                ?>
-            </span>
-        </a>
-
-        <a href="<?php echo esc_url($quote_url); ?>">
-            <i class="fa-solid fa-file-signature"></i>
-            <span>
-                <?php
-                echo esc_html(
-                    $lang === 'en'
-                        ? 'Request a quote'
-                        : (
-                            $lang === 'de'
-                                ? 'Angebot anfordern'
-                                : 'Demander un devis'
-                        )
-                );
-                ?>
-            </span>
-        </a>
-
-        <a href="<?php echo esc_url($contact_url); ?>">
-            <i class="fa-regular fa-message"></i>
-            <span>
-                <?php
-                echo esc_html(
-                    $lang === 'en'
-                        ? 'Contact support'
-                        : (
-                            $lang === 'de'
-                                ? 'Support kontaktieren'
-                                : 'Contacter le support'
-                        )
-                );
-                ?>
-            </span>
-        </a>
-
-        <button
-            type="button"
-            data-ya-app-search-open
-        >
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>
-                <?php
-                echo esc_html(
-                    $lang === 'en'
-                        ? 'Search'
-                        : (
-                            $lang === 'de'
-                                ? 'Suchen'
-                                : 'Rechercher'
-                        )
-                );
-                ?>
-            </span>
-        </button>
-
-    </div>
-</section>
-
 <section id="ya-home-services" class="ya-section ya-services-section">
     <div class="ya-shell">
         <div class="ya-section-head reveal">
@@ -466,7 +379,7 @@ $projects_url = ya_page('projets');
             foreach ($technologies as $tech):
                 $tech_logo = $brand_assets[$tech[1]] ?? '';
             ?>
-                <div class="ya-tech-chip ya-tech-chip-logo reveal">
+                <div class="ya-tech-chip ya-tech-chip-logo reveal" data-brand="<?php echo esc_attr($tech[1]); ?>">
                     <span class="ya-tech-icon ya-tech-logo-wrap">
                         <?php if ($tech_logo): ?>
                             <img src="<?php echo esc_url($tech_logo); ?>" alt="<?php echo esc_attr($tech[0]); ?>" loading="lazy" decoding="async">
@@ -501,7 +414,7 @@ $projects_url = ya_page('projets');
                 ][$project[0]] ?? '';
                 $project_logo = $project_key ? ($brand_assets[$project_key] ?? '') : '';
             ?>
-                <article class="ya-project-card ya-home-project-card reveal">
+                <article class="ya-project-card ya-home-project-card reveal" data-brand="<?php echo esc_attr($project_key); ?>">
                     <div class="ya-project-top">
                         <span class="ya-mini-label"><?php echo esc_html($project[3]); ?></span>
                         <span class="ya-project-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
@@ -534,38 +447,37 @@ $projects_url = ya_page('projets');
         <div class="ya-marquee-track">
             <?php
             $brands = [
-                ['MARELLI', $brand_assets['marelli'] ?? ''],
-                ['ACTION', $brand_assets['action'] ?? ''],
-                ['HCLTECH', $brand_assets['hcltech'] ?? ''],
-                ['TECEZE', $brand_assets['teceze'] ?? ''],
-                ['COGNIZANT', $brand_assets['cognizant'] ?? ''],
-                ['WIPRO', $brand_assets['wipro'] ?? ''],
-                ['MICROSOFT', $brand_assets['microsoft'] ?? ''],
-                ['CISCO', $brand_assets['cisco'] ?? ''],
-                ['FORTINET', $brand_assets['fortinet'] ?? ''],
-                ['UBIQUITI', $brand_assets['ubiquiti'] ?? ''],
-                ['LENOVO', $brand_assets['lenovo'] ?? ''],
-                ['HP', $brand_assets['hp'] ?? ''],
-                ['DELL', $brand_assets['dell'] ?? ''],
-                ['VMWARE', $brand_assets['vmware'] ?? ''],
-                ['AZURE', $brand_assets['azure'] ?? ''],
-                ['MICROSOFT 365', $brand_assets['microsoft365'] ?? ''],
-                ['WINDOWS', $brand_assets['windows'] ?? ''],
-                ['APPLE', $brand_assets['apple'] ?? ''],
-                ['MACOS', $brand_assets['macos'] ?? ''],
-                ['LINUX', $brand_assets['linux'] ?? ''],
+                ['MARELLI', 'marelli', $brand_assets['marelli'] ?? ''],
+                ['ACTION', 'action', $brand_assets['action'] ?? ''],
+                ['HCLTECH', 'hcltech', $brand_assets['hcltech'] ?? ''],
+                ['TECEZE', 'teceze', $brand_assets['teceze'] ?? ''],
+                ['COGNIZANT', 'cognizant', $brand_assets['cognizant'] ?? ''],
+                ['WIPRO', 'wipro', $brand_assets['wipro'] ?? ''],
+                ['MICROSOFT', 'microsoft', $brand_assets['microsoft'] ?? ''],
+                ['CISCO', 'cisco', $brand_assets['cisco'] ?? ''],
+                ['FORTINET', 'fortinet', $brand_assets['fortinet'] ?? ''],
+                ['UBIQUITI', 'ubiquiti', $brand_assets['ubiquiti'] ?? ''],
+                ['LENOVO', 'lenovo', $brand_assets['lenovo'] ?? ''],
+                ['HP', 'hp', $brand_assets['hp'] ?? ''],
+                ['DELL', 'dell', $brand_assets['dell'] ?? ''],
+                ['VMWARE', 'vmware', $brand_assets['vmware'] ?? ''],
+                ['AZURE', 'azure', $brand_assets['azure'] ?? ''],
+                ['MICROSOFT 365', 'microsoft365', $brand_assets['microsoft365'] ?? ''],
+                ['WINDOWS', 'windows', $brand_assets['windows'] ?? ''],
+                ['APPLE', 'apple', $brand_assets['apple'] ?? ''],
+                ['MACOS', 'macos', $brand_assets['macos'] ?? ''],
+                ['LINUX', 'linux', $brand_assets['linux'] ?? ''],
             ];
 
             for ($repeat = 0; $repeat < 2; $repeat++):
                 foreach ($brands as $brand):
             ?>
-                    <span class="ya-partner-logo">
-                        <?php if (!empty($brand[1])): ?>
-                            <img src="<?php echo esc_url($brand[1]); ?>" alt="" loading="lazy" decoding="async">
+                    <span class="ya-partner-logo" data-brand="<?php echo esc_attr($brand[1]); ?>" title="<?php echo esc_attr($brand[0]); ?>">
+                        <?php if (!empty($brand[2])): ?>
+                            <img src="<?php echo esc_url($brand[2]); ?>" alt="<?php echo esc_attr($brand[0]); ?>" loading="lazy" decoding="async">
                         <?php else: ?>
                             <span class="ya-partner-monogram"><?php echo esc_html(substr($brand[0], 0, 2)); ?></span>
                         <?php endif; ?>
-                        <strong><?php echo esc_html($brand[0]); ?></strong>
                     </span>
             <?php
                 endforeach;

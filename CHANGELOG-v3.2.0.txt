@@ -1,0 +1,15 @@
+Yama Ahmadi Pro v3.2.0 — Final Production UI Audit
+Date: 2026-08-07
+
+- Header is transparent over the hero and switches to ~82% dark glass after scrolling.
+- Removed duplicated homepage quick-action row (Search / Quote / Contact / Services) because these actions already exist in navigation/header.
+- Standardized technology-logo cards to equal dimensions and centered brand stages.
+- Standardized project/company logo stages for Marelli, Action, HCLTech, TECEZE, Cognizant and Wipro.
+- Rebuilt the running logo marquee to show logos only, without duplicate text labels.
+- Added brand-specific visual normalization for source files with different transparent margins.
+- Improved service-card image consistency and card-height alignment.
+- Improved dark-theme section rhythm, typography, responsive spacing and touch behavior.
+- Added robust responsive rules for desktop, laptop, iPad/tablet, mobile and small phones.
+- Preserved PWA safe-area behavior, reduced-motion support and keyboard focus states.
+- Added resilient styling for images, tables, iframes and code/pre content on inner pages/posts.
+- Version bumped to 3.2.0.

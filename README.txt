@@ -39,3 +39,9 @@ YAMA AHMADI PRO ULTRA — v2.0.0
 
 
 v3.0.1: mobile hero refinement, restored mobile menu controller, balanced PWA navigation, app-sheet fixes, cache refresh and compatibility audit.
+
+v3.2.0 FINAL UI AUDIT
+- Transparent hero header; 82% dark glass on scroll.
+- Duplicate homepage quick actions removed.
+- Uniform technology/project/marquee logos; marquee uses logos only.
+- Final responsive/PWA and cross-page visual polish.
