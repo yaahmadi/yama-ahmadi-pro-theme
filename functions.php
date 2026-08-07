@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '3.0.0');
+define('YA_VERSION', '3.0.6');
 
 /* =========================================================
    THEME SETUP
@@ -1511,7 +1511,7 @@ function ya_pwa_output() {
         $css  = get_template_directory_uri() . '/assets/css/main.css';
         $js   = get_template_directory_uri() . '/assets/js/main.js';
         ?>
-const CACHE_NAME = 'yama-ahmadi-v2-6';
+const CACHE_NAME = 'yama-ahmadi-v3-0-3';
 
 const STATIC_ASSETS = [
     <?php echo wp_json_encode($home); ?>,
@@ -1605,32 +1605,17 @@ self.addEventListener('fetch', event => {
         )
     ) {
         event.respondWith(
-            caches
-                .match(request)
-                .then(cached => {
-                    if (cached) {
-                        return cached;
+            fetch(request)
+                .then(response => {
+                    if (response && response.ok) {
+                        const copy = response.clone();
+                        caches.open(CACHE_NAME).then(
+                            cache => cache.put(request, copy)
+                        );
                     }
-
-                    return fetch(request)
-                        .then(response => {
-                            if (response && response.ok) {
-                                const copy = response.clone();
-
-                                caches
-                                    .open(CACHE_NAME)
-                                    .then(
-                                        cache =>
-                                            cache.put(
-                                                request,
-                                                copy
-                                            )
-                                    );
-                            }
-
-                            return response;
-                        });
+                    return response;
                 })
+                .catch(() => caches.match(request))
         );
     }
 });

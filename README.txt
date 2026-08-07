@@ -1,3 +1,5 @@
+YAMA AHMADI PRO v3.0.0 — FINAL COMPATIBLE RELEASE
+
 Yama Ahmadi Pro Theme v1.0.0
 
 Install: Appearance > Themes > Add New > Upload Theme. Activate, then visit Settings > Permalinks and click Save Changes once for the PWA routes.
@@ -34,3 +36,6 @@ YAMA AHMADI PRO ULTRA — v2.0.0
 - Fully rebuilt professional footer with clear navigation and contact information.
 - Responsive desktop/tablet/mobile design.
 - VS Code + GitHub workflow included in GITHUB-VSCODE.md.
+
+
+v3.0.1: mobile hero refinement, restored mobile menu controller, balanced PWA navigation, app-sheet fixes, cache refresh and compatibility audit.

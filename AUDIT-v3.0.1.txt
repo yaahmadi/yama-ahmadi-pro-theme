@@ -1,0 +1,17 @@
+Yama Ahmadi Pro v3.0.1 — compatibility audit
+
+Validated:
+- PHP syntax: functions.php, header.php, front-page.php, page.php, footer.php, single.php, index.php, 404.php
+- JavaScript syntax: assets/js/main.js
+- WordPress theme root structure and style.css header
+- Primary page helper links: home, about, services, solutions, projects, contact, quote, legal pages
+- Service article links use WordPress post lookup with safe Services-page anchors as fallback
+- Image cards use mapped Media Library URLs with fallback handling
+- Mobile menu controller restored and connected to header drawer
+- PWA Search and More sheets connected to app navigation
+- Mobile bottom navigation changed to balanced Home / Services / Quote / Contact / More
+- Service worker cache version bumped to v3.0.1
+- Mobile hero height reduced and network visual compacted
+- iPhone safe-area spacing retained
+
+Note: live HTTP validation of media URLs may be blocked by the host security layer. Media mappings are retained from the supplied WordPress export and theme data.

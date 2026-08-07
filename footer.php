@@ -473,39 +473,13 @@ $youtube = get_theme_mod('ya_youtube');
         <span><?php echo esc_html(ya_t('services')); ?></span>
     </a>
 
-    <button
-        type="button"
-        class="ya-app-nav-primary"
-        data-ya-app-search-open
-        aria-label="<?php
-            echo esc_attr(
-                ya_lang() === 'en'
-                    ? 'Open search'
-                    : (
-                        ya_lang() === 'de'
-                            ? 'Suche öffnen'
-                            : 'Ouvrir la recherche'
-                    )
-            );
-        ?>"
+    <a
+        href="<?php echo esc_url(ya_page('demander-un-devis')); ?>"
+        class="ya-app-nav-quote <?php echo is_page(['demander-un-devis','demande-de-devis','request-a-quote','quote']) ? 'active' : ''; ?>"
     >
-        <span class="ya-app-nav-primary-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <span>
-            <?php
-            echo esc_html(
-                ya_lang() === 'en'
-                    ? 'Search'
-                    : (
-                        ya_lang() === 'de'
-                            ? 'Suchen'
-                            : 'Recherche'
-                    )
-            );
-            ?>
-        </span>
-    </button>
+        <i class="fa-solid fa-file-signature"></i>
+        <span><?php echo esc_html(ya_t('quote')); ?></span>
+    </a>
 
     <a
         href="<?php echo esc_url(ya_page('contact')); ?>"
@@ -770,6 +744,10 @@ $youtube = get_theme_mod('ya_youtube');
         </header>
 
         <div class="ya-app-more-grid">
+            <button type="button" data-ya-app-search-open>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span><?php echo esc_html(ya_lang() === 'de' ? 'Suchen' : (ya_lang() === 'en' ? 'Search' : 'Rechercher')); ?></span>
+            </button>
             <a href="<?php echo esc_url(ya_page('a-propos')); ?>">
                 <i class="fa-solid fa-user-gear"></i>
                 <span><?php echo esc_html(ya_t('about')); ?></span>

@@ -231,106 +231,45 @@ $contact_url  = ya_page('contact');
 $projects_url = ya_page('projets');
 ?>
 
-<section class="ya-hero ya-home-hero">
-
-    <video
-        class="ya-hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif"
-        aria-hidden="true"
-    >
-        <source
-            src="https://yamaahmadi.fr/wp-content/uploads/2024/11/Header-yama-Ahmadi-IT.mp4"
-            type="video/mp4"
-        >
+<section class="ya-v305-hero" aria-labelledby="ya-v305-title">
+    <video class="ya-v305-hero-media" autoplay muted loop playsinline preload="metadata" poster="https://yamaahmadi.fr/wp-content/uploads/2024/11/Untitled-high1-1.gif" aria-hidden="true">
+        <source src="https://yamaahmadi.fr/wp-content/uploads/2024/11/Header-yama-Ahmadi-IT.mp4" type="video/mp4">
     </video>
-    <div class="ya-hero-photo" aria-hidden="true"></div>
-    <div class="ya-hero-overlay" aria-hidden="true"></div>
-    <div class="ya-hero-mesh" aria-hidden="true"></div>
-    <div class="ya-hero-orb ya-hero-orb-one" aria-hidden="true"></div>
-    <div class="ya-hero-orb ya-hero-orb-two" aria-hidden="true"></div>
+    <div class="ya-v305-hero-fallback" aria-hidden="true"></div>
+    <div class="ya-v305-hero-shade" aria-hidden="true"></div>
 
-    <div class="ya-shell ya-hero-layout">
-        <div class="ya-hero-copy reveal">
-            <span class="ya-kicker"><?php echo esc_html(ya_t('hero_kicker')); ?></span>
-            <h1><?php echo esc_html(ya_t('hero_title')); ?></h1>
+    <div class="ya-shell ya-v305-hero-inner">
+        <div class="ya-v305-hero-content">
+            <span class="ya-v305-kicker"><?php echo esc_html(ya_t('hero_kicker')); ?></span>
+            <h1 id="ya-v305-title"><?php echo esc_html(ya_t('hero_title')); ?></h1>
             <p><?php echo esc_html(ya_t('hero_text')); ?></p>
-
-            <div class="ya-actions">
-                <a class="ya-btn" href="<?php echo esc_url($services_url); ?>">
-                    <?php echo esc_html(ya_t('hero_cta')); ?>
-                    <i class="fa-solid fa-arrow-right"></i>
+            <div class="ya-v305-actions">
+                <a class="ya-v305-btn ya-v305-btn-primary" href="<?php echo esc_url($services_url); ?>">
+                    <?php echo esc_html(ya_t('hero_cta')); ?><i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a class="ya-btn ya-btn-outline" href="<?php echo esc_url($quote_url); ?>">
+                <a class="ya-v305-btn ya-v305-btn-secondary" href="<?php echo esc_url($quote_url); ?>">
                     <?php echo esc_html(ya_t('hero_quote')); ?>
                 </a>
             </div>
-
-            <div class="ya-trust-row">
+            <div class="ya-v305-trust">
                 <span><i class="fa-solid fa-bolt"></i><?php echo esc_html(ya_t('response')); ?></span>
                 <span><i class="fa-solid fa-certificate"></i><?php echo esc_html(ya_t('certified')); ?></span>
                 <span><i class="fa-solid fa-location-dot"></i><?php echo esc_html(ya_t('coverage')); ?></span>
             </div>
         </div>
 
-        <div class="ya-network-visual reveal" data-ya-parallax>
-            <div class="ya-network-glow"></div>
-            <div class="ya-network-ring r1"></div>
-            <div class="ya-network-ring r2"></div>
-            <div class="ya-network-ring r3"></div>
-
-            <div class="ya-network-core">
-                <i class="fa-solid fa-cloud"></i>
-                <small><?php echo esc_html($H['hero_core']); ?></small>
-            </div>
-
-            <div class="ya-network-node n1"><i class="fa-solid fa-server"></i><span><?php echo esc_html($H['node_infra']); ?></span></div>
-            <div class="ya-network-node n2"><i class="fa-solid fa-shield-halved"></i><span><?php echo esc_html($H['node_security']); ?></span></div>
-            <div class="ya-network-node n3"><i class="fa-solid fa-wifi"></i><span><?php echo esc_html($H['node_network']); ?></span></div>
-            <div class="ya-network-node n4"><i class="fa-solid fa-laptop"></i><span><?php echo esc_html($H['node_support']); ?></span></div>
-
-            <svg viewBox="0 0 620 520" aria-hidden="true">
-                <path d="M120 270C205 140 400 115 505 260"/>
-                <path d="M105 300C220 390 400 405 525 290"/>
-                <path d="M310 90V440"/>
-                <path d="M125 150L500 390"/>
-                <path d="M505 145L120 390"/>
-            </svg>
+        <div class="ya-v305-hero-visual" aria-hidden="true">
+            <div class="ya-v305-orbit ya-v305-orbit-a"></div>
+            <div class="ya-v305-orbit ya-v305-orbit-b"></div>
+            <div class="ya-v305-core"><i class="fa-solid fa-cloud"></i><small><?php echo esc_html($H['hero_core']); ?></small></div>
+            <span class="ya-v305-node ya-v305-n1"><i class="fa-solid fa-server"></i></span>
+            <span class="ya-v305-node ya-v305-n2"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="ya-v305-node ya-v305-n3"><i class="fa-solid fa-wifi"></i></span>
+            <span class="ya-v305-node ya-v305-n4"><i class="fa-solid fa-laptop"></i></span>
         </div>
     </div>
-
-    <div class="ya-hero-bottom">
-        <div class="ya-shell">
-            <span><i class="fa-brands fa-microsoft"></i><strong>Microsoft 365</strong> <?php echo esc_html($H['strip_workplace']); ?></span>
-            <span><i class="fa-solid fa-wifi"></i><strong><?php echo esc_html($H['strip_network']); ?></strong> & Wi-Fi</span>
-            <span><i class="fa-solid fa-shield-halved"></i><strong><?php echo esc_html($H['strip_security']); ?></strong> Protection</span>
-            <span><i class="fa-solid fa-location-dot"></i><strong><?php echo esc_html($H['strip_field']); ?></strong> <?php echo esc_html($H['strip_france']); ?></span>
-        </div>
-    </div>
-
-    <a
-        class="ya-home-scroll-cue"
-        href="#ya-home-services"
-        aria-label="<?php
-            echo esc_attr(
-                $lang === 'en'
-                    ? 'Scroll to services'
-                    : (
-                        $lang === 'de'
-                            ? 'Zu den Services scrollen'
-                            : 'Faire défiler vers les services'
-                    )
-            );
-        ?>"
-    >
-        <span></span>
-        <i class="fa-solid fa-chevron-down"></i>
-    </a>
 </section>
+
 
 <section class="ya-home-trust">
     <div class="ya-shell ya-home-trust-grid">

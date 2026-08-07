@@ -403,29 +403,4 @@ $brand_subtitle = [
     </aside>
 </div>
 
-<div class="ya-app-status-strip">
-    <div class="ya-shell">
-        <span>
-            <i class="fa-solid fa-circle"></i>
-            <?php echo esc_html(
-                $lang === 'fr'
-                    ? 'Support disponible'
-                    : ($lang === 'de' ? 'Support verfügbar' : 'Support available')
-            ); ?>
-        </span>
-
-        <button
-            type="button"
-            data-ya-app-search-open
-        >
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <?php echo esc_html(
-                $lang === 'fr'
-                    ? 'Recherche rapide'
-                    : ($lang === 'de' ? 'Schnellsuche' : 'Quick search')
-            ); ?>
-        </button>
-    </div>
-</div>
-
 <main id="content">

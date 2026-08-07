@@ -1,0 +1,10 @@
+Yama Ahmadi Pro v3.0.6
+
+Mobile/PWA hero fit fix
+- Corrected mobile body/header offset: the mobile topbar is hidden, so content now reserves 62px instead of 91px.
+- Removes the visible white gap between the mobile header and first hero.
+- Reworked isolated homepage hero sizing for mobile/PWA without changing desktop styling.
+- Increased mobile hero text readability while keeping the hero compact.
+- Reworked universal inner-page heroes into a compact two-column mobile composition instead of a tall stacked layout.
+- Added iPhone standalone/PWA safe-area handling for the fixed header.
+- Version/cache bumped from 3.0.5 to 3.0.6.
