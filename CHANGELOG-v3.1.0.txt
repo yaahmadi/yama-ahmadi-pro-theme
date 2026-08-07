@@ -1,0 +1,16 @@
+Yama Ahmadi Pro v3.1.0 — Responsive Design & PWA Consolidation
+
+- Fixed desktop header/page offset and reduced the large visual dead zone above content.
+- Rebuilt global responsive rules for desktop, laptop, iPad/tablet, mobile and small phones.
+- Improved installed-PWA safe-area behavior for iPhone/iPad status bars and bottom insets.
+- Redesigned homepage hero hierarchy, glass panel, CTAs, typography and responsive mobile layout.
+- Improved homepage positioning around L1/L2 support, field engineering, networks, deployments and MSP/IT partners.
+- Standardized service, technology, project, blog and inner-page cards with consistent hover/motion states.
+- Reduced excessive empty spacing and improved section rhythm throughout the theme.
+- Strengthened dark stats/proof sections and partner-logo contrast.
+- Improved contact forms, input sizing, focus states and mobile usability.
+- Refined footer spacing and visual continuity.
+- Added reduced-motion support and better keyboard focus visibility.
+- Fixed homepage video performance selector; mobile, reduced-motion and data-saver modes no longer keep loading the hero video.
+- Added small requestAnimationFrame-based header scroll handling and hardened external blank-target links.
+- Theme version bumped from 3.0.6 to 3.1.0.

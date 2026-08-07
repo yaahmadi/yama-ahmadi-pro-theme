@@ -1099,3 +1099,53 @@
 
     d.documentElement.classList.add('ya-app-shell-ready');
 })();
+
+/* =========================================================
+   YAMA AHMADI PRO v3.1.0 — PERFORMANCE & MICRO-INTERACTIONS
+========================================================= */
+(() => {
+    'use strict';
+    const d = document;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = navigator.connection?.saveData === true;
+
+    /* The current homepage uses .ya-v305-hero-media. Earlier code checked
+       .ya-hero-video only, so mobile/data-saver users could still download it. */
+    const heroVideo = d.querySelector('.ya-v305-hero-media');
+    if (heroVideo) {
+        if (reduced || saveData || window.innerWidth <= 760) {
+            heroVideo.pause();
+            heroVideo.removeAttribute('autoplay');
+            heroVideo.querySelectorAll('source').forEach(source => {
+                source.dataset.src = source.getAttribute('src') || '';
+                source.removeAttribute('src');
+            });
+            heroVideo.load();
+            heroVideo.hidden = true;
+        } else {
+            heroVideo.play().catch(() => { heroVideo.hidden = true; });
+        }
+    }
+
+    /* Add a compact scrolled state independent of theme/plugin wrappers. */
+    const header = d.querySelector('#ya-header');
+    let ticking = false;
+    const syncHeader = () => {
+        header?.classList.toggle('scrolled', window.scrollY > 18);
+        ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(syncHeader);
+            ticking = true;
+        }
+    }, {passive:true});
+    syncHeader();
+
+    /* Safe external links without changing same-origin navigation. */
+    d.querySelectorAll('a[target="_blank"]').forEach(a => {
+        const rel = new Set((a.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+        rel.add('noopener'); rel.add('noreferrer');
+        a.setAttribute('rel', [...rel].join(' '));
+    });
+})();

@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('YA_VERSION', '3.0.6');
+define('YA_VERSION', '3.1.0');
 
 /* =========================================================
    THEME SETUP
@@ -236,8 +236,8 @@ function ya_t($key) {
             'location'       => 'Zone d’intervention',
             'france'         => 'France',
             'hero_kicker'    => 'YAMA AHMADI • SERVICES INFORMATIQUES',
-            'hero_title'     => 'Des solutions IT fiables pour votre entreprise.',
-            'hero_text'      => 'Support informatique, réseaux, cybersécurité, Microsoft 365, cloud et assistance terrain pour les entreprises qui exigent fiabilité, sécurité et réactivité.',
+            'hero_title'     => 'Support IT & ingénierie terrain partout en France.',
+            'hero_text'      => 'Support L1/L2, réseaux, Wi-Fi, Microsoft 365, déploiement, migration et interventions sur site pour entreprises, MSP et partenaires IT.',
             'hero_cta'       => 'Découvrir nos services',
             'hero_quote'     => 'Demander un devis',
             'services_title' => 'Des services IT complets pour répondre à vos besoins',
@@ -291,7 +291,7 @@ function ya_t($key) {
             'location'       => 'Zone d’intervention',
             'france'         => 'France',
             'hero_kicker'    => 'YAMA AHMADI • IT SERVICES',
-            'hero_title'     => 'Reliable IT solutions for your business.',
+            'hero_title'     => 'IT support & field engineering across France.',
             'hero_text'      => 'IT support, networks, cybersecurity, Microsoft 365, cloud and field services for businesses that require reliability, security and responsiveness.',
             'hero_cta'       => 'Explore our services',
             'hero_quote'     => 'Request a quote',
