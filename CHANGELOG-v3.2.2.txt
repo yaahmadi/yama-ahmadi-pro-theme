@@ -1,0 +1,12 @@
+Yama Ahmadi Pro v3.2.2 — Final hero, internal-link and logo audit
+
+- Removed the reserved body/header gap that produced a white strip above inner-page heroes.
+- Added safe fixed-header clearance directly inside page heroes for desktop, tablet, mobile and standalone PWA.
+- Reduced optical size of HCLTech, Action, TECEZE, Cognizant, Wipro, Marelli and marquee logos while keeping equal logo stages.
+- Verified canonical WordPress routes from the 2026-08-07 Pages and Posts exports.
+- Updated About route to /a-propos-2/.
+- Updated quote route to /demander-devis/.
+- Updated privacy aliases to the published privacy-policy slugs.
+- Normalized legacy /demande-de-devis/ and /devis/ links inside WordPress content.
+- Added safe 301 redirects for legacy quote/about routes.
+- Preserved responsive, iPad/tablet, iPhone/Android and standalone-PWA behavior.

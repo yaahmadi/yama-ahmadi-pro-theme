@@ -29,6 +29,7 @@ while (have_posts()) :
         'projets' => ['projets', 'projects', 'experiences', 'experience'],
         'contact' => ['contact', 'contact-us'],
         'demander-un-devis' => [
+            'demander-devis',
             'demander-un-devis',
             'demande-de-devis',
             'request-a-quote',
@@ -44,8 +45,8 @@ while (have_posts()) :
             if (
                 $slug === $alias ||
                 $title_key === $alias ||
-                str_starts_with($slug, $alias . '-') ||
-                str_starts_with($title_key, $alias . '-')
+                0 === strpos($slug, $alias . '-') ||
+                0 === strpos($title_key, $alias . '-')
             ) {
                 $template_slug = $canonical;
                 break 2;

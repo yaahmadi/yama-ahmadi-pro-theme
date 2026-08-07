@@ -467,13 +467,17 @@ function ya_page($slug) {
         ],
 
         'a-propos' => [
+            'a-propos-2',
             'a-propos',
             'about',
+            'about-us',
         ],
 
         'about' => [
+            'a-propos-2',
             'a-propos',
             'about',
+            'about-us',
         ],
 
         'services' => [
@@ -489,6 +493,7 @@ function ya_page($slug) {
         ],
 
         'demander-un-devis' => [
+            'demander-devis',
             'demande-de-devis',
             'demander-un-devis',
             'request-a-quote',
@@ -497,6 +502,7 @@ function ya_page($slug) {
         ],
 
         'demande-de-devis' => [
+            'demander-devis',
             'demande-de-devis',
             'demander-un-devis',
             'request-a-quote',
@@ -505,6 +511,7 @@ function ya_page($slug) {
         ],
 
         'request-a-quote' => [
+            'demander-devis',
             'demande-de-devis',
             'demander-un-devis',
             'request-a-quote',
@@ -518,6 +525,8 @@ function ya_page($slug) {
         ],
 
         'confidentialite' => [
+            'politique-confidentialite',
+            'politique-de-confidentialite',
             'confidentialite',
             'privacy-policy',
         ],
@@ -2355,3 +2364,51 @@ add_filter(
     10,
     2
 );
+
+
+/* =========================================================
+   v3.2.2 — INTERNAL URL NORMALIZATION
+   Routes verified against the 2026-08-07 WordPress page/post export.
+========================================================= */
+function ya_normalize_internal_content_links($content) {
+    if (is_admin() || !is_string($content) || '' === $content) {
+        return $content;
+    }
+
+    $quote = esc_url(ya_page('demander-un-devis'));
+    $replacements = [
+        'https://yamaahmadi.fr/demande-de-devis/' => $quote,
+        'http://yamaahmadi.fr/demande-de-devis/'  => $quote,
+        'https://www.yamaahmadi.fr/demande-de-devis/' => $quote,
+        '/demande-de-devis/' => $quote,
+        'https://yamaahmadi.fr/devis/' => $quote,
+        'http://yamaahmadi.fr/devis/'  => $quote,
+        '/devis/' => $quote,
+    ];
+
+    return strtr($content, $replacements);
+}
+add_filter('the_content', 'ya_normalize_internal_content_links', 20);
+
+function ya_legacy_route_redirects() {
+    if (is_admin()) {
+        return;
+    }
+
+    $path = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+    $targets = [
+        'demande-de-devis' => ya_page('demander-un-devis'),
+        'devis'             => ya_page('demander-un-devis'),
+        'a-propos'          => ya_page('a-propos'),
+    ];
+
+    if (isset($targets[$path])) {
+        $target = $targets[$path];
+        $current = home_url('/' . $path . '/');
+        if (untrailingslashit($target) !== untrailingslashit($current)) {
+            wp_safe_redirect($target, 301);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'ya_legacy_route_redirects', 1);
